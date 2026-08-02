@@ -1,0 +1,58 @@
+generated: '2026-08-01'
+method: generated
+source: openapi/hyperlabs-web-openapi-original.json + grpc/hyperlabs-radium.proto
+notes: >-
+  HYPERLABS publishes no AGENTS.md, no skills and no agent guidance (searched: docs, support FAQ, GitHub
+  org, llms.txt). These skills are GENERATED from the two published contracts. Because the OpenAPI
+  declares zero operationIds across all 175 operations, REST steps are grounded in METHOD + path, which
+  is unambiguous in this spec; gRPC steps are grounded in verbatim RPC names from radium.v1.Radium. No
+  operation, RPC, enum value or field below was invented.
+skills:
+- file: hyperlabs-find-a-product.md
+  name: Find a HYPERLABS product and its specifications
+  api: openapi/hyperlabs-web-openapi-original.json
+  auth: none
+  operations:
+  - GET /v1/product-classes
+  - GET /v1/categories
+  - GET /v1/products/filter/parameters
+  - POST /v1/products/filter
+  - GET /v1/products
+  - GET /v1/products/{topSku}
+  - GET /v1/application-notes
+  - GET /v1/software
+- file: hyperlabs-resolve-software-and-automation.md
+  name: Resolve the right HYPERLABS software and automation package for an instrument
+  api: openapi/hyperlabs-web-openapi-original.json
+  auth: none
+  operations:
+  - GET /v1/software
+  - GET /v1/software/{name}
+  - GET /v1/products/{topSku}
+  - GET /v1/products
+  - GET /v1/products/discontinued
+- file: hyperlabs-capture-tdr-waveform.md
+  name: Capture a TDR waveform from a HYPERLABS TDR11100 over gRPC
+  api: grpc/hyperlabs-radium.proto
+  service: radium.v1.Radium
+  auth: none
+  operations:
+  - IsReady
+  - GetBoardRevision
+  - GetLicenseStatus
+  - ConfigureTDRPreset
+  - GetTDRConfiguration
+  - ConfigureAcquisitionFilter
+  - EnableTDR
+  - GetTDRWorkingState
+  - GetState
+  - ListenToSampleStream
+  - GetT0Offsets
+  - Reset
+not_covered_deliberately:
+- surface: 'POST /v1/request-quote, POST /v1/contact-messages, POST /v1/wishlist/quote, POST /v1/wishlist/share'
+  reason: these send real email to HYPERLABS sales and require a recaptchaToken the agent cannot produce
+- surface: /v1/admin/**
+  reason: 115 role-gated staff CMS operations
+- surface: '/v1/account/**, /v1/customer/**'
+  reason: credential handling and authenticated customer state

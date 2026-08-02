@@ -1,23 +1,168 @@
 aid: hyperlabs
-name: Hyperlabs
-description: 'Hyperlabs is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+name: HYPERLABS
+description: >-
+  HYPERLABS, Inc. designs and manufactures signal-integrity products for high-speed digital and datacom
+  test in the United States. Two product classes: ultra-broadband Components (amplifiers, baluns, DC
+  blocks, bias tees, pick-off tees, power dividers, attenuators, terminations, inverters) built for 112
+  and 224 Gbps PAM-4 applications, and Instruments — USB-powered and USB-controlled TDRs, Signal Path
+  Analyzers, controlled-impedance analyzers and impulse generators with 1-20 channels and rise times as
+  fast as 35 ps. Founded in 1992, with engineering and manufacturing in Louisville, Colorado and
+  Beaverton, Oregon. HYPERLABS publishes two machine-readable contracts: an OpenAPI 3.0.1 definition
+  (175 operations, served with Swagger UI) for the hyperlabs.com product-catalog and customer web
+  backend, and an MIT-licensed proto3 gRPC service definition, radium.v1.Radium, for programmatic
+  control and waveform streaming from the TDR11100 Time Domain Reflectometer. Instrument automation is
+  also offered as first-party Windows DLL packages (ZTDR and XTDR) with C++ sample source and manuals.
+image: https://www.hyperlabs.com/assets/logoFull.svg
 url: https://raw.githubusercontent.com/api-evangelist/hyperlabs/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-08-01'
 modified: '2026-08-01'
 tags:
-- Company
-apis: []
+- signal-integrity
+- test-and-measurement
+- electronic-components
+- instrumentation
+- time-domain-reflectometry
+- high-speed-digital
+- datacom
+- hardware
+- grpc
+- manufacturing
+apis:
+- name: HYPERLABS Web API
+  description: >-
+    The ASP.NET Core backend that powers www.hyperlabs.com — product catalog, product classes,
+    categories, tags and filtering, application notes, datasheets, software/DLL downloads, website
+    content (banner, events, FAQs, team, timeline, sales representatives, sales-and-warranty terms),
+    customer accounts with Google and Microsoft sign-in, customer wishlists, quote requests and contact
+    messages, plus an authenticated admin surface. The OpenAPI 3.0.1 definition and a Swagger UI are
+    served publicly from the API host. It is not marketed as a developer product and carries no
+    published terms of use for third-party consumption.
+  humanURL: https://www.hyperlabs.com/api/swagger/index.html
+  baseURL: https://www.hyperlabs.com/api
+  tags:
+  - product-catalog
+  - e-commerce
+  - content
+  - accounts
+  - test-and-measurement
+  properties:
+  - type: OpenAPI
+    url: openapi/hyperlabs-web-openapi-original.json
+  - type: APIReference
+    url: https://www.hyperlabs.com/api/swagger/index.html
+  - type: Authentication
+    url: authentication/hyperlabs-authentication.yml
+  - type: Conventions
+    url: conventions/hyperlabs-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hyperlabs-problem-types.yml
+  - type: DataModel
+    url: data-model/hyperlabs-data-model.yml
+  - type: Overlay
+    url: overlays/hyperlabs-web-overlay.yaml
+- name: HYPERLABS Radium gRPC API (TDR11100)
+  description: >-
+    Public gRPC control and acquisition interface for the HYPERLABS TDR11100 Time Domain Reflectometer.
+    The proto3 service radium.v1.Radium exposes 22 unary RPCs covering readiness and board state, reset,
+    LED control, board temperature, TDR enable/preset configuration, acquisition-filter configuration,
+    license management, and T0 / calibration-region offsets, plus 3 server-streaming RPCs that emit an
+    open-ended stream of state events, LED state and waveform sample packets. The service listens on TCP
+    port 50052 on the instrument itself over an insecure (plaintext, unauthenticated) channel, so the
+    contract is device-local rather than internet-facing. HYPERLABS publishes the .proto, the generated
+    Python bindings and a worked Python capture example under an MIT license on its GitHub organization.
+  humanURL: https://github.com/HYPERLABS/TDR11100
+  x-transport: grpc
+  x-endpoint: '{instrument-ip}:50052'
+  x-note: >-
+    No public baseURL — the Radium service runs on the customer's own TDR11100 hardware and is reached
+    at the instrument's IP address on TCP 50052. Recorded honestly rather than substituted with a
+    placeholder host.
+  tags:
+  - grpc
+  - instrumentation
+  - time-domain-reflectometry
+  - streaming
+  - test-and-measurement
+  properties:
+  - type: Protobuf
+    url: grpc/hyperlabs-radium.proto
+  - type: SourceCode
+    url: https://github.com/HYPERLABS/TDR11100
+  - type: AsyncAPI
+    url: asyncapi/hyperlabs-radium-asyncapi.yml
+  - type: Examples
+    url: https://github.com/HYPERLABS/TDR11100/raw/main/gRPC_Sample_Script.zip
+common:
+- type: DomainSecurity
+  url: security/hyperlabs-domain-security.yml
+- type: Website
+  url: https://www.hyperlabs.com/
+- type: Documentation
+  url: https://www.hyperlabs.com/support/
+- type: APIReference
+  url: https://www.hyperlabs.com/api/swagger/index.html
+- type: GettingStarted
+  url: https://www.hyperlabs.com/applications/
+- type: About
+  url: https://www.hyperlabs.com/about-us/
+- type: Support
+  url: https://www.hyperlabs.com/support/
+- type: HelpCenter
+  url: https://www.hyperlabs.com/support/faq/
+- type: GitHubOrganization
+  url: https://github.com/HYPERLABS
+- type: Login
+  url: https://www.hyperlabs.com/login
+- type: TermsOfService
+  url: https://www.hyperlabs.com/support/sales-and-warranty-terms/
+- type: PrivacyPolicy
+  url: https://www.hyperlabs.com/support/privacy-policy/
+- type: Contact
+  url: https://www.hyperlabs.com/contact/
+- type: Deprecation
+  url: https://www.hyperlabs.com/support/discontinued-products/
+- type: SDKs
+  url: packages/hyperlabs-packages.yml
+- type: Packages
+  url: packages/hyperlabs-packages.yml
+- type: ChangeLog
+  url: changelog/hyperlabs-changelog.yml
+- type: Lifecycle
+  url: lifecycle/hyperlabs-lifecycle.yml
+- type: Conformance
+  url: conformance/hyperlabs-conformance.yml
+- type: Conventions
+  url: conventions/hyperlabs-conventions.yml
+- type: Authentication
+  url: authentication/hyperlabs-authentication.yml
+- type: ErrorCatalog
+  url: errors/hyperlabs-problem-types.yml
+- type: DataModel
+  url: data-model/hyperlabs-data-model.yml
+- type: Protobuf
+  url: grpc/hyperlabs-radium.proto
+- type: OpenAPI
+  url: openapi/hyperlabs-web-openapi-original.json
+- type: Overlay
+  url: overlays/hyperlabs-web-overlay.yaml
+- type: AsyncAPI
+  url: asyncapi/hyperlabs-radium-asyncapi.yml
+- type: Examples
+  url: https://github.com/HYPERLABS/TDR11100/raw/main/gRPC_Sample_Script.zip
+- type: LLMsTxt
+  url: llms/hyperlabs-llms.txt
+- type: AgentSkill
+  url: skills/_index.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
-common:
-- type: Website
-  url: https://forgeglobal.com/hyperlabs_stock/
+x-enrichment:
+  date: '2026-08-01'
+  status: enriched
+  artifacts_added: 20
+  pass: local-v1

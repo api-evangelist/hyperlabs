@@ -1,0 +1,78 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the HYPERLABS Web API
+  version: 1.0.0
+extends: openapi/hyperlabs-web-openapi-original.json
+x-apievangelist:
+  generated: '2026-08-01'
+  method: generated
+  source: openapi/hyperlabs-web-openapi-original.json
+  note: >-
+    Non-destructive enhancements over the provider's Swashbuckle-generated spec. The original is never
+    mutated. These actions add the missing servers[] absolute URL, correct the misnamed securityScheme,
+    add contact/licence/description metadata, and tag the two operations that carry a real RFC 7807
+    problem body. They do NOT invent operation summaries, response schemas or error codes the provider
+    has not published — those gaps are recorded in errors/hyperlabs-problem-types.yml and
+    conventions/hyperlabs-conventions.yml instead.
+actions:
+- target: $.info
+  description: Add a substantive description, contact block and external documentation.
+  update:
+    description: >-
+      Backend API for www.hyperlabs.com — the HYPERLABS product catalog (components and instruments),
+      categories, tags, faceted product filtering, application notes, datasheets, software and DLL
+      downloads, marketing website content, customer accounts with Google/Microsoft federated sign-in,
+      customer wishlists, quote requests and contact messages, plus a role-gated admin surface under
+      /v1/admin. Served with Swagger UI at /api/swagger/index.html.
+    contact:
+      name: HYPERLABS Support
+      email: support@hyperlabs.com
+      url: https://www.hyperlabs.com/contact/
+    x-apievangelist-notes:
+      operations: 175
+      paths: 124
+      schemas: 92
+      operations_with_summary: 0
+      operations_with_description: 0
+      operations_with_operationId: 0
+      successful_responses_with_a_schema: 10
+- target: $.externalDocs
+  description: Point at the published Swagger UI.
+  update:
+    description: HYPERLABS Web API reference (Swagger UI)
+    url: https://www.hyperlabs.com/api/swagger/index.html
+- target: $.servers
+  description: >-
+    The original declares only the relative server "/api", which is unresolvable outside a browser on
+    hyperlabs.com. Replace it with the absolute production origin.
+  update:
+  - url: https://www.hyperlabs.com/api
+    description: Production
+- target: $.components.securitySchemes.oauth2
+  description: >-
+    The scheme is named "oauth2" but is an apiKey-in-header bearer token, which misleads generators and
+    scanners. Keep the key (changing it would break every operation's security requirement) but describe
+    it accurately and mark the correction.
+  update:
+    description: >-
+      Bearer JWT issued by POST /v1/account/login, POST /v1/account/google/login or
+      POST /v1/account/microsoft/login. Sent as "Authorization: Bearer {accessToken}". Despite the
+      scheme key, this is NOT an OAuth 2.0 flow — no authorization endpoint, token endpoint or scopes
+      are defined.
+    x-apievangelist-correction: scheme-name-misleading
+    x-apievangelist-actual-type: http-bearer
+- target: $.paths['/v1/account/login'].post
+  description: Name the token-issuing operation, which the generated spec leaves untitled.
+  update:
+    summary: Log in a customer and issue a bearer access token
+    x-apievangelist-issues-token: true
+- target: $.paths['/v1/tech/is-alive'].get
+  description: Identify the liveness probe.
+  update:
+    summary: Liveness probe — returns 204 when the API is serving
+    x-apievangelist-health-check: true
+- target: $.paths['/v1/products/discontinued'].get
+  description: Flag the end-of-life surface referenced by lifecycle/hyperlabs-lifecycle.yml.
+  update:
+    summary: List discontinued products and their replacements
+    x-apievangelist-lifecycle: end-of-life-catalog

@@ -1,0 +1,87 @@
+generated: '2026-08-01'
+method: derived
+source: openapi/hyperlabs-web-openapi-original.json + grpc/hyperlabs-radium.proto + https://www.hyperlabs.com/api/v1/website/faqs
+standards:
+- id: openapi-3.0
+  conforms: true
+  evidence: 'openapi: "3.0.1" served at https://www.hyperlabs.com/api/swagger/v1/swagger.json (200, application/json), 124 paths / 175 operations / 92 schemas'
+- id: swagger-ui
+  conforms: true
+  evidence: Swagger UI served publicly at https://www.hyperlabs.com/api/swagger/index.html
+- id: rfc7807-problem-details
+  conforms: partial
+  evidence: 'components.schemas["Microsoft.AspNetCore.Mvc.ProblemDetails"] with type/title/status/detail/instance; declared on 2 of 175 operations only, and served as application/json rather than application/problem+json'
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: no application/problem+json media type anywhere in the spec
+- id: oauth2
+  conforms: false
+  evidence: 'the securityScheme is NAMED "oauth2" but is declared as type apiKey in the Authorization header — no flows, no authorizationUrl, no tokenUrl, no scopes'
+- id: oidc
+  conforms: partial
+  evidence: >-
+    federated sign-in against Google and Microsoft identity providers (GET /v1/account/google/params,
+    POST /v1/account/google/login, and the Microsoft equivalents) — the API is an OIDC relying party,
+    not an OIDC provider; no /.well-known/openid-configuration is served
+- id: rfc6750-bearer-token
+  conforms: true
+  evidence: 'Authorization: Bearer {token}; CustomerLoginResultDto returns {tokenType, accessToken}'
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: no Sunset or Deprecation header declared or observed
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: '/.well-known/security.txt returns the SPA HTML shell on www.hyperlabs.com and hyperlabsinc.com, not a security.txt'
+- id: rfc8615-well-known
+  conforms: false
+  evidence: 'no /.well-known/ document is served — every probed path returns the 1784-byte single-page-app catch-all (see well-known/hyperlabs-well-known.yml)'
+- id: a2a-agent-card
+  conforms: false
+  evidence: '/.well-known/agent-card.json and /.well-known/agent.json both return HTML (SPA catch-all) on every host; no agent card exists'
+- id: rfc6585-429-rate-limiting
+  conforms: partial
+  evidence: >-
+    the hyperlabs.com front-end reads RateLimit-Reset / X-Rate-Limit-Reset / X-RateLimit-Reset and
+    branches on 429, but no 429 response is declared in the spec and no rate-limit header was returned
+    on anonymous probes
+- id: json-api
+  conforms: false
+  evidence: plain JSON arrays and objects; no JSON:API envelope
+- id: idempotency-key
+  conforms: false
+  evidence: no Idempotency-Key header or parameter in any of the 175 operations
+- id: grpc
+  conforms: true
+  evidence: 'radium.v1.Radium proto3 service, 22 unary + 3 server-streaming RPCs, published MIT-licensed at https://github.com/HYPERLABS/TDR11100'
+- id: protobuf-proto3
+  conforms: true
+  evidence: 'syntax = "proto3"; package radium.v1; grpc/hyperlabs-radium.proto'
+- id: grpc-tls
+  conforms: false
+  evidence: the published sample client uses grpc.insecure_channel() — the instrument service is plaintext and unauthenticated
+- id: asyncapi
+  conforms: false
+  evidence: >-
+    no AsyncAPI document is published; asyncapi/hyperlabs-radium-asyncapi.yml is an API Evangelist
+    derivation of the three server-streaming RPCs, not a provider artifact
+- id: webhooks
+  conforms: false
+  evidence: no webhook, callback or subscription surface in the spec or the docs
+- id: tls-1.3
+  conforms: true
+  evidence: 'www.hyperlabs.com negotiates TLSv1.3 (see security/hyperlabs-domain-security.yml)'
+- id: hsts
+  conforms: false
+  evidence: 'Strict-Transport-Security: max-age=0; preload — the header is present but the max-age of zero disables HSTS'
+- id: dmarc
+  conforms: partial
+  evidence: 'DMARC record present with policy p=none; no SPF record; no DNSSEC; no CAA'
+product_compliance:
+  claims:
+  - {standard: RoHS, claim: supported where applicable, source: 'https://www.hyperlabs.com/support/faq/'}
+  - {standard: REACH, claim: supported where applicable, source: 'https://www.hyperlabs.com/support/faq/'}
+  - {standard: 'Made in USA', claim: designed, manufactured and tested in Colorado and Oregon, source: 'https://www.hyperlabs.com/support/faq/'}
+  notes: >-
+    These are materials/manufacturing compliance claims for the hardware, not an information-security or
+    data-protection compliance program. No SOC 2, ISO 27001, PCI DSS, HIPAA, FedRAMP or GDPR posture is
+    published and no trust center exists, so no `Compliance` or `TrustCenter` pointer is emitted.

@@ -1,0 +1,106 @@
+generated: '2026-08-01'
+method: derived
+source: openapi/hyperlabs-web-openapi-original.json + grpc/hyperlabs-radium.proto + live probes
+docs: https://www.hyperlabs.com/api/swagger/index.html
+notes: >-
+  HYPERLABS publishes no written authentication guide. This profile is derived from the published
+  OpenAPI securityScheme, the token-issuing operations and their response schemas, and observed live
+  behaviour. Baseline produced by 0-working/derive-authentication.py, then enriched with the token
+  issuance flow, the federated sign-in providers, the anonymous/protected operation split and the gRPC
+  surface — none of which the mechanical pass can see.
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+  oauth2_flows: []
+  effective_model: bearer-jwt
+schemes:
+- name: oauth2
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: 'Standard Authorization header using the Bearer scheme. Example: "Bearer {token}"'
+  sources:
+  - openapi/hyperlabs-web-openapi-original.json
+  x-correction: >-
+    The scheme KEY is "oauth2" but the declaration is type apiKey in the Authorization header. There is
+    no authorizationUrl, no tokenUrl, no scopes and no flows object anywhere in the spec, so this is a
+    bearer token, not an OAuth 2.0 scheme. Generators and scanners that key off the scheme name will
+    mis-model this API. Corrected in overlays/hyperlabs-web-overlay.yaml.
+  x-actual-type: http-bearer
+token_issuance:
+- operation: 'POST /v1/account/login'
+  request: 'CustomerLoginDto {userName, password}'
+  response: 'CustomerLoginResultDto {tokenType, accessToken}'
+  anonymous: true
+- operation: 'POST /v1/account/google/login'
+  precedes_with: 'GET /v1/account/google/params (returns CustomerGoogleParamsDto {clientId})'
+  request: CustomerGoogleLoginDto
+  response: CustomerLoginResultDto
+  anonymous: true
+  errors: 400 with RFC 7807 ProblemDetails
+- operation: 'POST /v1/account/microsoft/login'
+  precedes_with: 'GET /v1/account/microsoft/params (returns CustomerMicrosoftParamsDto {clientId})'
+  request: CustomerMicrosoftLoginDto
+  response: CustomerLoginResultDto
+  anonymous: true
+  errors: 400 with RFC 7807 ProblemDetails
+- operation: 'POST /v1/admin/account/login'
+  note: separate staff login issuing LoginResultDto for the /v1/admin surface
+federated_identity:
+  role: relying-party
+  providers: [Google, Microsoft]
+  discovery_document_published: false
+  notes: >-
+    HYPERLABS consumes Google and Microsoft OIDC sign-in; it is not itself an OIDC provider and serves
+    no /.well-known/openid-configuration.
+account_lifecycle:
+  register: 'POST /v1/account/register (RegisterCustomerDto) -> 204'
+  confirm: 'POST /v1/account/confirm-registration'
+  forgot_password: 'POST /v1/account/forgot-password -> 204'
+  reset_password: 'POST /v1/account/reset-password -> 204'
+  change_password: 'POST /v1/account/change-password (authenticated) -> 204'
+authorization:
+  model: role-based
+  roles_endpoint: 'GET /v1/admin/roles'
+  surfaces:
+  - {prefix: /v1/admin, operations: 115, audience: staff}
+  - {prefix: '/v1/customer + /v1/profile', audience: authenticated customer}
+  - {prefix: 'other /v1', audience: anonymous public}
+  scopes: none — no OAuth scope surface exists, so no scopes/ artifact is emitted
+operation_split:
+  total: 175
+  protected: 121
+  anonymous: 54
+  note: 'protected operations declare security [{oauth2: []}] with 401 and 403 responses'
+bot_protection:
+  mechanism: Google reCAPTCHA
+  applies_to:
+  - 'POST /v1/request-quote'
+  - 'POST /v1/contact-messages'
+  - 'POST /v1/wishlist/quote'
+  - 'POST /v1/wishlist/share'
+  - 'POST /v1/customer/wishlist/quote'
+  field: recaptchaToken
+  site_key_exposure: 'the public site key is served in the clear at https://www.hyperlabs.com/config/config.js (expected — reCAPTCHA site keys are public by design)'
+grpc:
+  service: radium.v1.Radium
+  source: grpc/hyperlabs-radium.proto
+  authentication: none
+  transport_security: none
+  evidence: >-
+    The provider's own published sample client (TDR11100_gRPC_public.py) opens
+    grpc.insecure_channel(f"{ip}:50052") — plaintext, no TLS, no credentials, and no per-call metadata
+    other than an optional "req_id" correlation key. Anyone with network reach to the instrument can
+    control it, including Reset and UploadLicense. This is a local-lab-network trust model.
+  licensing: >-
+    The service does gate capability by license (GetLicenseStatus, GetLicenseInfo, UploadLicense,
+    GenerateLicenseRequest, ReloadLicense) — that is entitlement, not authentication.
+x-evidence:
+  fetched: '2026-08-01'
+  sources:
+  - {url: 'https://www.hyperlabs.com/api/swagger/v1/swagger.json', http_status: 200}
+  - {url: 'https://www.hyperlabs.com/api/v1/website/contact', http_status: 200, note: anonymous call succeeded with no Authorization header}
+  - {url: 'https://www.hyperlabs.com/config/config.js', http_status: 200}
+  - {url: 'https://github.com/HYPERLABS/TDR11100', http_status: 200}

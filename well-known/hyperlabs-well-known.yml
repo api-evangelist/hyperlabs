@@ -1,0 +1,46 @@
+generated: '2026-08-01'
+method: probed
+source: live GET probes 2026-08-01
+result: none
+notes: >-
+  No /.well-known/ document is served by HYPERLABS. Both hosts run a single-page app behind a catch-all
+  route that answers HTTP 200 with the identical 1784-byte HTML shell for every unmatched path — the
+  classic false positive on this probe. Every candidate below returned that shell, so all are recorded
+  as misses despite the 200 status. Because nothing real was found, NO `WellKnown` or `SecurityTxt`
+  pointer is wired into apis.yml.
+spa_catch_all:
+  detected: true
+  body_bytes: 1784
+  fingerprint: '<!doctype html><html lang="en"> ... <div id="root"></div>'
+hosts:
+- host: https://www.hyperlabs.com
+  documents:
+  - {path: /.well-known/security.txt, status: 200, valid: false, reason: spa-html-shell}
+  - {path: /.well-known/openid-configuration, status: 200, valid: false, reason: spa-html-shell}
+  - {path: /.well-known/oauth-authorization-server, status: 200, valid: false, reason: spa-html-shell}
+  - {path: /.well-known/oauth-protected-resource, status: 200, valid: false, reason: spa-html-shell}
+  - {path: /.well-known/api-catalog, status: 200, valid: false, reason: spa-html-shell}
+  - {path: /.well-known/ai-plugin.json, status: 200, valid: false, reason: spa-html-shell}
+  - {path: /.well-known/agent-card.json, status: 200, valid: false, reason: spa-html-shell}
+  - {path: /.well-known/agent.json, status: 200, valid: false, reason: spa-html-shell}
+- host: https://hyperlabsinc.com
+  note: legacy domain, resolves to the same single-page app
+  documents:
+  - {path: /.well-known/security.txt, status: 200, valid: false, reason: spa-html-shell}
+  - {path: /.well-known/openid-configuration, status: 200, valid: false, reason: spa-html-shell}
+  - {path: /.well-known/oauth-authorization-server, status: 200, valid: false, reason: spa-html-shell}
+  - {path: /.well-known/api-catalog, status: 200, valid: false, reason: spa-html-shell}
+  - {path: /.well-known/ai-plugin.json, status: 200, valid: false, reason: spa-html-shell}
+  - {path: /.well-known/agent-card.json, status: 200, valid: false, reason: spa-html-shell}
+  - {path: /.well-known/agent.json, status: 200, valid: false, reason: spa-html-shell}
+real_documents_found: []
+adjacent_discovery_that_did_hit:
+  note: >-
+    The provider serves no /.well-known/ surface, but it does serve real machine-readable discovery
+    elsewhere — recorded here so a future run does not re-hunt it.
+  documents:
+  - {path: /api/swagger/v1/swagger.json, status: 200, content_type: application/json, artifact: openapi/hyperlabs-web-openapi-original.json}
+  - {path: /api/swagger/index.html, status: 200, content_type: text/html, note: Swagger UI}
+  - {path: /sitemap.xml, status: 200, content_type: application/xml, note: 3 URLs}
+  - {path: /api/v1/sitemap/sitemap.xml, status: 200, note: the API operation that generates the sitemap}
+  - {path: /config/config.js, status: 200, note: exposes apiBaseUrl=/api, GA measurement id, reCAPTCHA site key}

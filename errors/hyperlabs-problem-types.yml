@@ -1,0 +1,76 @@
+generated: '2026-08-01'
+method: derived
+source: openapi/hyperlabs-web-openapi-original.json
+format: rfc7807
+envelope:
+  schema: Microsoft.AspNetCore.Mvc.ProblemDetails
+  media_types: [application/json, text/json, text/plain]
+  fields:
+  - {name: type, type: string, nullable: true, note: RFC 7807 problem type URI}
+  - {name: title, type: string, nullable: true}
+  - {name: status, type: integer, format: int32, nullable: true}
+  - {name: detail, type: string, nullable: true}
+  - {name: instance, type: string, nullable: true}
+  additional_properties: true
+coverage:
+  operations_total: 175
+  status_codes_declared: {'200': 165, '204': 10, '400': 2, '401': 121, '403': 121}
+  problem_details_bodies_declared: 2
+  gaps: >-
+    Only the two social-login operations declare a problem body. The 121 protected operations declare
+    bare 401/403 with no schema, and no operation anywhere declares 404, 409, 422, 429 or 5xx — despite
+    74 operations taking a path {id} that can miss and the front-end handling 429. The error contract is
+    therefore materially thinner than the runtime behaviour.
+problems:
+- status: 400
+  title: Bad Request
+  format: rfc7807
+  schema: Microsoft.AspNetCore.Mvc.ProblemDetails
+  source_operations:
+  - 'openapi/hyperlabs-web-openapi-original.json#POST /v1/account/google/login'
+  - 'openapi/hyperlabs-web-openapi-original.json#POST /v1/account/microsoft/login'
+  remediation: >-
+    The Google/Microsoft identity token or the client-supplied login payload was rejected. Re-fetch the
+    provider params from GET /v1/account/google/params or /v1/account/microsoft/params and retry the
+    federated sign-in.
+- status: 401
+  title: Unauthorized
+  format: none-declared
+  schema: null
+  declared_on: 121 operations
+  source_operations_sample:
+  - 'openapi/hyperlabs-web-openapi-original.json#GET /v1/profile'
+  - 'openapi/hyperlabs-web-openapi-original.json#GET /v1/customer/wishlist'
+  - 'openapi/hyperlabs-web-openapi-original.json#POST /v1/account/change-password'
+  remediation: >-
+    Supply `Authorization: Bearer {accessToken}` from POST /v1/account/login (or a federated login).
+    No body schema is declared for this status.
+- status: 403
+  title: Forbidden
+  format: none-declared
+  schema: null
+  declared_on: 121 operations
+  source_operations_sample:
+  - 'openapi/hyperlabs-web-openapi-original.json#GET /v1/admin/products'
+  - 'openapi/hyperlabs-web-openapi-original.json#GET /v1/admin/users'
+  remediation: >-
+    The token is valid but the account lacks the role required for the operation. Admin operations
+    under /v1/admin require a staff role (see GET /v1/admin/roles); customer operations require a
+    customer account.
+undeclared_but_expected:
+- {status: 404, reason: '74 operations take a path {id}; a miss is unmodelled in the spec'}
+- {status: 429, reason: 'the hyperlabs.com front-end reads RateLimit-Reset / X-Rate-Limit-Reset / X-RateLimit-Reset and branches on 429, but no 429 is declared'}
+grpc_errors:
+  source: grpc/hyperlabs-radium.proto
+  model: gRPC status codes plus a proto3 LocalErrorCode enum
+  notes: >-
+    The Radium service declares no error message type; transport-level failures surface as gRPC status
+    codes. Device-level failures are enumerated in the LocalErrorCode enum. Several replies additionally
+    carry their own state flags rather than errors — GetStateReply.acquisition_stalled,
+    GetTDRWorkingStateReply and GetLicenseStatusReply are the health signals a client checks.
+  local_error_codes:
+  - {code: 0, name: LOCAL_ERROR_CODE_UNSPECIFIED, meaning: no error / default}
+  - {code: 103, name: LOCAL_ERROR_CODE_NOT_SUPPORTED, meaning: the requested operation or value is not supported by this board revision or license, action: 'check GetBoardRevision and GetLicenseStatus before retrying'}
+  - {code: 104, name: LOCAL_ERROR_CODE_ACQUISITION_PROBLEM, meaning: the acquisition failed or stalled, action: 'read GetState.acquisition_stalled, then EnableTDR(false) and re-enable'}
+  - {code: 108, name: LOCAL_ERROR_CODE_INVALID_CALIBRATION_DATA, meaning: stored calibration data is invalid, action: 'read GetCalRegionOffsets and GetT0Offsets; recalibrate'}
+  - {code: 110, name: LOCAL_ERROR_CODE_INVALID_CONFIGURATION, meaning: the TDR preset or acquisition-filter configuration is rejected, action: 'send a value from the TDRConfigurationPreset / AcquisitionFilter enums'}

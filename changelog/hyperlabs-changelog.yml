@@ -1,0 +1,109 @@
+generated: '2026-08-01'
+method: searched
+source: https://www.hyperlabs.com/api/v1/software (resources[] -> published *_changelog.txt)
+notes: >-
+  HYPERLABS publishes no changelog for its web API. It does publish a dated, per-release changelog as a
+  plain-text file attached to each instrument-software product, reachable from the software pages and
+  from the public software catalog endpoint. Scheme is semantic-ish MAJOR.MINOR.PATCH with US-format
+  dates, and entries are classed with explicit FEATURE / IMPROVEMENT / CHANGE / BUGFIX / INTERFACE /
+  TUNING / DEPRECATION prefixes. Recent window only — the published files are the source of truth.
+scheme: semver-like
+date_format: MM/DD/YY
+entry_classes: [FEATURE, IMPROVEMENT, CHANGE, INTERFACE, TUNING, BUGFIX, DEPRECATION]
+products:
+- product: XTDR
+  docs: https://www.hyperlabs.com/software/
+  changelog: https://hyperlabsstprodcus.blob.core.windows.net/hyperlabs/08deec8d-f3a7-4ceb-8898-4303e4d7eae1/XTDR_changelog.txt
+  current_version: 2.8.0
+  entries:
+  - version: 2.8.0
+    date: '2020-09-03'
+    breaking: false
+    highlights: [BUGFIX amplitude calibration distortion on channel pairs with divergent steps]
+  - version: 2.7.0
+    date: '2019-05-20'
+    breaking: false
+    highlights: [BUGFIX prevent software from loading settings for a different instrument model]
+  - version: 2.6.0
+    date: '2016-06-09'
+    breaking: false
+    highlights: [BUGFIX eliminated dribble-up of first points during TDR waveform averaging]
+  - version: 2.5.0
+    date: '2015-10-12'
+    breaking: true
+    highlights:
+    - IMPROVEMENT multithreaded acquisition for a more responsive UI
+    - FEATURE LED-style indicator for active acquisition/calibration
+    - DEPRECATION auto-calibration toggle removed - multithreading removes the need to disable it
+  - version: 2.0.5
+    date: '2015-07-31'
+    breaking: false
+    highlights:
+    - FEATURE insertion loss (S21) and return loss (S11) measurement modes
+    - CHANGE data logging (CSV, PNG, print) moved to the File menu
+- product: Zcoupon
+  docs: https://www.hyperlabs.com/software/
+  changelog: https://hyperlabsstprodcus.blob.core.windows.net/hyperlabs/08deec8e-2811-48b9-8a9a-aa3bdeeee1fa/Zcoupon_changelog.txt
+  current_version: 2.7.1
+  entries:
+  - version: 2.7.0
+    date: '2020-03-14'
+    breaking: false
+    highlights: [IMPROVEMENT external calibration now performed against external load resistors on the HL9600 Calibration Standards Substrate]
+  - version: 2.6.0
+    date: '2018-12-17'
+    breaking: true
+    highlights:
+    - FEATURE improved external calibration using HL9600 Calibration Standard Substrate coupons
+    - DEPRECATION support deprecated for HYPERLABS HL52xx Series instruments
+  - version: 2.5.0
+    date: '2016-03-25'
+    breaking: false
+    highlights:
+    - FEATURE multiple boards may share the same Session ID
+    - FEATURE LOG button auto-saves X/Y points to CSV
+    - FEATURE new coupon definition parameters - trace width and spacing
+  - version: 2.0.0
+    date: '2015-10-23'
+    breaking: false
+    highlights:
+    - FEATURE software multithreading
+    - FEATURE external calibration to a calibration standard substrate
+    - FEATURE automatic Word session report on session close
+- product: ZTDR
+  docs: https://www.hyperlabs.com/software/ztdr/
+  changelog: https://hyperlabsstprodcus.blob.core.windows.net/hyperlabs/08deec8e-8088-49e7-812e-cf763321ea5b/ZTDR_changelog.txt
+  current_version: 2.1.0
+  changelog_covers_through: 2.0.5
+  entries:
+  - version: 2.0.5
+    date: '2016-07-11'
+    breaking: false
+    highlights:
+    - CHANGE improved debug and error codes for startup errors
+    - BUGFIX intermittent error initializing device at startup
+  - version: 2.0.1
+    date: '2015-10-28'
+    breaking: true
+    highlights:
+    - FEATURE multithreading support for acquisition and UI
+    - CHANGE option to disable auto-calibration removed
+    - CHANGE CLEAR button for stored waveform removed - now File menu only
+    - CHANGE Data menu consolidated into File menu
+  - version: 1.1.0
+    date: '2014-09-30'
+    breaking: false
+    highlights:
+    - FEATURE set horizontal reference (zero) on demand
+    - FEATURE save/load program settings, remember environment across restarts
+- product: TDR11100
+  docs: https://www.hyperlabs.com/software/tdr11100/
+  current_version: 1.0.0
+  changelog: null
+  notes: Initial release; no changelog file published yet.
+x-evidence:
+  fetched: '2026-08-01'
+  sources:
+  - {url: 'https://hyperlabsstprodcus.blob.core.windows.net/hyperlabs/08deec8d-f3a7-4ceb-8898-4303e4d7eae1/XTDR_changelog.txt', http_status: 200}
+  - {url: 'https://hyperlabsstprodcus.blob.core.windows.net/hyperlabs/08deec8e-2811-48b9-8a9a-aa3bdeeee1fa/Zcoupon_changelog.txt', http_status: 200}
+  - {url: 'https://hyperlabsstprodcus.blob.core.windows.net/hyperlabs/08deec8e-8088-49e7-812e-cf763321ea5b/ZTDR_changelog.txt', http_status: 200}

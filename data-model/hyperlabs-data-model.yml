@@ -1,0 +1,94 @@
+generated: '2026-08-01'
+method: derived
+source: openapi/hyperlabs-web-openapi-original.json (components.schemas $ref graph + *Id / *Ids reference fields)
+notes: >-
+  Derived from the 92 schemas in the published OpenAPI. The spec declares response schemas on only 10
+  of 165 successful operations, so the graph below is reconstructed from the request DTOs, which are
+  fully typed. Entity names are the .NET DTO names with the Change/Create prefix stripped.
+identifiers:
+  style: uuid
+  format: RFC 4122 GUID
+  alternate_keys:
+  - {entity: Product, key: topSku, path: '/v1/products/{topSku}'}
+  - {entity: Software, key: name, path: '/v1/software/{name}'}
+  - {entity: ApplicationNote, key: name, path: '/v1/application-notes/{name}'}
+enums:
+  - {name: PublishingStatusCode, applies_to: [ProductClass, Category, Product, Software, ApplicationNote, TagType]}
+  - {name: ProductionStatusCode, applies_to: [Product], note: carries the discontinued/end-of-life state}
+  - {name: ProductAttributeTypeCode, applies_to: [Product, WebsiteFeaturedProduct]}
+  - {name: SpecificationPurposeCode, applies_to: [SpecificationType]}
+  - {name: SpecificationValueTypeCode, applies_to: [SpecificationType]}
+  - {name: FilterParameterCode, applies_to: [FilterSelectedParameter]}
+  - {name: FileTypeCode, applies_to: [MediaFile]}
+  - {name: ContactMessageTypeCode, applies_to: [ContactMessage]}
+  - {name: WebsiteRepresentativeTypeCode, applies_to: [WebsiteRepresentative]}
+domains:
+- name: catalog
+  entities: [ProductClass, Category, Product, ProductUnit, ProductVariable, SpecificationType, VariableType, TagType, Software, ApplicationNote, Datasheet, MediaFile]
+- name: commerce
+  entities: [Wishlist, WishlistItem, ProductLine, RequestQuote, ContactMessage]
+- name: identity
+  entities: [Customer, CustomerProfile, User, Role]
+- name: website
+  entities: [WebsiteBanner, WebsiteContact, WebsiteEvent, WebsiteFaq, WebsiteFeaturedProduct, WebsiteRepresentative, WebsiteSalesAndWarranty, WebsiteTeamMember, WebsiteTimelineItem, WebsiteTopSlide]
+entities:
+- name: ProductClass
+  domain: catalog
+  read: 'GET /v1/product-classes, GET /v1/product-classes/{id}'
+  observed_instances: [Components, Instruments]
+  fields_observed: [id, hasCategories, order, name, title, subtitle, description, publishingStatusCode, createdDate, modifiedDate]
+- name: Category
+  domain: catalog
+  read: 'GET /v1/categories, GET /v1/categories/{id}'
+- name: Product
+  domain: catalog
+  read: 'GET /v1/products, GET /v1/products/{id}, GET /v1/products/{topSku}, GET /v1/products/discontinued, POST /v1/products/filter, POST /v1/products/resolve'
+- name: ProductUnit
+  domain: catalog
+  note: the orderable SKU variant of a Product, selected by variable values
+- name: Software
+  domain: catalog
+  read: 'GET /v1/software, GET /v1/software/{id}, GET /v1/software/{name}'
+  fields_observed: [id, name, title, description, keyFeatures, notes, images, resources, dlls, products]
+- name: Wishlist
+  domain: commerce
+  read: 'GET /v1/customer/wishlist'
+  note: the quote basket — converts to a quote via POST /v1/customer/wishlist/quote
+relationships:
+- {from: Category, to: ProductClass, type: belongs_to, via: productClassId}
+- {from: Category, to: Category, type: belongs_to, via: parentCategoryId, note: self-referential tree}
+- {from: Category, to: SpecificationType, type: has_many, via: specificationTypeId}
+- {from: Category, to: TagType, type: has_many, via: tagTypeId}
+- {from: Category, to: VariableType, type: has_many, via: variableTypeId}
+- {from: Product, to: Category, type: belongs_to, via: categoryId}
+- {from: Product, to: Product, type: has_one, via: replacementProductId, note: end-of-life successor - drives /v1/products/discontinued}
+- {from: Product, to: ApplicationNote, type: has_many, via: applicationNoteId}
+- {from: Product, to: Software, type: has_many, via: softwareId}
+- {from: Product, to: SpecificationType, type: has_many, via: specificationTypeId}
+- {from: Product, to: TagType, type: has_many, via: tagTypeId}
+- {from: Product, to: VariableType, type: has_many, via: variableTypeId}
+- {from: Product, to: MediaFile, type: has_many, via: mediaFileId}
+- {from: ProductVariable, to: VariableTypeValue, type: has_many, via: variableTypeValueId}
+- {from: ProductUnit, to: VariableType, type: has_many, via: variableId}
+- {from: ProductUnit, to: VariableTypeValue, type: has_many, via: valueId}
+- {from: Software, to: Product, type: has_many, via: productId}
+- {from: Software, to: MediaFile, type: has_many, via: mediaFileId}
+- {from: ApplicationNote, to: Product, type: has_many, via: productId}
+- {from: MediaFile, to: Category, type: belongs_to, via: categoryId}
+- {from: WishlistItem, to: Product, type: belongs_to, via: productId}
+- {from: WishlistItem, to: ProductUnit, type: belongs_to, via: productUnitId}
+- {from: ProductLine, to: Product, type: belongs_to, via: productId}
+- {from: ProductLine, to: ProductUnit, type: belongs_to, via: productUnitId}
+- {from: RequestQuote, to: ProductLine, type: has_many, via: $ref}
+- {from: User, to: Role, type: belongs_to, via: roleId}
+- {from: WebsiteFeaturedProduct, to: Product, type: belongs_to, via: productId}
+- {from: WebsiteTopSlide, to: MediaFile, type: has_one, via: backgroundMediaFileId}
+- {from: WebsiteTopSlide, to: MediaFile, type: has_one, via: linkMediaFileId}
+- {from: WebsiteSalesAndWarranty, to: MediaFile, type: has_one, via: mediaFileId}
+grpc_model:
+  source: grpc/hyperlabs-radium.proto
+  notes: >-
+    The instrument surface is not entity-oriented — it is a device state machine. The nearest thing to
+    entities are the state messages: StateEvent, LedState, SampleStream (the waveform packet),
+    CalRegionOffsets, plus the TDR configuration and acquisition-filter configuration read back by
+    GetTDRConfiguration and GetAcquisitionFilterConfiguration.

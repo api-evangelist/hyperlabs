@@ -1,0 +1,141 @@
+x-apievangelist:
+  generated: '2026-08-01'
+  method: derived
+  source: grpc/hyperlabs-radium.proto
+  note: >-
+    HYPERLABS publishes no AsyncAPI document and no webhooks. It DOES publish a real event surface: three
+    server-streaming RPCs in the MIT-licensed radium.v1.Radium proto3 service that return open-ended
+    streams from the TDR11100 instrument. This AsyncAPI 3.0.0 document is a faithful derivation of those
+    three streams — every channel, message and payload field below is taken verbatim from the published
+    .proto. Nothing here is invented; where the proto is silent (delivery guarantees, retention,
+    reconnect semantics) this document is silent too.
+asyncapi: 3.0.0
+info:
+  title: HYPERLABS Radium instrument event streams (TDR11100)
+  version: radium.v1
+  description: |
+    Server-streaming surface of the radium.v1.Radium gRPC service running on a HYPERLABS TDR11100 Time
+    Domain Reflectometer. A client opens a gRPC channel to the instrument on TCP 50052 and subscribes to
+    one or more of three open-ended streams: state events, LED state, and waveform sample packets.
+
+    Derived from the published proto3 definition at
+    https://github.com/HYPERLABS/TDR11100 (gRPC_Sample_Script/radium_public.proto, MIT licensed).
+  license:
+    name: MIT
+    url: https://github.com/HYPERLABS/TDR11100/blob/main/LICENSE
+  externalDocs:
+    url: https://www.hyperlabs.com/software/tdr11100/
+servers:
+  instrument:
+    host: '{instrument-ip}:50052'
+    protocol: grpc
+    description: >-
+      The Radium service on the TDR11100 hardware itself. The published sample client opens
+      grpc.insecure_channel() — plaintext, unauthenticated, local-network only. Multiple concurrent
+      client connections to one instrument are supported.
+    variables:
+      instrument-ip:
+        description: IPv4 address of the TDR11100 unit on the local network.
+channels:
+  stateEvents:
+    address: radium.v1.Radium/ListenToStateEvent
+    title: State events
+    description: Open-ended stream of instrument state-change events.
+    messages:
+      StateEvent:
+        $ref: '#/components/messages/StateEvent'
+  ledState:
+    address: radium.v1.Radium/ListenToLedState
+    title: LED state
+    description: >-
+      Open-ended stream of front-panel LED state. The subscribe request selects which LEDs to watch via
+      the led_id_red / led_id_green / led_id_blue booleans on ListenToLedStateRequest.
+    messages:
+      LedState:
+        $ref: '#/components/messages/LedState'
+  sampleStream:
+    address: radium.v1.Radium/ListenToSampleStream
+    title: Waveform sample packets
+    description: >-
+      Open-ended stream of TDR waveform packets. Requires acquisition to be enabled first via the
+      EnableTDR unary RPC. Each packet is one complete waveform with the scaling constants needed to
+      convert raw samples to rho and impedance.
+    messages:
+      SampleStream:
+        $ref: '#/components/messages/SampleStream'
+operations:
+  receiveStateEvents:
+    action: receive
+    channel:
+      $ref: '#/channels/stateEvents'
+  receiveLedState:
+    action: receive
+    channel:
+      $ref: '#/channels/ledState'
+  receiveSampleStream:
+    action: receive
+    channel:
+      $ref: '#/channels/sampleStream'
+components:
+  messages:
+    StateEvent:
+      name: StateEvent
+      title: Instrument state event
+      payload:
+        $ref: '#/components/schemas/StateEvent'
+    LedState:
+      name: LedState
+      title: LED state
+      payload:
+        $ref: '#/components/schemas/LedState'
+    SampleStream:
+      name: SampleStream
+      title: Waveform sample packet
+      payload:
+        $ref: '#/components/schemas/SampleStream'
+  schemas:
+    StateEvent:
+      type: object
+      properties:
+        state_event_type:
+          $ref: '#/components/schemas/StateEventType'
+        trigger_req_id:
+          type: string
+          description: >-
+            Populated with the value of the "req_id" gRPC metadata key from the triggering request, when
+            that key was present. This is the only request-correlation mechanism the service defines.
+    StateEventType:
+      type: string
+      enum: [STATE_EVENT_TYPE_UNSPECIFIED, STATE_EVENT_TYPE_LICENSE_CHANGED]
+    LedState:
+      type: object
+      properties:
+        led_id:
+          type: string
+          enum: [LED_ID_UNSPECIFIED, LED_ID_RED, LED_ID_GREEN, LED_ID_BLUE]
+        brightness:
+          type: integer
+          minimum: 0
+          maximum: 255
+          description: 0 is fully off, 255 is maximum brightness.
+        breathe:
+          type: boolean
+    SampleStream:
+      type: object
+      description: One complete TDR waveform packet.
+      properties:
+        sample:
+          type: array
+          items: {type: number, format: float}
+        sample_spacing_ps: {type: number, format: double}
+        pulse_period_ns: {type: number, format: double}
+        ref_50ohm: {type: number, format: double}
+        ref_unit_amp: {type: number, format: double}
+        dc_50:
+          type: number
+          format: double
+          description: Per-waveform 50 ohm offset in raw DAC counts (0-4095).
+        dc_amp:
+          type: number
+          format: double
+          description: Calibration amplitude in raw DAC counts.

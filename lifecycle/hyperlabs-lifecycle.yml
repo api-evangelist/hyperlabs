@@ -1,0 +1,64 @@
+generated: '2026-08-01'
+method: searched
+source: https://www.hyperlabs.com/support/ + openapi/hyperlabs-web-openapi-original.json + grpc/hyperlabs-radium.proto
+versioning:
+  web_api:
+    scheme: uri-path
+    current: v1
+    prefix: /api/v1
+    docs: https://www.hyperlabs.com/api/swagger/index.html
+    notes: >-
+      Every path in the OpenAPI is prefixed /v1 under the /api server. The spec's info.version is "1.0"
+      and no second major version is published. No version header, no date-pinning, no version train
+      is documented.
+  grpc_api:
+    scheme: proto-package
+    current: radium.v1
+    docs: https://github.com/HYPERLABS/TDR11100
+    notes: proto3 package radium.v1; field numbers are stable and several newer fields use `optional`.
+  software:
+    scheme: semver-like
+    docs: https://www.hyperlabs.com/software/
+deprecation:
+  policy_url: null
+  sunset_header: false
+  deprecation_header: false
+  product_end_of_life_page: https://www.hyperlabs.com/support/discontinued-products/
+  api_endpoint: https://www.hyperlabs.com/api/v1/products/discontinued
+  replacement_mechanism: >-
+    The product model carries an explicit replacementProductId (ChangeProductDto.replacementProductId
+    and ChangeReplacementProductDto), so a discontinued product resolves to its successor in the
+    catalog. This is a real, machine-readable end-of-life path for hardware — it is not an API
+    deprecation policy.
+  software_deprecations:
+  - {product: Zcoupon, version: 2.6.0, date: '2018-12-17', note: support deprecated for HYPERLABS HL52xx Series instruments}
+  - {product: XTDR, version: 2.5.0, date: '2015-10-12', note: auto-calibration toggle removed}
+  notes: >-
+    HYPERLABS publishes no API deprecation policy, no Sunset (RFC 8594) or Deprecation header support,
+    and no operation in the OpenAPI carries `deprecated: true`. The published deprecation surface is
+    the hardware discontinued-products page plus the DEPRECATION-classed entries in the software
+    changelogs.
+sla:
+  url: null
+  uptime_target: null
+  notes: No published SLA or uptime commitment for either the web API or the instrument gRPC service.
+status_page: null
+health_check:
+  endpoint: https://www.hyperlabs.com/api/v1/tech/is-alive
+  method: GET
+  success: 204
+  notes: >-
+    A liveness probe exists on the API (Tech / is-alive) but there is no public status page or
+    historical uptime dashboard, so `status_page_present` is genuinely unmet.
+support:
+  warranty_terms: https://www.hyperlabs.com/support/sales-and-warranty-terms/
+  faq: https://www.hyperlabs.com/support/faq/
+  email: support@hyperlabs.com
+  phone: '+1-720-407-6538'
+deprecated_operations: []
+x-evidence:
+  fetched: '2026-08-01'
+  sources:
+  - {url: 'https://www.hyperlabs.com/api/swagger/v1/swagger.json', http_status: 200, note: 175 operations, zero marked deprecated}
+  - {url: 'https://www.hyperlabs.com/api/v1/website/faqs', http_status: 200, note: warranty + support FAQ answers}
+  - {url: 'https://github.com/HYPERLABS/TDR11100', http_status: 200}

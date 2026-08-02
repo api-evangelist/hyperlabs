@@ -1,0 +1,116 @@
+generated: '2026-08-01'
+method: derived
+source: openapi/hyperlabs-web-openapi-original.json + observed live responses + grpc/hyperlabs-radium.proto
+notes: >-
+  HYPERLABS publishes no written API conventions guide. Everything below is derived from the published
+  OpenAPI 3.0.1 definition, from headers observed on live calls to https://www.hyperlabs.com/api, and
+  from the published radium.v1 proto. Where a convention is absent, that absence is recorded rather
+  than filled in.
+surfaces:
+  rest: {base: 'https://www.hyperlabs.com/api', version_prefix: /v1, spec: openapi/hyperlabs-web-openapi-original.json}
+  grpc: {service: radium.v1.Radium, transport: 'TCP 50052 on the instrument', spec: grpc/hyperlabs-radium.proto}
+authentication:
+  style: bearer-token
+  header: 'Authorization: Bearer {token}'
+  declared_as: >-
+    The OpenAPI securityScheme is named "oauth2" but is declared as type apiKey in the Authorization
+    header — a bearer JWT, not an OAuth 2.0 flow. No authorizationUrl, tokenUrl or scopes are declared.
+  token_issue:
+  - 'POST /v1/account/login -> CustomerLoginResultDto {tokenType, accessToken}'
+  - POST /v1/account/google/login
+  - POST /v1/account/microsoft/login
+  anonymous_operations: 54
+  protected_operations: 121
+  detail: authentication/hyperlabs-authentication.yml
+  grpc: none — the sample client opens grpc.insecure_channel(), so the instrument service is plaintext and unauthenticated on the local network.
+idempotency:
+  supported: false
+  header: null
+  notes: >-
+    No Idempotency-Key header, parameter or extension appears anywhere in the 175-operation spec, and
+    no retry-safety contract is documented. Write operations (quote requests, contact messages,
+    wishlist items) are not idempotent. No `Idempotency` pointer is emitted for this provider.
+pagination:
+  style: page-number
+  supported_on: >-
+    Four collection endpoints (admin products, media files, datasheets, users). The public catalog
+    endpoints (/v1/products, /v1/product-classes, /v1/categories, /v1/software, /v1/tags) return whole
+    unpaged arrays.
+  request_params:
+  - {name: PageNo, in: query, type: integer}
+  - {name: PageSize, in: query, type: integer}
+  - {name: SortBy, in: query, type: string, note: bound to a per-resource *QuerySortParameter enum}
+  - {name: SortDesc, in: query, type: boolean}
+  - {name: Search, in: query, type: string}
+  response_fields: unspecified — the spec declares no response schema for these operations
+filtering:
+  style: repeated-uuid-query-params
+  examples:
+  - 'GET /v1/products?ProductClassIds=&CategoryIds=&TagIds=&SoftwareIds=&IsNew=&IsFeatured=&IsPromoted='
+  - 'POST /v1/products/filter with FilterDto {productClassIds[], categoryIds[], parameters[]}'
+  - GET /v1/products/filter/parameters — returns the filterable parameter set for a selection
+  notes: >-
+    A two-step faceted-search contract: read the available filter parameters, then post the selected
+    ones. FilterParameterCode is an enum in the spec.
+identifiers:
+  style: uuid
+  format: RFC 4122 GUID (observed, e.g. 08de3d66-055e-4e42-86cc-7e07038e0027)
+  alternate_keys:
+  - 'GET /v1/products/{topSku} — resolve by SKU'
+  - 'GET /v1/software/{name} and /v1/application-notes/{name} — resolve by URL-encoded display name'
+  notes: >-
+    Several resources are addressable by both id and a human key on the same path template, so
+    /v1/products/{id} and /v1/products/{topSku} collide in the spec.
+expansion: {supported: false, notes: No expand/fields/include parameter is declared anywhere in the spec.}
+metadata: {supported: false, notes: No customer-settable metadata surface.}
+request_tracing:
+  request_id_header: null
+  notes: No X-Request-Id, correlation-id or trace header is declared in the spec or observed on live responses.
+versioning:
+  style: uri-path
+  current: v1
+  detail: lifecycle/hyperlabs-lifecycle.yml
+error_envelope:
+  format: rfc7807
+  media_types: [application/json, text/json, text/plain]
+  schema: Microsoft.AspNetCore.Mvc.ProblemDetails
+  fields: [type, title, status, detail, instance]
+  extensible: true
+  declared_on: >-
+    Only two operations (POST /v1/account/google/login, POST /v1/account/microsoft/login) declare a 400
+    with the ProblemDetails schema. 401 and 403 are declared on the 121 protected operations but carry
+    no body schema. See errors/hyperlabs-problem-types.yml.
+  detail: errors/hyperlabs-problem-types.yml
+rate_limiting:
+  documented: false
+  headers_observed: []
+  client_handling:
+  - RateLimit-Reset
+  - X-Rate-Limit-Reset
+  - X-RateLimit-Reset
+  notes: >-
+    The hyperlabs.com front-end bundle reads all three reset-header spellings and handles HTTP 429, so
+    the API is expected to throttle — but no 429 response is declared in the OpenAPI, no rate-limit
+    header was returned on the anonymous calls made during this probe, and no limits are published.
+content_negotiation:
+  response_types: [application/json, text/json, text/plain]
+  notes: >-
+    Swashbuckle default — every schema-bearing response is advertised under all three media types,
+    including text/plain for JSON payloads. Live responses returned application/json; charset=utf-8.
+transport:
+  http_version: HTTP/2
+  server: Microsoft-IIS/10.0
+  tls: TLSv1.3
+  hsts: 'present but max-age=0 (effectively disabled) — see security/hyperlabs-domain-security.yml'
+cross_links:
+  authentication: authentication/hyperlabs-authentication.yml
+  errors: errors/hyperlabs-problem-types.yml
+  lifecycle: lifecycle/hyperlabs-lifecycle.yml
+  data_model: data-model/hyperlabs-data-model.yml
+  conformance: conformance/hyperlabs-conformance.yml
+x-evidence:
+  fetched: '2026-08-01'
+  sources:
+  - {url: 'https://www.hyperlabs.com/api/swagger/v1/swagger.json', http_status: 200}
+  - {url: 'https://www.hyperlabs.com/api/v1/website/contact', http_status: 200, note: live header observation}
+  - {url: 'https://www.hyperlabs.com/assets/index-DMdTaqLm.js', http_status: 200, note: front-end rate-limit header handling}

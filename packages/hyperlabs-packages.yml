@@ -1,0 +1,63 @@
+generated: '2026-08-01'
+method: searched
+source: https://www.hyperlabs.com/software/ + https://github.com/HYPERLABS
+notes: >-
+  HYPERLABS publishes no packages to npm, PyPI, NuGet, Maven Central, RubyGems, Packagist, crates.io or
+  pkg.go.dev (all eight registries probed 2026-08-01; the npm hits for "hyperlabs" belong to unrelated
+  third parties). First-party client libraries are distributed instead as downloadable Windows DLL
+  packages from the software pages, and as generated Python gRPC bindings inside the MIT-licensed
+  TDR11100 GitHub repository.
+registries_probed:
+- {registry: npm, query: hyperlabs, first_party_hits: 0}
+- {registry: pypi, name: hyperlabs, status: 404}
+- {registry: nuget, query: hyperlabs, first_party_hits: 0}
+- {registry: maven-central, query: hyperlabs, first_party_hits: 0}
+- {registry: rubygems, query: hyperlabs, first_party_hits: 0}
+- {registry: packagist, query: hyperlabs, first_party_hits: 0}
+- {registry: crates.io, query: hyperlabs, first_party_hits: 0}
+- {registry: pkg.go.dev, query: hyperlabs, first_party_hits: 0}
+packages:
+- language: c++
+  registry: vendor-download
+  name: ZTDR DLL
+  version: 2.1.0
+  url: https://www.hyperlabs.com/software/ztdr/
+  download: https://hyperlabsstprodcus.blob.core.windows.net/hyperlabs/08deec8e-808e-448e-8fb3-a8a6cafd2cf0/ZTDR_DLL_1.1.2.zip
+  docs: https://hyperlabsstprodcus.blob.core.windows.net/hyperlabs/08deec8e-809c-4431-89dd-ceed46a2f5a2/ZTDR_DLL_Manual.pdf
+  samples: https://hyperlabsstprodcus.blob.core.windows.net/hyperlabs/08deec94-6b63-4394-84dd-bccc347d7850/ZTDR_DLL_Test_1.1.2.zip
+  official: true
+  description: >-
+    Windows DLL for automating acquisition and logging on the HL1101 Ruggedized USB TDR from any test
+    environment. Ships with a DLL guide (PDF) and a C++ test program with source.
+- language: c++
+  registry: vendor-download
+  name: XTDR DLL
+  version: 2.6.0
+  url: https://www.hyperlabs.com/software/
+  download: https://hyperlabsstprodcus.blob.core.windows.net/hyperlabs/08deecd3-d3ff-47e1-814f-b4a1ae730c56/XTDR_DLL_2.6.0.zip
+  docs: https://hyperlabsstprodcus.blob.core.windows.net/hyperlabs/08deecc2-c08b-41ac-845c-c4b9537f1729/XTDR_DLL_Manual.pdf
+  samples: https://hyperlabsstprodcus.blob.core.windows.net/hyperlabs/08deec92-dabf-483c-89d9-4433383f35c9/XTDR_DLL_Test_2.6.0.zip
+  official: true
+  description: >-
+    Windows DLL for the HL22xx / HL52xx Signal Path Analyzers, adding programmatic insertion-loss and
+    return-loss measurement alongside TDR acquisition. Ships with a DLL manual (PDF) and a C++ test
+    program with source.
+- language: python
+  registry: github
+  name: radium_public gRPC bindings
+  url: https://github.com/HYPERLABS/TDR11100
+  download: https://github.com/HYPERLABS/TDR11100/raw/main/gRPC_Sample_Script.zip
+  install: unzip gRPC_Sample_Script.zip  # then pip install grpcio
+  license: MIT
+  official: true
+  description: >-
+    Generated Python protobuf/gRPC stubs (radium_public_pb2.py, radium_public_pb2_grpc.py) for the
+    radium.v1.Radium service on the TDR11100, distributed with the .proto and a worked capture example
+    (TDR11100_gRPC_public.py). Not published to PyPI — regenerate from grpc/hyperlabs-radium.proto or
+    take the shipped stubs.
+x-evidence:
+  fetched: '2026-08-01'
+  sources:
+  - {url: 'https://www.hyperlabs.com/api/v1/software', http_status: 200, note: live software catalog listing DLLs and resources}
+  - {url: 'https://api.github.com/orgs/hyperlabs/repos', http_status: 200, note: 26 repos, 1 first-party (TDR11100), 25 forks of C++/gRPC/SCPI dependencies}
+  - {url: 'https://pypi.org/pypi/hyperlabs/json', http_status: 404}
