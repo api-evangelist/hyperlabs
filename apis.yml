@@ -96,6 +96,13 @@ apis:
   - type: Examples
     url: https://github.com/HYPERLABS/TDR11100/raw/main/gRPC_Sample_Script.zip
 common:
+- type: MCPServer
+  url: mcp/hyperlabs-mcp.yml
+- type: IssueTracker
+  url: https://github.com/HYPERLABS/TDR11100/issues
+- type: License
+  name: MIT
+  url: https://github.com/HYPERLABS/TDR11100/blob/main/LICENSE
 - type: DomainSecurity
   url: security/hyperlabs-domain-security.yml
 - type: Website
