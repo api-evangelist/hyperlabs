@@ -11,78 +11,88 @@ search_result:
   - npm @modelcontextprotocol and "hyperlabs" package search
   - MCP registries
   found: none
-  notes: >-
-    HYPERLABS publishes no hosted or local MCP server, no /.well-known/ MCP discovery, and no agent
-    surface of any kind. The tools below are a DERIVED candidate set — a proposal, not something the
-    provider ships.
+  notes: HYPERLABS publishes no hosted or local MCP server, no /.well-known/ MCP discovery, and no agent
+    surface of any kind. The tools below are a DERIVED candidate set — a proposal, not something the provider
+    ships.
 pointer_policy:
   wired_in_apis_yml: false
-  reason: >-
-    No `MCPServer` pointer is emitted. The apis.io rating awards mcp_server_present (4 pts ergonomics)
-    and mcp_server (12 pts agent readiness) for a server that actually exists; wiring a pointer to a
-    candidate list would credit HYPERLABS with an agent surface it does not have. Re-run this pipeline
-    and wire the pointer only if HYPERLABS publishes a real server.
-notes_on_input_schemas: >-
-  The published spec declares ZERO operationIds, so each candidate tool is bound to its backing
-  operation by METHOD + path, which is unambiguous in this spec. Each tool's real input contract is that
-  operation's `parameters` and `requestBody` in openapi/hyperlabs-web-openapi-original.json. Only
-  anonymous, read-oriented catalog operations are proposed; the 121 token-protected operations and the
-  entire /v1/admin surface are deliberately excluded.
+  reason: No `MCPServer` pointer is emitted. The apis.io rating awards mcp_server_present (4 pts ergonomics)
+    and mcp_server (12 pts agent readiness) for a server that actually exists; wiring a pointer to a candidate
+    list would credit HYPERLABS with an agent surface it does not have. Re-run this pipeline and wire
+    the pointer only if HYPERLABS publishes a real server.
+notes_on_input_schemas: The published spec declares ZERO operationIds, so each candidate tool is bound
+  to its backing operation by METHOD + path, which is unambiguous in this spec. Each tool's real input
+  contract is that operation's `parameters` and `requestBody` in openapi/hyperlabs-web-openapi-original.json.
+  Only anonymous, read-oriented catalog operations are proposed; the 121 token-protected operations and
+  the entire /v1/admin surface are deliberately excluded.
 tools:
 - name: list_product_classes
   description: List the top-level HYPERLABS product classes (Components, Instruments).
-  source_operation: 'openapi/hyperlabs-web-openapi-original.json#GET /v1/product-classes'
+  source_operation: openapi/hyperlabs-web-openapi-original.json#GET /v1/product-classes
 - name: get_product_class
   description: Get one product class by id.
-  source_operation: 'openapi/hyperlabs-web-openapi-original.json#GET /v1/product-classes/{id}'
+  source_operation: openapi/hyperlabs-web-openapi-original.json#GET /v1/product-classes/{id}
 - name: list_categories
   description: List product categories, optionally filtered to a class, a parent, or top level only.
-  source_operation: 'openapi/hyperlabs-web-openapi-original.json#GET /v1/categories'
+  source_operation: openapi/hyperlabs-web-openapi-original.json#GET /v1/categories
 - name: list_products
-  description: List products, filtered by product class, category, tag, software, and the new/featured/promoted flags.
-  source_operation: 'openapi/hyperlabs-web-openapi-original.json#GET /v1/products'
+  description: List products, filtered by product class, category, tag, software, and the new/featured/promoted
+    flags.
+  source_operation: openapi/hyperlabs-web-openapi-original.json#GET /v1/products
 - name: get_product_by_sku
   description: Resolve a product by its top-level SKU (for example HL1101).
-  source_operation: 'openapi/hyperlabs-web-openapi-original.json#GET /v1/products/{topSku}'
+  source_operation: openapi/hyperlabs-web-openapi-original.json#GET /v1/products/{topSku}
 - name: get_filter_parameters
   description: Get the filterable parameter set available for a given class/category selection.
-  source_operation: 'openapi/hyperlabs-web-openapi-original.json#GET /v1/products/filter/parameters'
+  source_operation: openapi/hyperlabs-web-openapi-original.json#GET /v1/products/filter/parameters
 - name: filter_products
-  description: Faceted product search — post a FilterDto of search text, class ids, category ids and selected parameters.
-  source_operation: 'openapi/hyperlabs-web-openapi-original.json#POST /v1/products/filter'
+  description: Faceted product search — post a FilterDto of search text, class ids, category ids and selected
+    parameters.
+  source_operation: openapi/hyperlabs-web-openapi-original.json#POST /v1/products/filter
 - name: list_discontinued_products
   description: List discontinued products and their replacement products.
-  source_operation: 'openapi/hyperlabs-web-openapi-original.json#GET /v1/products/discontinued'
+  source_operation: openapi/hyperlabs-web-openapi-original.json#GET /v1/products/discontinued
 - name: list_software
   description: List instrument software and DLL packages with their downloads, manuals and linked products.
-  source_operation: 'openapi/hyperlabs-web-openapi-original.json#GET /v1/software'
+  source_operation: openapi/hyperlabs-web-openapi-original.json#GET /v1/software
 - name: get_software
   description: Get one software package by name (URL-encoded, for example ZTDR%E2%84%A2).
-  source_operation: 'openapi/hyperlabs-web-openapi-original.json#GET /v1/software/{name}'
+  source_operation: openapi/hyperlabs-web-openapi-original.json#GET /v1/software/{name}
 - name: list_application_notes
   description: List application notes and the products they apply to.
-  source_operation: 'openapi/hyperlabs-web-openapi-original.json#GET /v1/application-notes'
+  source_operation: openapi/hyperlabs-web-openapi-original.json#GET /v1/application-notes
 - name: list_tags
   description: List the catalog tag types used to classify products.
-  source_operation: 'openapi/hyperlabs-web-openapi-original.json#GET /v1/tags'
+  source_operation: openapi/hyperlabs-web-openapi-original.json#GET /v1/tags
 - name: get_contact_info
   description: Get HYPERLABS phone, email and facility addresses.
-  source_operation: 'openapi/hyperlabs-web-openapi-original.json#GET /v1/website/contact'
+  source_operation: openapi/hyperlabs-web-openapi-original.json#GET /v1/website/contact
 - name: list_sales_representatives
   description: List US and international sales representatives.
-  source_operation: 'openapi/hyperlabs-web-openapi-original.json#GET /v1/website/representatives/us + /international'
+  source_operation: openapi/hyperlabs-web-openapi-original.json#GET /v1/website/representatives/us + /international
 - name: get_faq
   description: Get the published support FAQ.
-  source_operation: 'openapi/hyperlabs-web-openapi-original.json#GET /v1/website/faqs'
+  source_operation: openapi/hyperlabs-web-openapi-original.json#GET /v1/website/faqs
 excluded_deliberately:
-- {surface: '/v1/admin/**', count: 115, reason: role-gated staff CMS operations}
-- {surface: '/v1/account/**', reason: credential and token handling}
-- {surface: '/v1/customer/**', reason: authenticated customer state}
-- {surface: 'POST /v1/request-quote, POST /v1/contact-messages, POST /v1/wishlist/quote, POST /v1/wishlist/share', reason: 'these send real email to HYPERLABS sales and are reCAPTCHA-gated (recaptchaToken is a required field) — not agent-safe'}
+- surface: /v1/admin/**
+  count: 115
+  reason: role-gated staff CMS operations
+- surface: /v1/account/**
+  reason: credential and token handling
+- surface: /v1/customer/**
+  reason: authenticated customer state
+- surface: POST /v1/request-quote, POST /v1/contact-messages, POST /v1/wishlist/quote, POST /v1/wishlist/share
+  reason: these send real email to HYPERLABS sales and are reCAPTCHA-gated (recaptchaToken is a required
+    field) — not agent-safe
 tool_crosswalk:
   emitted: false
-  reason: >-
-    A crosswalk binds a REAL MCP (or GraphQL) tool set to backing OpenAPI operations. HYPERLABS has
-    neither an MCP server nor a GraphQL endpoint, and its second published contract — the radium.v1
+  reason: A crosswalk binds a REAL MCP (or GraphQL) tool set to backing OpenAPI operations. HYPERLABS
+    has neither an MCP server nor a GraphQL endpoint, and its second published contract — the radium.v1
     gRPC service — is a fully disjoint surface (instrument control) with zero overlap with the web API,
     so every crosswalk row would be empty. Recorded here instead of emitting a hollow artifact.
+deployment:
+  mode: none
+  verified: derived
+  tools: 15
+  checked: '2026-08-12'
+  source: catalog MCP census

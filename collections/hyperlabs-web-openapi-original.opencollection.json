@@ -1,0 +1,3958 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hyperlabs.Web",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Account",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "POST /v1/account/login",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/account/login",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/account/register",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/account/register",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/account/confirm-registration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/account/confirm-registration",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/account/forgot-password",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/account/forgot-password",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/account/reset-password",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/account/reset-password",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "GET /v1/account/google/params",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/account/google/params"
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/account/google/login",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/account/google/login",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "GET /v1/account/microsoft/params",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/account/microsoft/params"
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/account/microsoft/login",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/account/microsoft/login",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/account/change-password",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/account/change-password",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "AdminAccount",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "POST /v1/admin/account/login",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/account/login",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/account/forgot-password",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/account/forgot-password",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/account/reset-password",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/account/reset-password",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/account/validate-invite",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/account/validate-invite",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/account/confirm-invite",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/account/confirm-invite",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "AdminDatasheets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /v1/admin/datasheets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/admin/datasheets",
+            "params": [
+              {
+                "name": "PublishingStatusCodes",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Search",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "SortBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "SortDesc",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "PageNo",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "GET /v1/admin/datasheets/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/admin/datasheets/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "AdminSoftware",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /v1/admin/software",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/admin/software",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/software",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/software",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "GET /v1/admin/software/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/admin/software/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "PUT /v1/admin/software/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/v1/admin/software/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "DELETE /v1/admin/software/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/v1/admin/software/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/software/{id}/move",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/software/:id/move",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "AdminWebsiteBanner",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /v1/admin/website/banner",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/admin/website/banner",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/website/banner",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/website/banner",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "AdminWebsiteContact",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /v1/admin/website/contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/admin/website/contact",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/website/contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/website/contact",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "AdminWebsiteEvents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /v1/admin/website/events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/admin/website/events",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/website/events",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/website/events",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "GET /v1/admin/website/events/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/admin/website/events/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "PUT /v1/admin/website/events/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/v1/admin/website/events/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "DELETE /v1/admin/website/events/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/v1/admin/website/events/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "AdminWebsiteFaq",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /v1/admin/website/faqs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/admin/website/faqs",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/website/faqs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/website/faqs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "GET /v1/admin/website/faqs/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/admin/website/faqs/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "PUT /v1/admin/website/faqs/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/v1/admin/website/faqs/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "DELETE /v1/admin/website/faqs/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/v1/admin/website/faqs/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/website/faqs/{id}/move",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/website/faqs/:id/move",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "AdminWebsiteFeaturedProducts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /v1/admin/website/featured-products",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/admin/website/featured-products",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/website/featured-products",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/website/featured-products",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "PUT /v1/admin/website/featured-products/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/v1/admin/website/featured-products/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/website/featured-products/{id}/move",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/website/featured-products/:id/move",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "AdminWebsiteRepresentatives",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /v1/admin/website/representatives",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/admin/website/representatives",
+            "params": [
+              {
+                "name": "RepresentativeTypeCode",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/website/representatives",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/website/representatives",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "GET /v1/admin/website/representatives/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/admin/website/representatives/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "PUT /v1/admin/website/representatives/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/v1/admin/website/representatives/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "DELETE /v1/admin/website/representatives/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/v1/admin/website/representatives/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/website/representatives/{id}/move",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/website/representatives/:id/move",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "AdminWebsiteSalesAndWarranty",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /v1/admin/website/sales-and-warranty",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/admin/website/sales-and-warranty",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/website/sales-and-warranty",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/website/sales-and-warranty",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "AdminWebsiteTeam",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /v1/admin/website/team-members",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/admin/website/team-members",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/website/team-members",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/website/team-members",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "GET /v1/admin/website/team-members/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/admin/website/team-members/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "PUT /v1/admin/website/team-members/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/v1/admin/website/team-members/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "DELETE /v1/admin/website/team-members/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/v1/admin/website/team-members/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/website/team-members/{id}/move",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/website/team-members/:id/move",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "AdminWebsiteTimelineItems",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /v1/admin/website/timeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/admin/website/timeline",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/website/timeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/website/timeline",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "GET /v1/admin/website/timeline/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/admin/website/timeline/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "PUT /v1/admin/website/timeline/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/v1/admin/website/timeline/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "DELETE /v1/admin/website/timeline/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/v1/admin/website/timeline/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "AdminWebsiteTopSlides",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /v1/admin/website/top-slides",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/admin/website/top-slides",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/website/top-slides",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/website/top-slides",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "GET /v1/admin/website/top-slides/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/admin/website/top-slides/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "PUT /v1/admin/website/top-slides/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/v1/admin/website/top-slides/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "DELETE /v1/admin/website/top-slides/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/v1/admin/website/top-slides/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/website/top-slides/{id}/move",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/website/top-slides/:id/move",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "ApplicationNotes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /v1/application-notes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/application-notes"
+          }
+        },
+        {
+          "info": {
+            "name": "GET /v1/application-notes/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/application-notes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "GET /v1/application-notes/{name}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/application-notes/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "GET /v1/admin/application-notes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/admin/application-notes",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/application-notes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/application-notes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "PUT /v1/admin/application-notes/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/v1/admin/application-notes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "DELETE /v1/admin/application-notes/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/v1/admin/application-notes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/application-notes/{id}/move",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/application-notes/:id/move",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Categories",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /v1/categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/categories",
+            "params": [
+              {
+                "name": "ProductClassIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ParentCategoryId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "IsTopLevelOnly",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "GET /v1/categories/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/categories/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "GET /v1/admin/categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/admin/categories",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/categories",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "GET /v1/admin/categories/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/admin/categories/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "PUT /v1/admin/categories/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/v1/admin/categories/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "DELETE /v1/admin/categories/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/v1/admin/categories/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/categories/{id}/move",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/categories/:id/move",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "ContactMessages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "POST /v1/contact-messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/contact-messages",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "CustomerProfile",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /v1/profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/profile",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "PUT /v1/profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/v1/profile",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "CustomerWishlists",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /v1/customer/wishlist",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/customer/wishlist",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/customer/wishlist/item",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/customer/wishlist/item",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "PUT /v1/customer/wishlist/item/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/v1/customer/wishlist/item/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "DELETE /v1/customer/wishlist/item/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/v1/customer/wishlist/item/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/customer/wishlist/quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/customer/wishlist/quote",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/customer/wishlist/share",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/customer/wishlist/share",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "MediaFiles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /v1/media-files/{fileName}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/media-files/:fileName",
+            "params": [
+              {
+                "name": "fileName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "GET /v1/admin/media-files",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/admin/media-files",
+            "params": [
+              {
+                "name": "CategoryIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "FileTypeCodes",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "CreatedDateFrom",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "CreatedDateTo",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Search",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "SortBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "SortDesc",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "PageNo",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/media-files",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/media-files",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "GET /v1/admin/media-files/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/admin/media-files/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "PUT /v1/admin/media-files/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/v1/admin/media-files/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "DELETE /v1/admin/media-files/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/v1/admin/media-files/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/media-files/{id}/content",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/media-files/:id/content",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/media-files/{id}/upload",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/media-files/:id/upload",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/media-files/{id}/upload/chunk",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/media-files/:id/upload/chunk",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "FileName",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "ChunkIndex",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "Chunk",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/media-files/{id}/upload/complete",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/media-files/:id/upload/complete",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "ProductClasses",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /v1/product-classes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/product-classes"
+          }
+        },
+        {
+          "info": {
+            "name": "GET /v1/product-classes/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/product-classes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "GET /v1/admin/product-classes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/admin/product-classes",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/product-classes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/product-classes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "PUT /v1/admin/product-classes/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/v1/admin/product-classes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "DELETE /v1/admin/product-classes/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/v1/admin/product-classes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/product-classes/{id}/move",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/product-classes/:id/move",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Products",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /v1/products",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/products",
+            "params": [
+              {
+                "name": "ProductClassIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "CategoryIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "TagIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "SoftwareIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "IsNew",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "IsFeatured",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "IsPromoted",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "GET /v1/products/discontinued",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/products/discontinued"
+          }
+        },
+        {
+          "info": {
+            "name": "GET /v1/products/ztdr",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/products/ztdr"
+          }
+        },
+        {
+          "info": {
+            "name": "GET /v1/products/xtdr",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/products/xtdr"
+          }
+        },
+        {
+          "info": {
+            "name": "GET /v1/products/zcoupon",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/products/zcoupon"
+          }
+        },
+        {
+          "info": {
+            "name": "GET /v1/products/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/products/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "GET /v1/products/{topSku}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/products/:topSku",
+            "params": [
+              {
+                "name": "topSku",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "GET /v1/products/filter/parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/products/filter/parameters",
+            "params": [
+              {
+                "name": "CategoryId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/products/filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/products/filter",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/products/resolve",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/products/resolve",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "GET /v1/admin/products",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/admin/products",
+            "params": [
+              {
+                "name": "ProductClassesIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "CategoryIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Search",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "SortBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "SortDesc",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "PageNo",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/products",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/products",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "GET /v1/admin/products/catalog",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/admin/products/catalog",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "GET /v1/admin/products/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/admin/products/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "PUT /v1/admin/products/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/v1/admin/products/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "DELETE /v1/admin/products/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/v1/admin/products/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/products/{id}/move",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/products/:id/move",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "ProductUnits",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /v1/admin/products/{productId}/units",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/admin/products/:productId/units",
+            "params": [
+              {
+                "name": "productId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/products/{productId}/units",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/products/:productId/units",
+            "params": [
+              {
+                "name": "productId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "PUT /v1/admin/units/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/v1/admin/units/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "DELETE /v1/admin/units/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/v1/admin/units/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/products/{productId}/units/generate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/products/:productId/units/generate",
+            "params": [
+              {
+                "name": "productId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "RequestQuotes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "POST /v1/request-quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/request-quote",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Roles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /v1/admin/roles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/admin/roles",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Sitemap",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /v1/sitemap/sitemap.xml",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/sitemap/sitemap.xml"
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Software",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /v1/software",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/software"
+          }
+        },
+        {
+          "info": {
+            "name": "GET /v1/software/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/software/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "GET /v1/software/{name}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/software/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "SpecificationTypes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /v1/admin/specification-types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/admin/specification-types",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/specification-types",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/specification-types",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "PUT /v1/admin/specification-types/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/v1/admin/specification-types/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "DELETE /v1/admin/specification-types/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/v1/admin/specification-types/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/specification-types/{id}/move",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/specification-types/:id/move",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "TagTypes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /v1/tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/tags",
+            "params": [
+              {
+                "name": "TagTypeIds",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "GET /v1/tags/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/tags/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "GET /v1/admin/tag-types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/admin/tag-types",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/tag-types",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/tag-types",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "PUT /v1/admin/tag-types/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/v1/admin/tag-types/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "DELETE /v1/admin/tag-types/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/v1/admin/tag-types/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/tag-types/{id}/move",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/tag-types/:id/move",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tech",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /v1/tech/is-alive",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/tech/is-alive"
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /v1/admin/users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/admin/users",
+            "params": [
+              {
+                "name": "RoleIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Search",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "SortBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "SortDesc",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "PageNo",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/users",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/users",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "GET /v1/admin/users/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/admin/users/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "PUT /v1/admin/users/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/v1/admin/users/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "DELETE /v1/admin/users/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/v1/admin/users/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/users/{id}/enable",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/users/:id/enable",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/users/{id}/disable",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/users/:id/disable",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/users/{id}/invite",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/users/:id/invite",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "VariableTypes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /v1/admin/variable-types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/admin/variable-types",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/admin/variable-types",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/admin/variable-types",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "PUT /v1/admin/variable-types/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/v1/admin/variable-types/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "DELETE /v1/admin/variable-types/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/v1/admin/variable-types/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "WebsiteBanner",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /v1/website/banner",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/website/banner"
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "WebsiteContact",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /v1/website/contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/website/contact"
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "WebsiteEvents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /v1/website/events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/website/events"
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "WebsiteFaq",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /v1/website/faqs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/website/faqs"
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "WebsiteFeaturedProducts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /v1/website/featured-products",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/website/featured-products"
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "WebsiteRepresentatives",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /v1/website/representatives/us",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/website/representatives/us"
+          }
+        },
+        {
+          "info": {
+            "name": "GET /v1/website/representatives/international",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/website/representatives/international"
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "WebsiteSalesAndWarranty",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /v1/website/sales-and-warranty",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/website/sales-and-warranty"
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "WebsiteTeam",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /v1/website/team",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/website/team"
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "WebsiteTimeline",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /v1/website/timeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/website/timeline"
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "WebsiteTopSlides",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /v1/website/top-slides",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/website/top-slides"
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Wishlists",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "POST /v1/wishlist/quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/wishlist/quote",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "POST /v1/wishlist/share",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/wishlist/share",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
