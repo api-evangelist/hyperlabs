@@ -21,6 +21,17 @@ created: '2026-08-01'
 modified: '2026-08-01'
 tags:
 - signal-integrity
+- Test and Measurement
+- Electronic Components
+- Instrumentation
+- time-domain-reflectometry
+- high-speed-digital
+- Datacom
+- Hardware
+- gRPC
+- Manufacturing
+tags_raw:
+- signal-integrity
 - test-and-measurement
 - electronic-components
 - instrumentation
@@ -43,6 +54,12 @@ apis:
   humanURL: https://www.hyperlabs.com/api/swagger/index.html
   baseURL: https://www.hyperlabs.com/api
   tags:
+  - Product Catalog
+  - E-Commerce
+  - Content
+  - Account
+  - Test and Measurement
+  tags_raw:
   - product-catalog
   - e-commerce
   - content
@@ -81,6 +98,12 @@ apis:
     at the instrument's IP address on TCP 50052. Recorded honestly rather than substituted with a
     placeholder host.
   tags:
+  - gRPC
+  - Instrumentation
+  - time-domain-reflectometry
+  - Streaming
+  - Test and Measurement
+  tags_raw:
   - grpc
   - instrumentation
   - time-domain-reflectometry
