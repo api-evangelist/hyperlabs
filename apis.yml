@@ -42,44 +42,6 @@ tags_raw:
 - grpc
 - manufacturing
 apis:
-- name: HYPERLABS Web API
-  description: >-
-    The ASP.NET Core backend that powers www.hyperlabs.com — product catalog, product classes,
-    categories, tags and filtering, application notes, datasheets, software/DLL downloads, website
-    content (banner, events, FAQs, team, timeline, sales representatives, sales-and-warranty terms),
-    customer accounts with Google and Microsoft sign-in, customer wishlists, quote requests and contact
-    messages, plus an authenticated admin surface. The OpenAPI 3.0.1 definition and a Swagger UI are
-    served publicly from the API host. It is not marketed as a developer product and carries no
-    published terms of use for third-party consumption.
-  humanURL: https://www.hyperlabs.com/api/swagger/index.html
-  baseURL: https://www.hyperlabs.com/api
-  tags:
-  - Product Catalog
-  - E-Commerce
-  - Content
-  - Account
-  - Test and Measurement
-  tags_raw:
-  - product-catalog
-  - e-commerce
-  - content
-  - accounts
-  - test-and-measurement
-  properties:
-  - type: OpenAPI
-    url: openapi/hyperlabs-web-openapi-original.json
-  - type: APIReference
-    url: https://www.hyperlabs.com/api/swagger/index.html
-  - type: Authentication
-    url: authentication/hyperlabs-authentication.yml
-  - type: Conventions
-    url: conventions/hyperlabs-conventions.yml
-  - type: ErrorCatalog
-    url: errors/hyperlabs-problem-types.yml
-  - type: DataModel
-    url: data-model/hyperlabs-data-model.yml
-  - type: Overlay
-    url: overlays/hyperlabs-web-overlay.yaml
 - name: HYPERLABS Radium gRPC API (TDR11100)
   description: >-
     Public gRPC control and acquisition interface for the HYPERLABS TDR11100 Time Domain Reflectometer.
@@ -95,8 +57,8 @@ apis:
   x-endpoint: '{instrument-ip}:50052'
   x-note: >-
     No public baseURL — the Radium service runs on the customer's own TDR11100 hardware and is reached
-    at the instrument's IP address on TCP 50052. Recorded honestly rather than substituted with a
-    placeholder host.
+    at the instrument's IP address on TCP 50052. Recorded honestly rather than substituted with a placeholder
+    host.
   tags:
   - gRPC
   - Instrumentation
@@ -118,6 +80,873 @@ apis:
     url: asyncapi/hyperlabs-radium-asyncapi.yml
   - type: Examples
     url: https://github.com/HYPERLABS/TDR11100/raw/main/gRPC_Sample_Script.zip
+- aid: hyperlabs:hyperlabs-account-api
+  name: HYPERLABS Account API
+  description: The Account API from HYPERLABS — 10 operation(s) for account.
+  humanURL: https://www.hyperlabs.com/api/swagger/index.html
+  baseURL: https://www.hyperlabs.com/api
+  tags:
+  - Account
+  properties:
+  - type: OpenAPI
+    url: openapi/hyperlabs-account-api-openapi.yml
+  - type: APIReference
+    url: https://www.hyperlabs.com/api/swagger/index.html
+  - type: Authentication
+    url: authentication/hyperlabs-authentication.yml
+  - type: Conventions
+    url: conventions/hyperlabs-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hyperlabs-problem-types.yml
+  - type: DataModel
+    url: data-model/hyperlabs-data-model.yml
+- aid: hyperlabs:hyperlabs-adminaccount-api
+  name: HYPERLABS Admin Account API
+  description: The AdminAccount API from HYPERLABS — 5 operation(s) for adminaccount.
+  humanURL: https://www.hyperlabs.com/api/swagger/index.html
+  baseURL: https://www.hyperlabs.com/api
+  tags:
+  - AdminAccount
+  properties:
+  - type: OpenAPI
+    url: openapi/hyperlabs-adminaccount-api-openapi.yml
+  - type: APIReference
+    url: https://www.hyperlabs.com/api/swagger/index.html
+  - type: Authentication
+    url: authentication/hyperlabs-authentication.yml
+  - type: Conventions
+    url: conventions/hyperlabs-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hyperlabs-problem-types.yml
+  - type: DataModel
+    url: data-model/hyperlabs-data-model.yml
+- aid: hyperlabs:hyperlabs-admindatasheets-api
+  name: HYPERLABS Admin Datasheets API
+  description: The AdminDatasheets API from HYPERLABS — 2 operation(s) for admindatasheets.
+  humanURL: https://www.hyperlabs.com/api/swagger/index.html
+  baseURL: https://www.hyperlabs.com/api
+  tags:
+  - AdminDatasheets
+  properties:
+  - type: OpenAPI
+    url: openapi/hyperlabs-admindatasheets-api-openapi.yml
+  - type: APIReference
+    url: https://www.hyperlabs.com/api/swagger/index.html
+  - type: Authentication
+    url: authentication/hyperlabs-authentication.yml
+  - type: Conventions
+    url: conventions/hyperlabs-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hyperlabs-problem-types.yml
+  - type: DataModel
+    url: data-model/hyperlabs-data-model.yml
+- aid: hyperlabs:hyperlabs-adminsoftware-api
+  name: HYPERLABS Admin Software API
+  description: The AdminSoftware API from HYPERLABS — 3 operation(s) for adminsoftware.
+  humanURL: https://www.hyperlabs.com/api/swagger/index.html
+  baseURL: https://www.hyperlabs.com/api
+  tags:
+  - AdminSoftware
+  properties:
+  - type: OpenAPI
+    url: openapi/hyperlabs-adminsoftware-api-openapi.yml
+  - type: APIReference
+    url: https://www.hyperlabs.com/api/swagger/index.html
+  - type: Authentication
+    url: authentication/hyperlabs-authentication.yml
+  - type: Conventions
+    url: conventions/hyperlabs-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hyperlabs-problem-types.yml
+  - type: DataModel
+    url: data-model/hyperlabs-data-model.yml
+- aid: hyperlabs:hyperlabs-adminwebsitebanner-api
+  name: HYPERLABS Admin Website Banner API
+  description: The AdminWebsiteBanner API from HYPERLABS — 1 operation(s) for adminwebsitebanner.
+  humanURL: https://www.hyperlabs.com/api/swagger/index.html
+  baseURL: https://www.hyperlabs.com/api
+  tags:
+  - AdminWebsiteBanner
+  properties:
+  - type: OpenAPI
+    url: openapi/hyperlabs-adminwebsitebanner-api-openapi.yml
+  - type: APIReference
+    url: https://www.hyperlabs.com/api/swagger/index.html
+  - type: Authentication
+    url: authentication/hyperlabs-authentication.yml
+  - type: Conventions
+    url: conventions/hyperlabs-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hyperlabs-problem-types.yml
+  - type: DataModel
+    url: data-model/hyperlabs-data-model.yml
+- aid: hyperlabs:hyperlabs-adminwebsitecontact-api
+  name: HYPERLABS Admin Website Contact API
+  description: The AdminWebsiteContact API from HYPERLABS — 1 operation(s) for adminwebsitecontact.
+  humanURL: https://www.hyperlabs.com/api/swagger/index.html
+  baseURL: https://www.hyperlabs.com/api
+  tags:
+  - AdminWebsiteContact
+  properties:
+  - type: OpenAPI
+    url: openapi/hyperlabs-adminwebsitecontact-api-openapi.yml
+  - type: APIReference
+    url: https://www.hyperlabs.com/api/swagger/index.html
+  - type: Authentication
+    url: authentication/hyperlabs-authentication.yml
+  - type: Conventions
+    url: conventions/hyperlabs-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hyperlabs-problem-types.yml
+  - type: DataModel
+    url: data-model/hyperlabs-data-model.yml
+- aid: hyperlabs:hyperlabs-adminwebsiteevents-api
+  name: HYPERLABS Admin Website Events API
+  description: The AdminWebsiteEvents API from HYPERLABS — 2 operation(s) for adminwebsiteevents.
+  humanURL: https://www.hyperlabs.com/api/swagger/index.html
+  baseURL: https://www.hyperlabs.com/api
+  tags:
+  - AdminWebsiteEvents
+  properties:
+  - type: OpenAPI
+    url: openapi/hyperlabs-adminwebsiteevents-api-openapi.yml
+  - type: APIReference
+    url: https://www.hyperlabs.com/api/swagger/index.html
+  - type: Authentication
+    url: authentication/hyperlabs-authentication.yml
+  - type: Conventions
+    url: conventions/hyperlabs-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hyperlabs-problem-types.yml
+  - type: DataModel
+    url: data-model/hyperlabs-data-model.yml
+- aid: hyperlabs:hyperlabs-adminwebsitefaq-api
+  name: HYPERLABS Admin Website Faq API
+  description: The AdminWebsiteFaq API from HYPERLABS — 3 operation(s) for adminwebsitefaq.
+  humanURL: https://www.hyperlabs.com/api/swagger/index.html
+  baseURL: https://www.hyperlabs.com/api
+  tags:
+  - AdminWebsiteFaq
+  properties:
+  - type: OpenAPI
+    url: openapi/hyperlabs-adminwebsitefaq-api-openapi.yml
+  - type: APIReference
+    url: https://www.hyperlabs.com/api/swagger/index.html
+  - type: Authentication
+    url: authentication/hyperlabs-authentication.yml
+  - type: Conventions
+    url: conventions/hyperlabs-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hyperlabs-problem-types.yml
+  - type: DataModel
+    url: data-model/hyperlabs-data-model.yml
+- aid: hyperlabs:hyperlabs-adminwebsitefeaturedproducts-api
+  name: HYPERLABS Admin Website Featured Products API
+  description: >-
+    The AdminWebsiteFeaturedProducts API from HYPERLABS — 3 operation(s) for adminwebsitefeaturedproducts.
+  humanURL: https://www.hyperlabs.com/api/swagger/index.html
+  baseURL: https://www.hyperlabs.com/api
+  tags:
+  - AdminWebsiteFeaturedProducts
+  properties:
+  - type: OpenAPI
+    url: openapi/hyperlabs-adminwebsitefeaturedproducts-api-openapi.yml
+  - type: APIReference
+    url: https://www.hyperlabs.com/api/swagger/index.html
+  - type: Authentication
+    url: authentication/hyperlabs-authentication.yml
+  - type: Conventions
+    url: conventions/hyperlabs-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hyperlabs-problem-types.yml
+  - type: DataModel
+    url: data-model/hyperlabs-data-model.yml
+- aid: hyperlabs:hyperlabs-adminwebsiterepresentatives-api
+  name: HYPERLABS Admin Website Representatives API
+  description: >-
+    The AdminWebsiteRepresentatives API from HYPERLABS — 3 operation(s) for adminwebsiterepresentatives.
+  humanURL: https://www.hyperlabs.com/api/swagger/index.html
+  baseURL: https://www.hyperlabs.com/api
+  tags:
+  - AdminWebsiteRepresentatives
+  properties:
+  - type: OpenAPI
+    url: openapi/hyperlabs-adminwebsiterepresentatives-api-openapi.yml
+  - type: APIReference
+    url: https://www.hyperlabs.com/api/swagger/index.html
+  - type: Authentication
+    url: authentication/hyperlabs-authentication.yml
+  - type: Conventions
+    url: conventions/hyperlabs-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hyperlabs-problem-types.yml
+  - type: DataModel
+    url: data-model/hyperlabs-data-model.yml
+- aid: hyperlabs:hyperlabs-adminwebsitesalesandwarranty-api
+  name: HYPERLABS Admin Website Sales And Warranty API
+  description: >-
+    The AdminWebsiteSalesAndWarranty API from HYPERLABS — 1 operation(s) for adminwebsitesalesandwarranty.
+  humanURL: https://www.hyperlabs.com/api/swagger/index.html
+  baseURL: https://www.hyperlabs.com/api
+  tags:
+  - AdminWebsiteSalesAndWarranty
+  properties:
+  - type: OpenAPI
+    url: openapi/hyperlabs-adminwebsitesalesandwarranty-api-openapi.yml
+  - type: APIReference
+    url: https://www.hyperlabs.com/api/swagger/index.html
+  - type: Authentication
+    url: authentication/hyperlabs-authentication.yml
+  - type: Conventions
+    url: conventions/hyperlabs-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hyperlabs-problem-types.yml
+  - type: DataModel
+    url: data-model/hyperlabs-data-model.yml
+- aid: hyperlabs:hyperlabs-adminwebsiteteam-api
+  name: HYPERLABS Admin Website Team API
+  description: The AdminWebsiteTeam API from HYPERLABS — 3 operation(s) for adminwebsiteteam.
+  humanURL: https://www.hyperlabs.com/api/swagger/index.html
+  baseURL: https://www.hyperlabs.com/api
+  tags:
+  - AdminWebsiteTeam
+  properties:
+  - type: OpenAPI
+    url: openapi/hyperlabs-adminwebsiteteam-api-openapi.yml
+  - type: APIReference
+    url: https://www.hyperlabs.com/api/swagger/index.html
+  - type: Authentication
+    url: authentication/hyperlabs-authentication.yml
+  - type: Conventions
+    url: conventions/hyperlabs-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hyperlabs-problem-types.yml
+  - type: DataModel
+    url: data-model/hyperlabs-data-model.yml
+- aid: hyperlabs:hyperlabs-adminwebsitetimelineitems-api
+  name: HYPERLABS Admin Website Timeline Items API
+  description: >-
+    The AdminWebsiteTimelineItems API from HYPERLABS — 2 operation(s) for adminwebsitetimelineitems.
+  humanURL: https://www.hyperlabs.com/api/swagger/index.html
+  baseURL: https://www.hyperlabs.com/api
+  tags:
+  - AdminWebsiteTimelineItems
+  properties:
+  - type: OpenAPI
+    url: openapi/hyperlabs-adminwebsitetimelineitems-api-openapi.yml
+  - type: APIReference
+    url: https://www.hyperlabs.com/api/swagger/index.html
+  - type: Authentication
+    url: authentication/hyperlabs-authentication.yml
+  - type: Conventions
+    url: conventions/hyperlabs-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hyperlabs-problem-types.yml
+  - type: DataModel
+    url: data-model/hyperlabs-data-model.yml
+- aid: hyperlabs:hyperlabs-adminwebsitetopslides-api
+  name: HYPERLABS Admin Website Top Slides API
+  description: The AdminWebsiteTopSlides API from HYPERLABS — 3 operation(s) for adminwebsitetopslides.
+  humanURL: https://www.hyperlabs.com/api/swagger/index.html
+  baseURL: https://www.hyperlabs.com/api
+  tags:
+  - AdminWebsiteTopSlides
+  properties:
+  - type: OpenAPI
+    url: openapi/hyperlabs-adminwebsitetopslides-api-openapi.yml
+  - type: APIReference
+    url: https://www.hyperlabs.com/api/swagger/index.html
+  - type: Authentication
+    url: authentication/hyperlabs-authentication.yml
+  - type: Conventions
+    url: conventions/hyperlabs-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hyperlabs-problem-types.yml
+  - type: DataModel
+    url: data-model/hyperlabs-data-model.yml
+- aid: hyperlabs:hyperlabs-applicationnotes-api
+  name: HYPERLABS Application Notes API
+  description: The ApplicationNotes API from HYPERLABS — 6 operation(s) for applicationnotes.
+  humanURL: https://www.hyperlabs.com/api/swagger/index.html
+  baseURL: https://www.hyperlabs.com/api
+  tags:
+  - ApplicationNotes
+  properties:
+  - type: OpenAPI
+    url: openapi/hyperlabs-applicationnotes-api-openapi.yml
+  - type: APIReference
+    url: https://www.hyperlabs.com/api/swagger/index.html
+  - type: Authentication
+    url: authentication/hyperlabs-authentication.yml
+  - type: Conventions
+    url: conventions/hyperlabs-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hyperlabs-problem-types.yml
+  - type: DataModel
+    url: data-model/hyperlabs-data-model.yml
+- aid: hyperlabs:hyperlabs-categories-api
+  name: HYPERLABS Categories API
+  description: The Categories API from HYPERLABS — 5 operation(s) for categories.
+  humanURL: https://www.hyperlabs.com/api/swagger/index.html
+  baseURL: https://www.hyperlabs.com/api
+  tags:
+  - Categories
+  properties:
+  - type: OpenAPI
+    url: openapi/hyperlabs-categories-api-openapi.yml
+  - type: APIReference
+    url: https://www.hyperlabs.com/api/swagger/index.html
+  - type: Authentication
+    url: authentication/hyperlabs-authentication.yml
+  - type: Conventions
+    url: conventions/hyperlabs-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hyperlabs-problem-types.yml
+  - type: DataModel
+    url: data-model/hyperlabs-data-model.yml
+- aid: hyperlabs:hyperlabs-contactmessages-api
+  name: HYPERLABS Contact Messages API
+  description: The ContactMessages API from HYPERLABS — 1 operation(s) for contactmessages.
+  humanURL: https://www.hyperlabs.com/api/swagger/index.html
+  baseURL: https://www.hyperlabs.com/api
+  tags:
+  - ContactMessages
+  properties:
+  - type: OpenAPI
+    url: openapi/hyperlabs-contactmessages-api-openapi.yml
+  - type: APIReference
+    url: https://www.hyperlabs.com/api/swagger/index.html
+  - type: Authentication
+    url: authentication/hyperlabs-authentication.yml
+  - type: Conventions
+    url: conventions/hyperlabs-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hyperlabs-problem-types.yml
+  - type: DataModel
+    url: data-model/hyperlabs-data-model.yml
+- aid: hyperlabs:hyperlabs-customerprofile-api
+  name: HYPERLABS Customer Profile API
+  description: The CustomerProfile API from HYPERLABS — 1 operation(s) for customerprofile.
+  humanURL: https://www.hyperlabs.com/api/swagger/index.html
+  baseURL: https://www.hyperlabs.com/api
+  tags:
+  - CustomerProfile
+  properties:
+  - type: OpenAPI
+    url: openapi/hyperlabs-customerprofile-api-openapi.yml
+  - type: APIReference
+    url: https://www.hyperlabs.com/api/swagger/index.html
+  - type: Authentication
+    url: authentication/hyperlabs-authentication.yml
+  - type: Conventions
+    url: conventions/hyperlabs-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hyperlabs-problem-types.yml
+  - type: DataModel
+    url: data-model/hyperlabs-data-model.yml
+- aid: hyperlabs:hyperlabs-customerwishlists-api
+  name: HYPERLABS Customer Wishlists API
+  description: The CustomerWishlists API from HYPERLABS — 5 operation(s) for customerwishlists.
+  humanURL: https://www.hyperlabs.com/api/swagger/index.html
+  baseURL: https://www.hyperlabs.com/api
+  tags:
+  - CustomerWishlists
+  properties:
+  - type: OpenAPI
+    url: openapi/hyperlabs-customerwishlists-api-openapi.yml
+  - type: APIReference
+    url: https://www.hyperlabs.com/api/swagger/index.html
+  - type: Authentication
+    url: authentication/hyperlabs-authentication.yml
+  - type: Conventions
+    url: conventions/hyperlabs-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hyperlabs-problem-types.yml
+  - type: DataModel
+    url: data-model/hyperlabs-data-model.yml
+- aid: hyperlabs:hyperlabs-mediafiles-api
+  name: HYPERLABS Media Files API
+  description: The MediaFiles API from HYPERLABS — 7 operation(s) for mediafiles.
+  humanURL: https://www.hyperlabs.com/api/swagger/index.html
+  baseURL: https://www.hyperlabs.com/api
+  tags:
+  - MediaFiles
+  properties:
+  - type: OpenAPI
+    url: openapi/hyperlabs-mediafiles-api-openapi.yml
+  - type: APIReference
+    url: https://www.hyperlabs.com/api/swagger/index.html
+  - type: Authentication
+    url: authentication/hyperlabs-authentication.yml
+  - type: Conventions
+    url: conventions/hyperlabs-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hyperlabs-problem-types.yml
+  - type: DataModel
+    url: data-model/hyperlabs-data-model.yml
+- aid: hyperlabs:hyperlabs-productclasses-api
+  name: HYPERLABS Product Classes API
+  description: The ProductClasses API from HYPERLABS — 5 operation(s) for productclasses.
+  humanURL: https://www.hyperlabs.com/api/swagger/index.html
+  baseURL: https://www.hyperlabs.com/api
+  tags:
+  - ProductClasses
+  properties:
+  - type: OpenAPI
+    url: openapi/hyperlabs-productclasses-api-openapi.yml
+  - type: APIReference
+    url: https://www.hyperlabs.com/api/swagger/index.html
+  - type: Authentication
+    url: authentication/hyperlabs-authentication.yml
+  - type: Conventions
+    url: conventions/hyperlabs-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hyperlabs-problem-types.yml
+  - type: DataModel
+    url: data-model/hyperlabs-data-model.yml
+- aid: hyperlabs:hyperlabs-products-api
+  name: HYPERLABS Products API
+  description: The Products API from HYPERLABS — 14 operation(s) for products.
+  humanURL: https://www.hyperlabs.com/api/swagger/index.html
+  baseURL: https://www.hyperlabs.com/api
+  tags:
+  - Products
+  properties:
+  - type: OpenAPI
+    url: openapi/hyperlabs-products-api-openapi.yml
+  - type: APIReference
+    url: https://www.hyperlabs.com/api/swagger/index.html
+  - type: Authentication
+    url: authentication/hyperlabs-authentication.yml
+  - type: Conventions
+    url: conventions/hyperlabs-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hyperlabs-problem-types.yml
+  - type: DataModel
+    url: data-model/hyperlabs-data-model.yml
+- aid: hyperlabs:hyperlabs-productunits-api
+  name: HYPERLABS Product Units API
+  description: The ProductUnits API from HYPERLABS — 3 operation(s) for productunits.
+  humanURL: https://www.hyperlabs.com/api/swagger/index.html
+  baseURL: https://www.hyperlabs.com/api
+  tags:
+  - ProductUnits
+  properties:
+  - type: OpenAPI
+    url: openapi/hyperlabs-productunits-api-openapi.yml
+  - type: APIReference
+    url: https://www.hyperlabs.com/api/swagger/index.html
+  - type: Authentication
+    url: authentication/hyperlabs-authentication.yml
+  - type: Conventions
+    url: conventions/hyperlabs-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hyperlabs-problem-types.yml
+  - type: DataModel
+    url: data-model/hyperlabs-data-model.yml
+- aid: hyperlabs:hyperlabs-requestquotes-api
+  name: HYPERLABS Request Quotes API
+  description: The RequestQuotes API from HYPERLABS — 1 operation(s) for requestquotes.
+  humanURL: https://www.hyperlabs.com/api/swagger/index.html
+  baseURL: https://www.hyperlabs.com/api
+  tags:
+  - RequestQuotes
+  properties:
+  - type: OpenAPI
+    url: openapi/hyperlabs-requestquotes-api-openapi.yml
+  - type: APIReference
+    url: https://www.hyperlabs.com/api/swagger/index.html
+  - type: Authentication
+    url: authentication/hyperlabs-authentication.yml
+  - type: Conventions
+    url: conventions/hyperlabs-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hyperlabs-problem-types.yml
+  - type: DataModel
+    url: data-model/hyperlabs-data-model.yml
+- aid: hyperlabs:hyperlabs-roles-api
+  name: HYPERLABS Roles API
+  description: The Roles API from HYPERLABS — 1 operation(s) for roles.
+  humanURL: https://www.hyperlabs.com/api/swagger/index.html
+  baseURL: https://www.hyperlabs.com/api
+  tags:
+  - Roles
+  properties:
+  - type: OpenAPI
+    url: openapi/hyperlabs-roles-api-openapi.yml
+  - type: APIReference
+    url: https://www.hyperlabs.com/api/swagger/index.html
+  - type: Authentication
+    url: authentication/hyperlabs-authentication.yml
+  - type: Conventions
+    url: conventions/hyperlabs-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hyperlabs-problem-types.yml
+  - type: DataModel
+    url: data-model/hyperlabs-data-model.yml
+- aid: hyperlabs:hyperlabs-sitemap-api
+  name: HYPERLABS Sitemap API
+  description: The Sitemap API from HYPERLABS — 1 operation(s) for sitemap.
+  humanURL: https://www.hyperlabs.com/api/swagger/index.html
+  baseURL: https://www.hyperlabs.com/api
+  tags:
+  - Sitemap
+  properties:
+  - type: OpenAPI
+    url: openapi/hyperlabs-sitemap-api-openapi.yml
+  - type: APIReference
+    url: https://www.hyperlabs.com/api/swagger/index.html
+  - type: Authentication
+    url: authentication/hyperlabs-authentication.yml
+  - type: Conventions
+    url: conventions/hyperlabs-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hyperlabs-problem-types.yml
+  - type: DataModel
+    url: data-model/hyperlabs-data-model.yml
+- aid: hyperlabs:hyperlabs-software-api
+  name: HYPERLABS Software API
+  description: The Software API from HYPERLABS — 3 operation(s) for software.
+  humanURL: https://www.hyperlabs.com/api/swagger/index.html
+  baseURL: https://www.hyperlabs.com/api
+  tags:
+  - Software
+  properties:
+  - type: OpenAPI
+    url: openapi/hyperlabs-software-api-openapi.yml
+  - type: APIReference
+    url: https://www.hyperlabs.com/api/swagger/index.html
+  - type: Authentication
+    url: authentication/hyperlabs-authentication.yml
+  - type: Conventions
+    url: conventions/hyperlabs-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hyperlabs-problem-types.yml
+  - type: DataModel
+    url: data-model/hyperlabs-data-model.yml
+- aid: hyperlabs:hyperlabs-specificationtypes-api
+  name: HYPERLABS Specification Types API
+  description: The SpecificationTypes API from HYPERLABS — 3 operation(s) for specificationtypes.
+  humanURL: https://www.hyperlabs.com/api/swagger/index.html
+  baseURL: https://www.hyperlabs.com/api
+  tags:
+  - SpecificationTypes
+  properties:
+  - type: OpenAPI
+    url: openapi/hyperlabs-specificationtypes-api-openapi.yml
+  - type: APIReference
+    url: https://www.hyperlabs.com/api/swagger/index.html
+  - type: Authentication
+    url: authentication/hyperlabs-authentication.yml
+  - type: Conventions
+    url: conventions/hyperlabs-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hyperlabs-problem-types.yml
+  - type: DataModel
+    url: data-model/hyperlabs-data-model.yml
+- aid: hyperlabs:hyperlabs-tagtypes-api
+  name: HYPERLABS Tag Types API
+  description: The TagTypes API from HYPERLABS — 5 operation(s) for tagtypes.
+  humanURL: https://www.hyperlabs.com/api/swagger/index.html
+  baseURL: https://www.hyperlabs.com/api
+  tags:
+  - TagTypes
+  properties:
+  - type: OpenAPI
+    url: openapi/hyperlabs-tagtypes-api-openapi.yml
+  - type: APIReference
+    url: https://www.hyperlabs.com/api/swagger/index.html
+  - type: Authentication
+    url: authentication/hyperlabs-authentication.yml
+  - type: Conventions
+    url: conventions/hyperlabs-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hyperlabs-problem-types.yml
+  - type: DataModel
+    url: data-model/hyperlabs-data-model.yml
+- aid: hyperlabs:hyperlabs-tech-api
+  name: HYPERLABS Tech API
+  description: The Tech API from HYPERLABS — 1 operation(s) for tech.
+  humanURL: https://www.hyperlabs.com/api/swagger/index.html
+  baseURL: https://www.hyperlabs.com/api
+  tags:
+  - Tech
+  properties:
+  - type: OpenAPI
+    url: openapi/hyperlabs-tech-api-openapi.yml
+  - type: APIReference
+    url: https://www.hyperlabs.com/api/swagger/index.html
+  - type: Authentication
+    url: authentication/hyperlabs-authentication.yml
+  - type: Conventions
+    url: conventions/hyperlabs-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hyperlabs-problem-types.yml
+  - type: DataModel
+    url: data-model/hyperlabs-data-model.yml
+- aid: hyperlabs:hyperlabs-users-api
+  name: HYPERLABS Users API
+  description: The Users API from HYPERLABS — 5 operation(s) for users.
+  humanURL: https://www.hyperlabs.com/api/swagger/index.html
+  baseURL: https://www.hyperlabs.com/api
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/hyperlabs-users-api-openapi.yml
+  - type: APIReference
+    url: https://www.hyperlabs.com/api/swagger/index.html
+  - type: Authentication
+    url: authentication/hyperlabs-authentication.yml
+  - type: Conventions
+    url: conventions/hyperlabs-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hyperlabs-problem-types.yml
+  - type: DataModel
+    url: data-model/hyperlabs-data-model.yml
+- aid: hyperlabs:hyperlabs-variabletypes-api
+  name: HYPERLABS Variable Types API
+  description: The VariableTypes API from HYPERLABS — 2 operation(s) for variabletypes.
+  humanURL: https://www.hyperlabs.com/api/swagger/index.html
+  baseURL: https://www.hyperlabs.com/api
+  tags:
+  - VariableTypes
+  properties:
+  - type: OpenAPI
+    url: openapi/hyperlabs-variabletypes-api-openapi.yml
+  - type: APIReference
+    url: https://www.hyperlabs.com/api/swagger/index.html
+  - type: Authentication
+    url: authentication/hyperlabs-authentication.yml
+  - type: Conventions
+    url: conventions/hyperlabs-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hyperlabs-problem-types.yml
+  - type: DataModel
+    url: data-model/hyperlabs-data-model.yml
+- aid: hyperlabs:hyperlabs-websitebanner-api
+  name: HYPERLABS Website Banner API
+  description: The WebsiteBanner API from HYPERLABS — 1 operation(s) for websitebanner.
+  humanURL: https://www.hyperlabs.com/api/swagger/index.html
+  baseURL: https://www.hyperlabs.com/api
+  tags:
+  - WebsiteBanner
+  properties:
+  - type: OpenAPI
+    url: openapi/hyperlabs-websitebanner-api-openapi.yml
+  - type: APIReference
+    url: https://www.hyperlabs.com/api/swagger/index.html
+  - type: Authentication
+    url: authentication/hyperlabs-authentication.yml
+  - type: Conventions
+    url: conventions/hyperlabs-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hyperlabs-problem-types.yml
+  - type: DataModel
+    url: data-model/hyperlabs-data-model.yml
+- aid: hyperlabs:hyperlabs-websitecontact-api
+  name: HYPERLABS Website Contact API
+  description: The WebsiteContact API from HYPERLABS — 1 operation(s) for websitecontact.
+  humanURL: https://www.hyperlabs.com/api/swagger/index.html
+  baseURL: https://www.hyperlabs.com/api
+  tags:
+  - WebsiteContact
+  properties:
+  - type: OpenAPI
+    url: openapi/hyperlabs-websitecontact-api-openapi.yml
+  - type: APIReference
+    url: https://www.hyperlabs.com/api/swagger/index.html
+  - type: Authentication
+    url: authentication/hyperlabs-authentication.yml
+  - type: Conventions
+    url: conventions/hyperlabs-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hyperlabs-problem-types.yml
+  - type: DataModel
+    url: data-model/hyperlabs-data-model.yml
+- aid: hyperlabs:hyperlabs-websiteevents-api
+  name: HYPERLABS Website Events API
+  description: The WebsiteEvents API from HYPERLABS — 1 operation(s) for websiteevents.
+  humanURL: https://www.hyperlabs.com/api/swagger/index.html
+  baseURL: https://www.hyperlabs.com/api
+  tags:
+  - WebsiteEvents
+  properties:
+  - type: OpenAPI
+    url: openapi/hyperlabs-websiteevents-api-openapi.yml
+  - type: APIReference
+    url: https://www.hyperlabs.com/api/swagger/index.html
+  - type: Authentication
+    url: authentication/hyperlabs-authentication.yml
+  - type: Conventions
+    url: conventions/hyperlabs-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hyperlabs-problem-types.yml
+  - type: DataModel
+    url: data-model/hyperlabs-data-model.yml
+- aid: hyperlabs:hyperlabs-websitefaq-api
+  name: HYPERLABS Website Faq API
+  description: The WebsiteFaq API from HYPERLABS — 1 operation(s) for websitefaq.
+  humanURL: https://www.hyperlabs.com/api/swagger/index.html
+  baseURL: https://www.hyperlabs.com/api
+  tags:
+  - WebsiteFaq
+  properties:
+  - type: OpenAPI
+    url: openapi/hyperlabs-websitefaq-api-openapi.yml
+  - type: APIReference
+    url: https://www.hyperlabs.com/api/swagger/index.html
+  - type: Authentication
+    url: authentication/hyperlabs-authentication.yml
+  - type: Conventions
+    url: conventions/hyperlabs-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hyperlabs-problem-types.yml
+  - type: DataModel
+    url: data-model/hyperlabs-data-model.yml
+- aid: hyperlabs:hyperlabs-websitefeaturedproducts-api
+  name: HYPERLABS Website Featured Products API
+  description: >-
+    The WebsiteFeaturedProducts API from HYPERLABS — 1 operation(s) for websitefeaturedproducts.
+  humanURL: https://www.hyperlabs.com/api/swagger/index.html
+  baseURL: https://www.hyperlabs.com/api
+  tags:
+  - WebsiteFeaturedProducts
+  properties:
+  - type: OpenAPI
+    url: openapi/hyperlabs-websitefeaturedproducts-api-openapi.yml
+  - type: APIReference
+    url: https://www.hyperlabs.com/api/swagger/index.html
+  - type: Authentication
+    url: authentication/hyperlabs-authentication.yml
+  - type: Conventions
+    url: conventions/hyperlabs-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hyperlabs-problem-types.yml
+  - type: DataModel
+    url: data-model/hyperlabs-data-model.yml
+- aid: hyperlabs:hyperlabs-websiterepresentatives-api
+  name: HYPERLABS Website Representatives API
+  description: >-
+    The WebsiteRepresentatives API from HYPERLABS — 2 operation(s) for websiterepresentatives.
+  humanURL: https://www.hyperlabs.com/api/swagger/index.html
+  baseURL: https://www.hyperlabs.com/api
+  tags:
+  - WebsiteRepresentatives
+  properties:
+  - type: OpenAPI
+    url: openapi/hyperlabs-websiterepresentatives-api-openapi.yml
+  - type: APIReference
+    url: https://www.hyperlabs.com/api/swagger/index.html
+  - type: Authentication
+    url: authentication/hyperlabs-authentication.yml
+  - type: Conventions
+    url: conventions/hyperlabs-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hyperlabs-problem-types.yml
+  - type: DataModel
+    url: data-model/hyperlabs-data-model.yml
+- aid: hyperlabs:hyperlabs-websitesalesandwarranty-api
+  name: HYPERLABS Website Sales And Warranty API
+  description: >-
+    The WebsiteSalesAndWarranty API from HYPERLABS — 1 operation(s) for websitesalesandwarranty.
+  humanURL: https://www.hyperlabs.com/api/swagger/index.html
+  baseURL: https://www.hyperlabs.com/api
+  tags:
+  - WebsiteSalesAndWarranty
+  properties:
+  - type: OpenAPI
+    url: openapi/hyperlabs-websitesalesandwarranty-api-openapi.yml
+  - type: APIReference
+    url: https://www.hyperlabs.com/api/swagger/index.html
+  - type: Authentication
+    url: authentication/hyperlabs-authentication.yml
+  - type: Conventions
+    url: conventions/hyperlabs-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hyperlabs-problem-types.yml
+  - type: DataModel
+    url: data-model/hyperlabs-data-model.yml
+- aid: hyperlabs:hyperlabs-websiteteam-api
+  name: HYPERLABS Website Team API
+  description: The WebsiteTeam API from HYPERLABS — 1 operation(s) for websiteteam.
+  humanURL: https://www.hyperlabs.com/api/swagger/index.html
+  baseURL: https://www.hyperlabs.com/api
+  tags:
+  - WebsiteTeam
+  properties:
+  - type: OpenAPI
+    url: openapi/hyperlabs-websiteteam-api-openapi.yml
+  - type: APIReference
+    url: https://www.hyperlabs.com/api/swagger/index.html
+  - type: Authentication
+    url: authentication/hyperlabs-authentication.yml
+  - type: Conventions
+    url: conventions/hyperlabs-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hyperlabs-problem-types.yml
+  - type: DataModel
+    url: data-model/hyperlabs-data-model.yml
+- aid: hyperlabs:hyperlabs-websitetimeline-api
+  name: HYPERLABS Website Timeline API
+  description: The WebsiteTimeline API from HYPERLABS — 1 operation(s) for websitetimeline.
+  humanURL: https://www.hyperlabs.com/api/swagger/index.html
+  baseURL: https://www.hyperlabs.com/api
+  tags:
+  - WebsiteTimeline
+  properties:
+  - type: OpenAPI
+    url: openapi/hyperlabs-websitetimeline-api-openapi.yml
+  - type: APIReference
+    url: https://www.hyperlabs.com/api/swagger/index.html
+  - type: Authentication
+    url: authentication/hyperlabs-authentication.yml
+  - type: Conventions
+    url: conventions/hyperlabs-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hyperlabs-problem-types.yml
+  - type: DataModel
+    url: data-model/hyperlabs-data-model.yml
+- aid: hyperlabs:hyperlabs-websitetopslides-api
+  name: HYPERLABS Website Top Slides API
+  description: The WebsiteTopSlides API from HYPERLABS — 1 operation(s) for websitetopslides.
+  humanURL: https://www.hyperlabs.com/api/swagger/index.html
+  baseURL: https://www.hyperlabs.com/api
+  tags:
+  - WebsiteTopSlides
+  properties:
+  - type: OpenAPI
+    url: openapi/hyperlabs-websitetopslides-api-openapi.yml
+  - type: APIReference
+    url: https://www.hyperlabs.com/api/swagger/index.html
+  - type: Authentication
+    url: authentication/hyperlabs-authentication.yml
+  - type: Conventions
+    url: conventions/hyperlabs-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hyperlabs-problem-types.yml
+  - type: DataModel
+    url: data-model/hyperlabs-data-model.yml
+- aid: hyperlabs:hyperlabs-wishlists-api
+  name: HYPERLABS Wishlists API
+  description: The Wishlists API from HYPERLABS — 2 operation(s) for wishlists.
+  humanURL: https://www.hyperlabs.com/api/swagger/index.html
+  baseURL: https://www.hyperlabs.com/api
+  tags:
+  - Wishlists
+  properties:
+  - type: OpenAPI
+    url: openapi/hyperlabs-wishlists-api-openapi.yml
+  - type: APIReference
+    url: https://www.hyperlabs.com/api/swagger/index.html
+  - type: Authentication
+    url: authentication/hyperlabs-authentication.yml
+  - type: Conventions
+    url: conventions/hyperlabs-conventions.yml
+  - type: ErrorCatalog
+    url: errors/hyperlabs-problem-types.yml
+  - type: DataModel
+    url: data-model/hyperlabs-data-model.yml
 common:
 - type: MCPServer
   url: mcp/hyperlabs-mcp.yml
