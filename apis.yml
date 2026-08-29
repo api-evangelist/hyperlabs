@@ -962,6 +962,9 @@ apis:
   - type: DataModel
     url: data-model/hyperlabs-data-model.yml
 common:
+- type: CapabilityMap
+  url: capabilities/hyperlabs-capability-edges.yml
+  name: HYPERLABS Business Capability Map
 - type: MCPServer
   url: mcp/hyperlabs-mcp.yml
 - type: IssueTracker

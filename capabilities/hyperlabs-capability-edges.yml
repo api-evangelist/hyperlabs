@@ -1,0 +1,73 @@
+slug: hyperlabs
+provider: HYPERLABS
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 6
+edges:
+- tag: Users
+  spec_file: hyperlabs-users-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.78
+  evidence: POST /v1/admin/users/{id}/enable, POST /v1/admin/users/{id}/disable, POST /v1/admin/users/{id}/invite;
+    CreateUserDto
+  reason: 'Administrative account lifecycle for application users — create, invite, enable, disable, delete
+    — which is identity and access administration (joiners-movers-leavers). Not HR employee records: the
+    objects are application user accounts under /admin/users.'
+- tag: ContactMessages
+  spec_file: hyperlabs-contactmessages-api-openapi.yml
+  capability_id: BC-430.10
+  capability_id_l1: BC-430
+  capability_name: Customer Inquiry Management
+  confidence: 0.75
+  evidence: POST /v1/contact-messages, CreateContactMessageDto, ContactMessageTypeCode
+  reason: Single public endpoint that captures an inbound customer contact message of a given type — inbound
+    inquiry capture and routing.
+- tag: AdminWebsiteBanner
+  spec_file: hyperlabs-adminwebsitebanner-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.7
+  evidence: GET/POST /v1/admin/website/banner, schema ChangeWebsiteBannerDto
+  reason: Manages the site-wide banner of the corporate website — web content administration, which is
+    digital marketing (web) rather than any product or technical capability.
+- tag: CustomerProfile
+  spec_file: hyperlabs-customerprofile-api-openapi.yml
+  capability_id: BC-420.10
+  capability_id_l1: BC-420
+  capability_name: Customer Data Management
+  confidence: 0.7
+  evidence: GET /v1/profile, PUT /v1/profile, Customer.Models.Customers.ChangeProfileDto
+  reason: Read and update of the authenticated customer's own profile record — maintenance of customer
+    master data. Narrow surface, so not higher.
+- tag: Products
+  spec_file: hyperlabs-products-api-openapi.yml
+  capability_id: BC-820
+  capability_id_l1: BC-820
+  capability_name: Product Lifecycle Management
+  confidence: 0.7
+  evidence: GET /v1/products/discontinued, ChangeReplacementProductDto, ChangeProductSpecificationDto,
+    ProductionStatusCode
+  reason: Full product catalogue administration spanning specifications, production status, discontinuation
+    and replacement products — product lifecycle breadth. Spans several L2s (specification, variant, end-of-life),
+    so only the L1 is asserted.
+- tag: RequestQuotes
+  spec_file: hyperlabs-requestquotes-api-openapi.yml
+  capability_id: BC-410.40
+  capability_id_l1: BC-410
+  capability_name: Quote & Configuration Management
+  confidence: 0.7
+  evidence: POST /v1/request-quote, CreateRequestQuoteDto
+  reason: Public endpoint that submits a request for quote against the product catalogue — the quoting
+    entry point of the lead-to-order motion. Single operation with no description, so not higher.
