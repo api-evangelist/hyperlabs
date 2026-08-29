@@ -12,6 +12,20 @@ description: >-
   backend, and an MIT-licensed proto3 gRPC service definition, radium.v1.Radium, for programmatic
   control and waveform streaming from the TDR11100 Time Domain Reflectometer. Instrument automation is
   also offered as first-party Windows DLL packages (ZTDR and XTDR) with C++ sample source and manuals.
+deliveryModel:
+  model: open-core
+  license: MIT
+  open_source: true
+  commercial: true
+  callable_host: false
+  label: Open core · an OSS project plus a commercial hosted product
+  confidence: high
+  source:
+  - license
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://www.hyperlabs.com/assets/logoFull.svg
 url: https://raw.githubusercontent.com/api-evangelist/hyperlabs/refs/heads/main/apis.yml
 x-type: company
