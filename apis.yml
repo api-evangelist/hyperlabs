@@ -35,14 +35,14 @@ created: '2026-08-01'
 modified: '2026-08-01'
 tags:
 - signal-integrity
-- Test and Measurement
-- Electronic Components
-- Instrumentation
+- test-and-measurement
+- electronic-components
+- instrumentation
 - time-domain-reflectometry
 - high-speed-digital
-- Datacom
-- Hardware
-- gRPC
+- datacom
+- hardware
+- grpc
 - Manufacturing
 tags_raw:
 - signal-integrity
@@ -74,11 +74,11 @@ apis:
     at the instrument's IP address on TCP 50052. Recorded honestly rather than substituted with a placeholder
     host.
   tags:
-  - gRPC
-  - Instrumentation
+  - grpc
+  - instrumentation
   - time-domain-reflectometry
-  - Streaming
-  - Test and Measurement
+  - streaming
+  - test-and-measurement
   tags_raw:
   - grpc
   - instrumentation
@@ -120,6 +120,8 @@ apis:
   humanURL: https://www.hyperlabs.com/api/swagger/index.html
   baseURL: https://www.hyperlabs.com/api
   tags:
+  - Admin Account
+  tags_raw:
   - AdminAccount
   properties:
   - type: OpenAPI
@@ -444,6 +446,8 @@ apis:
   humanURL: https://www.hyperlabs.com/api/swagger/index.html
   baseURL: https://www.hyperlabs.com/api
   tags:
+  - Customer Profile
+  tags_raw:
   - CustomerProfile
   properties:
   - type: OpenAPI
@@ -484,6 +488,8 @@ apis:
   humanURL: https://www.hyperlabs.com/api/swagger/index.html
   baseURL: https://www.hyperlabs.com/api
   tags:
+  - Media Files
+  tags_raw:
   - MediaFiles
   properties:
   - type: OpenAPI
@@ -524,6 +530,8 @@ apis:
   humanURL: https://www.hyperlabs.com/api/swagger/index.html
   baseURL: https://www.hyperlabs.com/api
   tags:
+  - Product
+  tags_raw:
   - Products
   properties:
   - type: OpenAPI
@@ -544,6 +552,8 @@ apis:
   humanURL: https://www.hyperlabs.com/api/swagger/index.html
   baseURL: https://www.hyperlabs.com/api
   tags:
+  - Product Units
+  tags_raw:
   - ProductUnits
   properties:
   - type: OpenAPI
@@ -664,6 +674,8 @@ apis:
   humanURL: https://www.hyperlabs.com/api/swagger/index.html
   baseURL: https://www.hyperlabs.com/api
   tags:
+  - Tag Types
+  tags_raw:
   - TagTypes
   properties:
   - type: OpenAPI
@@ -704,6 +716,8 @@ apis:
   humanURL: https://www.hyperlabs.com/api/swagger/index.html
   baseURL: https://www.hyperlabs.com/api
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
