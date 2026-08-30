@@ -1,0 +1,492 @@
+openapi: 3.2.0
+info:
+  title: Hyperlabs.Web Account API
+  version: '1.0'
+servers:
+- url: /api
+tags:
+- name: Account
+paths:
+  /v1/account/login:
+    post:
+      tags:
+      - Account
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Account.CustomerLoginDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Account.CustomerLoginDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Account.CustomerLoginDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Account.CustomerLoginResultDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Account.CustomerLoginResultDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Account.CustomerLoginResultDto'
+  /v1/account/register:
+    post:
+      tags:
+      - Account
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Account.RegisterCustomerDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Account.RegisterCustomerDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Account.RegisterCustomerDto'
+      responses:
+        '204':
+          description: No Content
+  /v1/account/confirm-registration:
+    post:
+      tags:
+      - Account
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Account.ConfirmCustomerRegistrationDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Account.ConfirmCustomerRegistrationDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Account.ConfirmCustomerRegistrationDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Account.CustomerLoginResultDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Account.CustomerLoginResultDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Account.CustomerLoginResultDto'
+  /v1/account/forgot-password:
+    post:
+      tags:
+      - Account
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Account.CustomerForgotPasswordDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Account.CustomerForgotPasswordDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Account.CustomerForgotPasswordDto'
+      responses:
+        '204':
+          description: No Content
+  /v1/account/reset-password:
+    post:
+      tags:
+      - Account
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Account.CustomerResetPasswordDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Account.CustomerResetPasswordDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Account.CustomerResetPasswordDto'
+      responses:
+        '204':
+          description: No Content
+  /v1/account/google/params:
+    get:
+      tags:
+      - Account
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Account.CustomerGoogleParamsDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Account.CustomerGoogleParamsDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Account.CustomerGoogleParamsDto'
+  /v1/account/google/login:
+    post:
+      tags:
+      - Account
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Account.CustomerGoogleLoginDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Account.CustomerGoogleLoginDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Account.CustomerGoogleLoginDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Account.CustomerLoginResultDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Account.CustomerLoginResultDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Account.CustomerLoginResultDto'
+        '400':
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails'
+  /v1/account/microsoft/params:
+    get:
+      tags:
+      - Account
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Account.CustomerMicrosoftParamsDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Account.CustomerMicrosoftParamsDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Account.CustomerMicrosoftParamsDto'
+  /v1/account/microsoft/login:
+    post:
+      tags:
+      - Account
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Account.CustomerMicrosoftLoginDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Account.CustomerMicrosoftLoginDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Account.CustomerMicrosoftLoginDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Account.CustomerLoginResultDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Account.CustomerLoginResultDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Account.CustomerLoginResultDto'
+        '400':
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails'
+  /v1/account/change-password:
+    post:
+      tags:
+      - Account
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Models.Accounts.ChangePasswordDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Models.Accounts.ChangePasswordDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Models.Accounts.ChangePasswordDto'
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - oauth2: []
+components:
+  schemas:
+    Hyperlabs.Web.Areas.Customer.Models.Account.CustomerLoginResultDto:
+      title: CustomerLoginResultDto
+      type: object
+      properties:
+        tokenType:
+          title: String
+          type:
+          - string
+          - 'null'
+        accessToken:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Customer.Models.Account.ConfirmCustomerRegistrationDto:
+      title: ConfirmCustomerRegistrationDto
+      type: object
+      properties:
+        userName:
+          title: String
+          type:
+          - string
+          - 'null'
+        token:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Customer.Models.Account.CustomerMicrosoftParamsDto:
+      title: CustomerMicrosoftParamsDto
+      type: object
+      properties:
+        authorizationUrl:
+          title: String
+          type:
+          - string
+          - 'null'
+        clientId:
+          title: String
+          type:
+          - string
+          - 'null'
+        responseType:
+          title: String
+          type:
+          - string
+          - 'null'
+        scope:
+          title: String
+          type:
+          - string
+          - 'null'
+        redirectUrl:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Customer.Models.Account.CustomerForgotPasswordDto:
+      title: CustomerForgotPasswordDto
+      type: object
+      properties:
+        userName:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Customer.Models.Account.CustomerResetPasswordDto:
+      title: CustomerResetPasswordDto
+      type: object
+      properties:
+        userName:
+          title: String
+          type:
+          - string
+          - 'null'
+        newPassword:
+          title: String
+          type:
+          - string
+          - 'null'
+        token:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Microsoft.AspNetCore.Mvc.ProblemDetails:
+      title: ProblemDetails
+      type: object
+      properties:
+        type:
+          title: String
+          type:
+          - string
+          - 'null'
+        title:
+          title: String
+          type:
+          - string
+          - 'null'
+        status:
+          title: Nullable`1
+          type:
+          - integer
+          - 'null'
+          format: int32
+        detail:
+          title: String
+          type:
+          - string
+          - 'null'
+        instance:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties:
+        title: Object
+    Hyperlabs.Web.Areas.Customer.Models.Account.RegisterCustomerDto:
+      title: RegisterCustomerDto
+      type: object
+      properties:
+        email:
+          title: String
+          type:
+          - string
+          - 'null'
+        password:
+          title: String
+          type:
+          - string
+          - 'null'
+        firstName:
+          title: String
+          type:
+          - string
+          - 'null'
+        lastName:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Hyperlabs.Web.Models.Accounts.ChangePasswordDto:
+      title: ChangePasswordDto
+      type: object
+      properties:
+        oldPassword:
+          title: String
+          type:
+          - string
+          - 'null'
+        newPassword:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Customer.Models.Account.CustomerGoogleParamsDto:
+      title: CustomerGoogleParamsDto
+      type: object
+      properties:
+        authorizationUrl:
+          title: String
+          type:
+          - string
+          - 'null'
+        clientId:
+          title: String
+          type:
+          - string
+          - 'null'
+        responseType:
+          title: String
+          type:
+          - string
+          - 'null'
+        scope:
+          title: String
+          type:
+          - string
+          - 'null'
+        redirectUrl:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Customer.Models.Account.CustomerLoginDto:
+      title: CustomerLoginDto
+      type: object
+      properties:
+        userName:
+          title: String
+          type:
+          - string
+          - 'null'
+        password:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Customer.Models.Account.CustomerMicrosoftLoginDto:
+      title: CustomerMicrosoftLoginDto
+      type: object
+      properties:
+        code:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Customer.Models.Account.CustomerGoogleLoginDto:
+      title: CustomerGoogleLoginDto
+      type: object
+      properties:
+        code:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+  securitySchemes:
+    oauth2:
+      type: apiKey
+      description: 'Standard Authorization header using the Bearer scheme. Example: "Bearer {token}"'
+      name: Authorization
+      in: header

@@ -1,0 +1,173 @@
+openapi: 3.2.0
+info:
+  title: Hyperlabs.Web Wishlists API
+  version: '1.0'
+servers:
+- url: /api
+tags:
+- name: Wishlists
+paths:
+  /v1/wishlist/quote:
+    post:
+      tags:
+      - Wishlists
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Wishlists.SendWishlistQuoteDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Wishlists.SendWishlistQuoteDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Wishlists.SendWishlistQuoteDto'
+      responses:
+        '200':
+          description: OK
+  /v1/wishlist/share:
+    post:
+      tags:
+      - Wishlists
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Wishlists.ShareWishlistDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Wishlists.ShareWishlistDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Wishlists.ShareWishlistDto'
+      responses:
+        '200':
+          description: OK
+components:
+  schemas:
+    Hyperlabs.Web.Areas.Customer.Models.Wishlists.WishlistProfileDto:
+      title: WishlistProfileDto
+      type: object
+      properties:
+        firstName:
+          title: String
+          type:
+          - string
+          - 'null'
+        lastName:
+          title: String
+          type:
+          - string
+          - 'null'
+        email:
+          title: String
+          type:
+          - string
+          - 'null'
+        phoneNumber:
+          title: String
+          type:
+          - string
+          - 'null'
+        country:
+          title: String
+          type:
+          - string
+          - 'null'
+        state:
+          title: String
+          type:
+          - string
+          - 'null'
+        address:
+          title: String
+          type:
+          - string
+          - 'null'
+        company:
+          title: String
+          type:
+          - string
+          - 'null'
+        inquiryType:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Customer.Models.Wishlists.ShareWishlistDto:
+      title: ShareWishlistDto
+      type: object
+      properties:
+        email:
+          title: String
+          type:
+          - string
+          - 'null'
+        name:
+          title: String
+          type:
+          - string
+          - 'null'
+        message:
+          title: String
+          type:
+          - string
+          - 'null'
+        items:
+          title: ProductLineDto[]
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Shared.ProductLineDto'
+        recaptchaToken:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Customer.Models.Shared.ProductLineDto:
+      title: ProductLineDto
+      type: object
+      properties:
+        productId:
+          title: Guid
+          type: string
+          format: uuid
+        productUnitId:
+          title: Nullable`1
+          type:
+          - string
+          - 'null'
+          format: uuid
+        amount:
+          title: Int32
+          type: integer
+          format: int32
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Customer.Models.Wishlists.SendWishlistQuoteDto:
+      title: SendWishlistQuoteDto
+      type: object
+      properties:
+        profile:
+          $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Wishlists.WishlistProfileDto'
+        items:
+          title: ProductLineDto[]
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Shared.ProductLineDto'
+        recaptchaToken:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+  securitySchemes:
+    oauth2:
+      type: apiKey
+      description: 'Standard Authorization header using the Bearer scheme. Example: "Bearer {token}"'
+      name: Authorization
+      in: header

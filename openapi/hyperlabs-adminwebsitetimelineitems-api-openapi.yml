@@ -1,0 +1,149 @@
+openapi: 3.2.0
+info:
+  title: Hyperlabs.Web Admin Website Timeline Items API
+  version: '1.0'
+servers:
+- url: /api
+tags:
+- name: AdminWebsiteTimelineItems
+paths:
+  /v1/admin/website/timeline:
+    get:
+      tags:
+      - AdminWebsiteTimelineItems
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - oauth2: []
+    post:
+      tags:
+      - AdminWebsiteTimelineItems
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Website.ChangeWebsiteTimelineItemDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Website.ChangeWebsiteTimelineItemDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Website.ChangeWebsiteTimelineItemDto'
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - oauth2: []
+  /v1/admin/website/timeline/{id}:
+    get:
+      tags:
+      - AdminWebsiteTimelineItems
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          title: Guid
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - oauth2: []
+    put:
+      tags:
+      - AdminWebsiteTimelineItems
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          title: Guid
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Website.ChangeWebsiteTimelineItemDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Website.ChangeWebsiteTimelineItemDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Website.ChangeWebsiteTimelineItemDto'
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - oauth2: []
+    delete:
+      tags:
+      - AdminWebsiteTimelineItems
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          title: Guid
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - oauth2: []
+components:
+  schemas:
+    Hyperlabs.Web.Areas.Admin.Models.Website.ChangeWebsiteTimelineItemDto:
+      title: ChangeWebsiteTimelineItemDto
+      type: object
+      properties:
+        isNow:
+          title: Boolean
+          type: boolean
+        date:
+          title: Nullable`1
+          type:
+          - string
+          - 'null'
+          format: date
+        title:
+          title: String
+          type:
+          - string
+          - 'null'
+        description:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+  securitySchemes:
+    oauth2:
+      type: apiKey
+      description: 'Standard Authorization header using the Bearer scheme. Example: "Bearer {token}"'
+      name: Authorization
+      in: header

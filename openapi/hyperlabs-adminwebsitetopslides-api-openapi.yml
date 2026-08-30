@@ -1,0 +1,204 @@
+openapi: 3.2.0
+info:
+  title: Hyperlabs.Web Admin Website Top Slides API
+  version: '1.0'
+servers:
+- url: /api
+tags:
+- name: AdminWebsiteTopSlides
+paths:
+  /v1/admin/website/top-slides:
+    get:
+      tags:
+      - AdminWebsiteTopSlides
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - oauth2: []
+    post:
+      tags:
+      - AdminWebsiteTopSlides
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Website.ChangeWebsiteTopSlideDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Website.ChangeWebsiteTopSlideDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Website.ChangeWebsiteTopSlideDto'
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - oauth2: []
+  /v1/admin/website/top-slides/{id}:
+    get:
+      tags:
+      - AdminWebsiteTopSlides
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          title: Guid
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - oauth2: []
+    put:
+      tags:
+      - AdminWebsiteTopSlides
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          title: Guid
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Website.ChangeWebsiteTopSlideDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Website.ChangeWebsiteTopSlideDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Website.ChangeWebsiteTopSlideDto'
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - oauth2: []
+    delete:
+      tags:
+      - AdminWebsiteTopSlides
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          title: Guid
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - oauth2: []
+  /v1/admin/website/top-slides/{id}/move:
+    post:
+      tags:
+      - AdminWebsiteTopSlides
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          title: Guid
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Shared.MoveDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Shared.MoveDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Shared.MoveDto'
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - oauth2: []
+components:
+  schemas:
+    Hyperlabs.Web.Areas.Admin.Models.Website.ChangeWebsiteTopSlideDto:
+      title: ChangeWebsiteTopSlideDto
+      type: object
+      properties:
+        title:
+          title: String
+          type:
+          - string
+          - 'null'
+        subtitle:
+          title: String
+          type:
+          - string
+          - 'null'
+        text:
+          title: String
+          type:
+          - string
+          - 'null'
+        link:
+          title: String
+          type:
+          - string
+          - 'null'
+        isActive:
+          title: Boolean
+          type: boolean
+        backgroundMediaFileId:
+          title: Guid
+          type: string
+          format: uuid
+        linkMediaFileId:
+          title: Nullable`1
+          type:
+          - string
+          - 'null'
+          format: uuid
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Admin.Models.Shared.MoveDto:
+      title: MoveDto
+      type: object
+      properties:
+        delta:
+          title: Int32
+          type: integer
+          format: int32
+      additionalProperties: false
+  securitySchemes:
+    oauth2:
+      type: apiKey
+      description: 'Standard Authorization header using the Bearer scheme. Example: "Bearer {token}"'
+      name: Authorization
+      in: header

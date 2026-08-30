@@ -1,0 +1,300 @@
+openapi: 3.2.0
+info:
+  title: Hyperlabs.Web Admin Website Representatives API
+  version: '1.0'
+servers:
+- url: /api
+tags:
+- name: AdminWebsiteRepresentatives
+paths:
+  /v1/admin/website/representatives:
+    get:
+      tags:
+      - AdminWebsiteRepresentatives
+      parameters:
+      - name: RepresentativeTypeCode
+        in: query
+        schema:
+          $ref: '#/components/schemas/Hyperlabs.Domain.Website.Representatives.Models.WebsiteRepresentativeTypeCode'
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - oauth2: []
+    post:
+      tags:
+      - AdminWebsiteRepresentatives
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Website.CreateWebsiteRepresentativeDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Website.CreateWebsiteRepresentativeDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Website.CreateWebsiteRepresentativeDto'
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - oauth2: []
+  /v1/admin/website/representatives/{id}:
+    get:
+      tags:
+      - AdminWebsiteRepresentatives
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          title: Guid
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - oauth2: []
+    put:
+      tags:
+      - AdminWebsiteRepresentatives
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          title: Guid
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Website.ChangeWebsiteRepresentativeDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Website.ChangeWebsiteRepresentativeDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Website.ChangeWebsiteRepresentativeDto'
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - oauth2: []
+    delete:
+      tags:
+      - AdminWebsiteRepresentatives
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          title: Guid
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - oauth2: []
+  /v1/admin/website/representatives/{id}/move:
+    post:
+      tags:
+      - AdminWebsiteRepresentatives
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          title: Guid
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Shared.MoveDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Shared.MoveDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Shared.MoveDto'
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - oauth2: []
+components:
+  schemas:
+    Hyperlabs.Web.Areas.Admin.Models.Website.ChangeWebsiteRepresentativeDto:
+      title: ChangeWebsiteRepresentativeDto
+      type: object
+      properties:
+        name:
+          title: String
+          type:
+          - string
+          - 'null'
+        link:
+          title: String
+          type:
+          - string
+          - 'null'
+        isOther:
+          title: Boolean
+          type: boolean
+        phones:
+          title: String[]
+          type:
+          - array
+          - 'null'
+          items:
+            title: String
+            type: string
+        emails:
+          title: String[]
+          type:
+          - array
+          - 'null'
+          items:
+            title: String
+            type: string
+        workingTime:
+          title: String
+          type:
+          - string
+          - 'null'
+        territories:
+          title: String[]
+          type:
+          - array
+          - 'null'
+          items:
+            title: String
+            type: string
+        mapColor:
+          title: String
+          type:
+          - string
+          - 'null'
+        title:
+          title: String
+          type:
+          - string
+          - 'null'
+        isActive:
+          title: Boolean
+          type: boolean
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Admin.Models.Shared.MoveDto:
+      title: MoveDto
+      type: object
+      properties:
+        delta:
+          title: Int32
+          type: integer
+          format: int32
+      additionalProperties: false
+    Hyperlabs.Domain.Website.Representatives.Models.WebsiteRepresentativeTypeCode:
+      title: WebsiteRepresentativeTypeCode
+      enum:
+      - 1
+      - 2
+      type: integer
+      format: int32
+    Hyperlabs.Web.Areas.Admin.Models.Website.CreateWebsiteRepresentativeDto:
+      title: CreateWebsiteRepresentativeDto
+      type: object
+      properties:
+        name:
+          title: String
+          type:
+          - string
+          - 'null'
+        link:
+          title: String
+          type:
+          - string
+          - 'null'
+        isOther:
+          title: Boolean
+          type: boolean
+        phones:
+          title: String[]
+          type:
+          - array
+          - 'null'
+          items:
+            title: String
+            type: string
+        emails:
+          title: String[]
+          type:
+          - array
+          - 'null'
+          items:
+            title: String
+            type: string
+        workingTime:
+          title: String
+          type:
+          - string
+          - 'null'
+        territories:
+          title: String[]
+          type:
+          - array
+          - 'null'
+          items:
+            title: String
+            type: string
+        mapColor:
+          title: String
+          type:
+          - string
+          - 'null'
+        title:
+          title: String
+          type:
+          - string
+          - 'null'
+        isActive:
+          title: Boolean
+          type: boolean
+        representativeTypeCode:
+          $ref: '#/components/schemas/Hyperlabs.Domain.Website.Representatives.Models.WebsiteRepresentativeTypeCode'
+      additionalProperties: false
+  securitySchemes:
+    oauth2:
+      type: apiKey
+      description: 'Standard Authorization header using the Bearer scheme. Example: "Bearer {token}"'
+      name: Authorization
+      in: header

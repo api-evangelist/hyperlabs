@@ -1,0 +1,109 @@
+openapi: 3.2.0
+info:
+  title: Hyperlabs.Web Request Quotes API
+  version: '1.0'
+servers:
+- url: /api
+tags:
+- name: RequestQuotes
+paths:
+  /v1/request-quote:
+    post:
+      tags:
+      - RequestQuotes
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.RequestQuotes.CreateRequestQuoteDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.RequestQuotes.CreateRequestQuoteDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.RequestQuotes.CreateRequestQuoteDto'
+      responses:
+        '200':
+          description: OK
+components:
+  schemas:
+    Hyperlabs.Web.Areas.Customer.Models.RequestQuotes.CreateRequestQuoteDto:
+      title: CreateRequestQuoteDto
+      type: object
+      properties:
+        firstName:
+          title: String
+          type:
+          - string
+          - 'null'
+        lastName:
+          title: String
+          type:
+          - string
+          - 'null'
+        email:
+          title: String
+          type:
+          - string
+          - 'null'
+        phoneNumber:
+          title: String
+          type:
+          - string
+          - 'null'
+        country:
+          title: String
+          type:
+          - string
+          - 'null'
+        state:
+          title: String
+          type:
+          - string
+          - 'null'
+        address:
+          title: String
+          type:
+          - string
+          - 'null'
+        company:
+          title: String
+          type:
+          - string
+          - 'null'
+        inquiryType:
+          title: String
+          type:
+          - string
+          - 'null'
+        productOfInterest:
+          title: String
+          type:
+          - string
+          - 'null'
+        quantity:
+          title: Int32
+          type: integer
+          format: int32
+        configuration:
+          title: String
+          type:
+          - string
+          - 'null'
+        otherInformation:
+          title: String
+          type:
+          - string
+          - 'null'
+        recaptchaToken:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+  securitySchemes:
+    oauth2:
+      type: apiKey
+      description: 'Standard Authorization header using the Bearer scheme. Example: "Bearer {token}"'
+      name: Authorization
+      in: header

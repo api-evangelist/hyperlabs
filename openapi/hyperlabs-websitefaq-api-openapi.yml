@@ -1,0 +1,23 @@
+openapi: 3.2.0
+info:
+  title: Hyperlabs.Web Website Faq API
+  version: '1.0'
+servers:
+- url: /api
+tags:
+- name: WebsiteFaq
+paths:
+  /v1/website/faqs:
+    get:
+      tags:
+      - WebsiteFaq
+      responses:
+        '200':
+          description: OK
+components:
+  securitySchemes:
+    oauth2:
+      type: apiKey
+      description: 'Standard Authorization header using the Bearer scheme. Example: "Bearer {token}"'
+      name: Authorization
+      in: header

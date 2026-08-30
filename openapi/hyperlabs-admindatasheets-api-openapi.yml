@@ -1,0 +1,103 @@
+openapi: 3.2.0
+info:
+  title: Hyperlabs.Web Admin Datasheets API
+  version: '1.0'
+servers:
+- url: /api
+tags:
+- name: AdminDatasheets
+paths:
+  /v1/admin/datasheets:
+    get:
+      tags:
+      - AdminDatasheets
+      parameters:
+      - name: PublishingStatusCodes
+        in: query
+        schema:
+          title: PublishingStatusCode[]
+          type: array
+          items:
+            $ref: '#/components/schemas/Hyperlabs.Domain.Products.Models.PublishingStatusCode'
+      - name: Search
+        in: query
+        schema:
+          title: String
+          type: string
+      - name: SortBy
+        in: query
+        schema:
+          $ref: '#/components/schemas/Hyperlabs.Domain.Datasheets.Models.DatasheetsQuerySortParameter'
+      - name: SortDesc
+        in: query
+        schema:
+          title: Boolean
+          type: boolean
+      - name: PageNo
+        in: query
+        schema:
+          title: Int32
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        schema:
+          title: Int32
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - oauth2: []
+  /v1/admin/datasheets/{id}:
+    get:
+      tags:
+      - AdminDatasheets
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          title: Guid
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - oauth2: []
+components:
+  schemas:
+    Hyperlabs.Domain.Datasheets.Models.DatasheetsQuerySortParameter:
+      title: DatasheetsQuerySortParameter
+      enum:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      type: integer
+      format: int32
+    Hyperlabs.Domain.Products.Models.PublishingStatusCode:
+      title: PublishingStatusCode
+      enum:
+      - 1
+      - 2
+      - 3
+      type: integer
+      format: int32
+  securitySchemes:
+    oauth2:
+      type: apiKey
+      description: 'Standard Authorization header using the Bearer scheme. Example: "Bearer {token}"'
+      name: Authorization
+      in: header

@@ -1,0 +1,212 @@
+openapi: 3.2.0
+info:
+  title: Hyperlabs.Web Admin Account API
+  version: '1.0'
+servers:
+- url: /api
+tags:
+- name: AdminAccount
+paths:
+  /v1/admin/account/login:
+    post:
+      tags:
+      - AdminAccount
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Models.Accounts.LoginDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Models.Accounts.LoginDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Models.Accounts.LoginDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Hyperlabs.Web.Models.Accounts.LoginResultDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Hyperlabs.Web.Models.Accounts.LoginResultDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Hyperlabs.Web.Models.Accounts.LoginResultDto'
+  /v1/admin/account/forgot-password:
+    post:
+      tags:
+      - AdminAccount
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Models.Accounts.ForgotPasswordDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Models.Accounts.ForgotPasswordDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Models.Accounts.ForgotPasswordDto'
+      responses:
+        '204':
+          description: No Content
+  /v1/admin/account/reset-password:
+    post:
+      tags:
+      - AdminAccount
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Models.Accounts.ResetPasswordDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Models.Accounts.ResetPasswordDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Models.Accounts.ResetPasswordDto'
+      responses:
+        '204':
+          description: No Content
+  /v1/admin/account/validate-invite:
+    post:
+      tags:
+      - AdminAccount
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Models.Accounts.ValidateInviteDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Models.Accounts.ValidateInviteDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Models.Accounts.ValidateInviteDto'
+      responses:
+        '200':
+          description: OK
+  /v1/admin/account/confirm-invite:
+    post:
+      tags:
+      - AdminAccount
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Models.Accounts.ConfirmInviteDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Models.Accounts.ConfirmInviteDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Models.Accounts.ConfirmInviteDto'
+      responses:
+        '200':
+          description: OK
+components:
+  schemas:
+    Hyperlabs.Web.Models.Accounts.ValidateInviteDto:
+      title: ValidateInviteDto
+      type: object
+      properties:
+        userName:
+          title: String
+          type:
+          - string
+          - 'null'
+        token:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Hyperlabs.Web.Models.Accounts.ResetPasswordDto:
+      title: ResetPasswordDto
+      type: object
+      properties:
+        userName:
+          title: String
+          type:
+          - string
+          - 'null'
+        newPassword:
+          title: String
+          type:
+          - string
+          - 'null'
+        token:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Hyperlabs.Web.Models.Accounts.LoginResultDto:
+      title: LoginResultDto
+      type: object
+      properties:
+        tokenType:
+          title: String
+          type:
+          - string
+          - 'null'
+        accessToken:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Hyperlabs.Web.Models.Accounts.ConfirmInviteDto:
+      title: ConfirmInviteDto
+      type: object
+      properties:
+        userName:
+          title: String
+          type:
+          - string
+          - 'null'
+        token:
+          title: String
+          type:
+          - string
+          - 'null'
+        password:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Hyperlabs.Web.Models.Accounts.LoginDto:
+      title: LoginDto
+      type: object
+      properties:
+        userName:
+          title: String
+          type:
+          - string
+          - 'null'
+        password:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Hyperlabs.Web.Models.Accounts.ForgotPasswordDto:
+      title: ForgotPasswordDto
+      type: object
+      properties:
+        userName:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+  securitySchemes:
+    oauth2:
+      type: apiKey
+      description: 'Standard Authorization header using the Bearer scheme. Example: "Bearer {token}"'
+      name: Authorization
+      in: header

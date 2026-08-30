@@ -1,0 +1,78 @@
+openapi: 3.2.0
+info:
+  title: Hyperlabs.Web Admin Website Contact API
+  version: '1.0'
+servers:
+- url: /api
+tags:
+- name: AdminWebsiteContact
+paths:
+  /v1/admin/website/contact:
+    get:
+      tags:
+      - AdminWebsiteContact
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - oauth2: []
+    post:
+      tags:
+      - AdminWebsiteContact
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Website.ChangeWebsiteContactDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Website.ChangeWebsiteContactDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Website.ChangeWebsiteContactDto'
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - oauth2: []
+components:
+  schemas:
+    Hyperlabs.Web.Areas.Admin.Models.Website.ChangeWebsiteContactDto:
+      title: ChangeWebsiteContactDto
+      type: object
+      properties:
+        phone:
+          title: String
+          type:
+          - string
+          - 'null'
+        email:
+          title: String
+          type:
+          - string
+          - 'null'
+        address1:
+          title: String
+          type:
+          - string
+          - 'null'
+        address2:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+  securitySchemes:
+    oauth2:
+      type: apiKey
+      description: 'Standard Authorization header using the Bearer scheme. Example: "Bearer {token}"'
+      name: Authorization
+      in: header

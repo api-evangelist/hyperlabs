@@ -1,0 +1,90 @@
+openapi: 3.2.0
+info:
+  title: Hyperlabs.Web Contact Messages API
+  version: '1.0'
+servers:
+- url: /api
+tags:
+- name: ContactMessages
+paths:
+  /v1/contact-messages:
+    post:
+      tags:
+      - ContactMessages
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.ContactMessages.CreateContactMessageDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.ContactMessages.CreateContactMessageDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.ContactMessages.CreateContactMessageDto'
+      responses:
+        '200':
+          description: OK
+components:
+  schemas:
+    Hyperlabs.Web.Areas.Customer.Models.ContactMessages.CreateContactMessageDto:
+      title: CreateContactMessageDto
+      type: object
+      properties:
+        name:
+          title: String
+          type:
+          - string
+          - 'null'
+        email:
+          title: String
+          type:
+          - string
+          - 'null'
+        phoneNumber:
+          title: String
+          type:
+          - string
+          - 'null'
+        sourcePageUrl:
+          title: String
+          type:
+          - string
+          - 'null'
+        productOfInterest:
+          title: String
+          type:
+          - string
+          - 'null'
+        messageText:
+          title: String
+          type:
+          - string
+          - 'null'
+        contactMessageTypeCode:
+          $ref: '#/components/schemas/Hyperlabs.Domain.ContactMessages.Models.ContactMessageTypeCode'
+        recaptchaToken:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Hyperlabs.Domain.ContactMessages.Models.ContactMessageTypeCode:
+      title: ContactMessageTypeCode
+      enum:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      type: integer
+      format: int32
+  securitySchemes:
+    oauth2:
+      type: apiKey
+      description: 'Standard Authorization header using the Bearer scheme. Example: "Bearer {token}"'
+      name: Authorization
+      in: header

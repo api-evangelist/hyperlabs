@@ -1,0 +1,203 @@
+openapi: 3.2.0
+info:
+  title: Hyperlabs.Web Product Classes API
+  version: '1.0'
+servers:
+- url: /api
+tags:
+- name: ProductClasses
+paths:
+  /v1/product-classes:
+    get:
+      tags:
+      - ProductClasses
+      responses:
+        '200':
+          description: OK
+  /v1/product-classes/{id}:
+    get:
+      tags:
+      - ProductClasses
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          title: Guid
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+  /v1/admin/product-classes:
+    get:
+      tags:
+      - ProductClasses
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - oauth2: []
+    post:
+      tags:
+      - ProductClasses
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.ProductClasses.ChangeProductClassDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.ProductClasses.ChangeProductClassDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.ProductClasses.ChangeProductClassDto'
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - oauth2: []
+  /v1/admin/product-classes/{id}:
+    put:
+      tags:
+      - ProductClasses
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          title: Guid
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.ProductClasses.ChangeProductClassDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.ProductClasses.ChangeProductClassDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.ProductClasses.ChangeProductClassDto'
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - oauth2: []
+    delete:
+      tags:
+      - ProductClasses
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          title: Guid
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - oauth2: []
+  /v1/admin/product-classes/{id}/move:
+    post:
+      tags:
+      - ProductClasses
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          title: Guid
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Shared.MoveDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Shared.MoveDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Shared.MoveDto'
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - oauth2: []
+components:
+  schemas:
+    Hyperlabs.Web.Areas.Admin.Models.Shared.MoveDto:
+      title: MoveDto
+      type: object
+      properties:
+        delta:
+          title: Int32
+          type: integer
+          format: int32
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Admin.Models.ProductClasses.ChangeProductClassDto:
+      title: ChangeProductClassDto
+      type: object
+      properties:
+        name:
+          title: String
+          type:
+          - string
+          - 'null'
+        title:
+          title: String
+          type:
+          - string
+          - 'null'
+        subtitle:
+          title: String
+          type:
+          - string
+          - 'null'
+        description:
+          title: String
+          type:
+          - string
+          - 'null'
+        publishingStatusCode:
+          $ref: '#/components/schemas/Hyperlabs.Domain.Products.Models.PublishingStatusCode'
+      additionalProperties: false
+    Hyperlabs.Domain.Products.Models.PublishingStatusCode:
+      title: PublishingStatusCode
+      enum:
+      - 1
+      - 2
+      - 3
+      type: integer
+      format: int32
+  securitySchemes:
+    oauth2:
+      type: apiKey
+      description: 'Standard Authorization header using the Bearer scheme. Example: "Bearer {token}"'
+      name: Authorization
+      in: header

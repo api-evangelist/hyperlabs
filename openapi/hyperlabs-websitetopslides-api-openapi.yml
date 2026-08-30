@@ -1,0 +1,23 @@
+openapi: 3.2.0
+info:
+  title: Hyperlabs.Web Website Top Slides API
+  version: '1.0'
+servers:
+- url: /api
+tags:
+- name: WebsiteTopSlides
+paths:
+  /v1/website/top-slides:
+    get:
+      tags:
+      - WebsiteTopSlides
+      responses:
+        '200':
+          description: OK
+components:
+  securitySchemes:
+    oauth2:
+      type: apiKey
+      description: 'Standard Authorization header using the Bearer scheme. Example: "Bearer {token}"'
+      name: Authorization
+      in: header

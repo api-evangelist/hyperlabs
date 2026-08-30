@@ -1,0 +1,274 @@
+openapi: 3.2.0
+info:
+  title: Hyperlabs.Web Admin Software API
+  version: '1.0'
+servers:
+- url: /api
+tags:
+- name: AdminSoftware
+paths:
+  /v1/admin/software:
+    get:
+      tags:
+      - AdminSoftware
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - oauth2: []
+    post:
+      tags:
+      - AdminSoftware
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Software.ChangeSoftwareDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Software.ChangeSoftwareDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Software.ChangeSoftwareDto'
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - oauth2: []
+  /v1/admin/software/{id}:
+    get:
+      tags:
+      - AdminSoftware
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          title: Guid
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - oauth2: []
+    put:
+      tags:
+      - AdminSoftware
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          title: Guid
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Software.ChangeSoftwareDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Software.ChangeSoftwareDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Software.ChangeSoftwareDto'
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - oauth2: []
+    delete:
+      tags:
+      - AdminSoftware
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          title: Guid
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - oauth2: []
+  /v1/admin/software/{id}/move:
+    post:
+      tags:
+      - AdminSoftware
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          title: Guid
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Shared.MoveDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Shared.MoveDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Shared.MoveDto'
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - oauth2: []
+components:
+  schemas:
+    Hyperlabs.Web.Areas.Admin.Models.Software.ChangeSoftwareNoteDto:
+      title: ChangeSoftwareNoteDto
+      type: object
+      properties:
+        id:
+          title: Nullable`1
+          type:
+          - string
+          - 'null'
+          format: uuid
+        text:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Hyperlabs.Domain.Products.Models.PublishingStatusCode:
+      title: PublishingStatusCode
+      enum:
+      - 1
+      - 2
+      - 3
+      type: integer
+      format: int32
+    Hyperlabs.Web.Areas.Admin.Models.Shared.ChangeAttachedMediaFileDto:
+      title: ChangeAttachedMediaFileDto
+      type: object
+      properties:
+        mediaFileId:
+          title: Guid
+          type: string
+          format: uuid
+        order:
+          title: Int32
+          type: integer
+          format: int32
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Admin.Models.Software.ChangeSoftwareDto:
+      title: ChangeSoftwareDto
+      type: object
+      properties:
+        name:
+          title: String
+          type:
+          - string
+          - 'null'
+        title:
+          title: String
+          type:
+          - string
+          - 'null'
+        description:
+          title: String
+          type:
+          - string
+          - 'null'
+        keyFeatures:
+          title: String
+          type:
+          - string
+          - 'null'
+        publishingStatusCode:
+          $ref: '#/components/schemas/Hyperlabs.Domain.Products.Models.PublishingStatusCode'
+        images:
+          title: ChangeAttachedMediaFileDto[]
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Shared.ChangeAttachedMediaFileDto'
+        resources:
+          title: ChangeAttachedMediaFileDto[]
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Shared.ChangeAttachedMediaFileDto'
+        dlls:
+          title: ChangeAttachedMediaFileDto[]
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Shared.ChangeAttachedMediaFileDto'
+        notes:
+          title: ChangeSoftwareNoteDto[]
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Software.ChangeSoftwareNoteDto'
+        products:
+          title: ChangeLinkedProductDto[]
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Shared.ChangeLinkedProductDto'
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Admin.Models.Shared.MoveDto:
+      title: MoveDto
+      type: object
+      properties:
+        delta:
+          title: Int32
+          type: integer
+          format: int32
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Admin.Models.Shared.ChangeLinkedProductDto:
+      title: ChangeLinkedProductDto
+      type: object
+      properties:
+        productId:
+          title: Guid
+          type: string
+          format: uuid
+      additionalProperties: false
+  securitySchemes:
+    oauth2:
+      type: apiKey
+      description: 'Standard Authorization header using the Bearer scheme. Example: "Bearer {token}"'
+      name: Authorization
+      in: header

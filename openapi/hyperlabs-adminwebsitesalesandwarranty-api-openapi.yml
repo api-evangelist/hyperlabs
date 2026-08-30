@@ -1,0 +1,87 @@
+openapi: 3.2.0
+info:
+  title: Hyperlabs.Web Admin Website Sales And Warranty API
+  version: '1.0'
+servers:
+- url: /api
+tags:
+- name: AdminWebsiteSalesAndWarranty
+paths:
+  /v1/admin/website/sales-and-warranty:
+    get:
+      tags:
+      - AdminWebsiteSalesAndWarranty
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - oauth2: []
+    post:
+      tags:
+      - AdminWebsiteSalesAndWarranty
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Website.ChangeWebsiteSalesAndWarrantyDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Website.ChangeWebsiteSalesAndWarrantyDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Website.ChangeWebsiteSalesAndWarrantyDto'
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - oauth2: []
+components:
+  schemas:
+    Hyperlabs.Web.Areas.Admin.Models.Shared.ChangeAttachedMediaFileDto:
+      title: ChangeAttachedMediaFileDto
+      type: object
+      properties:
+        mediaFileId:
+          title: Guid
+          type: string
+          format: uuid
+        order:
+          title: Int32
+          type: integer
+          format: int32
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Admin.Models.Website.ChangeWebsiteSalesAndWarrantyDto:
+      title: ChangeWebsiteSalesAndWarrantyDto
+      type: object
+      properties:
+        revisionVersion:
+          title: String
+          type:
+          - string
+          - 'null'
+        revisionDate:
+          title: DateTime
+          type: string
+          format: date-time
+        description:
+          title: String
+          type:
+          - string
+          - 'null'
+        document:
+          $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Shared.ChangeAttachedMediaFileDto'
+      additionalProperties: false
+  securitySchemes:
+    oauth2:
+      type: apiKey
+      description: 'Standard Authorization header using the Bearer scheme. Example: "Bearer {token}"'
+      name: Authorization
+      in: header

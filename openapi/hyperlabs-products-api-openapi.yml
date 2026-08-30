@@ -1,0 +1,742 @@
+openapi: 3.2.0
+info:
+  title: Hyperlabs.Web Products API
+  version: '1.0'
+servers:
+- url: /api
+tags:
+- name: Products
+paths:
+  /v1/products:
+    get:
+      tags:
+      - Products
+      parameters:
+      - name: ProductClassIds
+        in: query
+        schema:
+          title: Guid[]
+          type: array
+          items:
+            title: Guid
+            type: string
+            format: uuid
+      - name: CategoryIds
+        in: query
+        schema:
+          title: Guid[]
+          type: array
+          items:
+            title: Guid
+            type: string
+            format: uuid
+      - name: TagIds
+        in: query
+        schema:
+          title: Guid[]
+          type: array
+          items:
+            title: Guid
+            type: string
+            format: uuid
+      - name: SoftwareIds
+        in: query
+        schema:
+          title: Guid[]
+          type: array
+          items:
+            title: Guid
+            type: string
+            format: uuid
+      - name: IsNew
+        in: query
+        schema:
+          title: Nullable`1
+          type: boolean
+      - name: IsFeatured
+        in: query
+        schema:
+          title: Nullable`1
+          type: boolean
+      - name: IsPromoted
+        in: query
+        schema:
+          title: Nullable`1
+          type: boolean
+      responses:
+        '200':
+          description: OK
+  /v1/products/discontinued:
+    get:
+      tags:
+      - Products
+      responses:
+        '200':
+          description: OK
+  /v1/products/ztdr:
+    get:
+      tags:
+      - Products
+      responses:
+        '200':
+          description: OK
+  /v1/products/xtdr:
+    get:
+      tags:
+      - Products
+      responses:
+        '200':
+          description: OK
+  /v1/products/zcoupon:
+    get:
+      tags:
+      - Products
+      responses:
+        '200':
+          description: OK
+  /v1/products/{id}:
+    get:
+      tags:
+      - Products
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          title: Guid
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+  /v1/products/{topSku}:
+    get:
+      tags:
+      - Products
+      parameters:
+      - name: topSku
+        in: path
+        required: true
+        schema:
+          title: String
+          type: string
+      responses:
+        '200':
+          description: OK
+  /v1/products/filter/parameters:
+    get:
+      tags:
+      - Products
+      parameters:
+      - name: CategoryId
+        in: query
+        schema:
+          title: Nullable`1
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+  /v1/products/filter:
+    post:
+      tags:
+      - Products
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Products.FilterDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Products.FilterDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Products.FilterDto'
+      responses:
+        '200':
+          description: OK
+  /v1/products/resolve:
+    post:
+      tags:
+      - Products
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: ResolveProductItemRequestDto[]
+              type: array
+              items:
+                $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Products.ResolveProductItemRequestDto'
+          text/json:
+            schema:
+              title: ResolveProductItemRequestDto[]
+              type: array
+              items:
+                $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Products.ResolveProductItemRequestDto'
+          application/*+json:
+            schema:
+              title: ResolveProductItemRequestDto[]
+              type: array
+              items:
+                $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Products.ResolveProductItemRequestDto'
+      responses:
+        '200':
+          description: OK
+  /v1/admin/products:
+    get:
+      tags:
+      - Products
+      parameters:
+      - name: ProductClassesIds
+        in: query
+        schema:
+          title: Guid[]
+          type: array
+          items:
+            title: Guid
+            type: string
+            format: uuid
+      - name: CategoryIds
+        in: query
+        schema:
+          title: Guid[]
+          type: array
+          items:
+            title: Guid
+            type: string
+            format: uuid
+      - name: Search
+        in: query
+        schema:
+          title: String
+          type: string
+      - name: SortBy
+        in: query
+        schema:
+          $ref: '#/components/schemas/Hyperlabs.Domain.Products.Models.ProductQuerySortParameter'
+      - name: SortDesc
+        in: query
+        schema:
+          title: Boolean
+          type: boolean
+      - name: PageNo
+        in: query
+        schema:
+          title: Int32
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        schema:
+          title: Int32
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - oauth2: []
+    post:
+      tags:
+      - Products
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangeProductDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ChangeProductDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ChangeProductDto'
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - oauth2: []
+  /v1/admin/products/catalog:
+    get:
+      tags:
+      - Products
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - oauth2: []
+  /v1/admin/products/{id}:
+    get:
+      tags:
+      - Products
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          title: Guid
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - oauth2: []
+    put:
+      tags:
+      - Products
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          title: Guid
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangeProductDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ChangeProductDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ChangeProductDto'
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - oauth2: []
+    delete:
+      tags:
+      - Products
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          title: Guid
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - oauth2: []
+  /v1/admin/products/{id}/move:
+    post:
+      tags:
+      - Products
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          title: Guid
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Shared.MoveDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Shared.MoveDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Shared.MoveDto'
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - oauth2: []
+components:
+  schemas:
+    Hyperlabs.Web.Areas.Admin.Models.Products.ChangeProductVariableDto:
+      title: ChangeProductVariableDto
+      type: object
+      properties:
+        variableTypeId:
+          title: Guid
+          type: string
+          format: uuid
+        values:
+          title: ChangeProductVariableValueDto[]
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Products.ChangeProductVariableValueDto'
+      additionalProperties: false
+    Hyperlabs.Domain.Products.Models.PublishingStatusCode:
+      title: PublishingStatusCode
+      enum:
+      - 1
+      - 2
+      - 3
+      type: integer
+      format: int32
+    Hyperlabs.Domain.Products.Models.ProductQuerySortParameter:
+      title: ProductQuerySortParameter
+      enum:
+      - 1
+      - 2
+      - 3
+      - 4
+      type: integer
+      format: int32
+    Hyperlabs.Web.Areas.Customer.Models.Products.FilterDto:
+      title: FilterDto
+      type: object
+      properties:
+        search:
+          title: String
+          type:
+          - string
+          - 'null'
+        productClassIds:
+          title: Guid[]
+          type:
+          - array
+          - 'null'
+          items:
+            title: Guid
+            type: string
+            format: uuid
+        categoryIds:
+          title: Guid[]
+          type:
+          - array
+          - 'null'
+          items:
+            title: Guid
+            type: string
+            format: uuid
+        parameters:
+          title: FilterSelectedParameterDto[]
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Products.FilterSelectedParameterDto'
+      additionalProperties: false
+    Hyperlabs.Domain.Products.Models.ProductAttributeTypeCode:
+      title: ProductAttributeTypeCode
+      enum:
+      - 1
+      - 2
+      type: integer
+      format: int32
+    Hyperlabs.Web.Areas.Customer.Models.Products.ResolveProductItemRequestDto:
+      title: ResolveProductItemRequestDto
+      type: object
+      properties:
+        productId:
+          title: Guid
+          type: string
+          format: uuid
+        productUnitId:
+          title: Nullable`1
+          type:
+          - string
+          - 'null'
+          format: uuid
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Admin.Models.Products.ChangeProductVariableValueDto:
+      title: ChangeProductVariableValueDto
+      type: object
+      properties:
+        variableTypeValueId:
+          title: Guid
+          type: string
+          format: uuid
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Admin.Models.Products.ChangeProductTagDto:
+      title: ChangeProductTagDto
+      type: object
+      properties:
+        tagTypeId:
+          title: Guid
+          type: string
+          format: uuid
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Admin.Models.Shared.ChangeAttachedMediaFileDto:
+      title: ChangeAttachedMediaFileDto
+      type: object
+      properties:
+        mediaFileId:
+          title: Guid
+          type: string
+          format: uuid
+        order:
+          title: Int32
+          type: integer
+          format: int32
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Customer.Models.Products.FilterSelectedParameterDto:
+      title: FilterSelectedParameterDto
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/Hyperlabs.Domain.Products.Models.FilterParameterCode'
+        id:
+          title: String
+          type:
+          - string
+          - 'null'
+        valueIds:
+          title: String[]
+          type:
+          - array
+          - 'null'
+          items:
+            title: String
+            type: string
+      additionalProperties: false
+    Hyperlabs.Domain.Products.Models.ProductionStatusCode:
+      title: ProductionStatusCode
+      enum:
+      - 1
+      - 2
+      type: integer
+      format: int32
+    Hyperlabs.Web.Areas.Admin.Models.Products.ChangeProductSoftwareDto:
+      title: ChangeProductSoftwareDto
+      type: object
+      properties:
+        softwareId:
+          title: Guid
+          type: string
+          format: uuid
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Admin.Models.Products.ChangeProductApplicationNoteDto:
+      title: ChangeProductApplicationNoteDto
+      type: object
+      properties:
+        applicationNoteId:
+          title: Guid
+          type: string
+          format: uuid
+      additionalProperties: false
+    Hyperlabs.Domain.Products.Models.FilterParameterCode:
+      title: FilterParameterCode
+      enum:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      type: integer
+      format: int32
+    ChangeProductDto:
+      title: ChangeProductDto
+      type: object
+      properties:
+        name:
+          title: String
+          type:
+          - string
+          - 'null'
+        topSku:
+          title: String
+          type:
+          - string
+          - 'null'
+        description:
+          title: String
+          type:
+          - string
+          - 'null'
+        shortDescription:
+          title: String
+          type:
+          - string
+          - 'null'
+        price:
+          title: Nullable`1
+          type:
+          - number
+          - 'null'
+          format: double
+        productionStatusCode:
+          $ref: '#/components/schemas/Hyperlabs.Domain.Products.Models.ProductionStatusCode'
+        discontinuedDate:
+          title: Nullable`1
+          type:
+          - string
+          - 'null'
+          format: date-time
+        publishingStatusCode:
+          $ref: '#/components/schemas/Hyperlabs.Domain.Products.Models.PublishingStatusCode'
+        productAttributeTypeCode:
+          $ref: '#/components/schemas/Hyperlabs.Domain.Products.Models.ProductAttributeTypeCode'
+        replacementProductId:
+          title: Nullable`1
+          type:
+          - string
+          - 'null'
+          format: uuid
+        categoryId:
+          title: Guid
+          type: string
+          format: uuid
+        tags:
+          title: ChangeProductTagDto[]
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Products.ChangeProductTagDto'
+        variables:
+          title: ChangeProductVariableDto[]
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Products.ChangeProductVariableDto'
+        specifications:
+          title: ChangeProductSpecificationDto[]
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Products.ChangeProductSpecificationDto'
+        notes:
+          title: ChangeProductNoteDto[]
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Products.ChangeProductNoteDto'
+        applicationNotes:
+          title: ChangeProductApplicationNoteDto[]
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Products.ChangeProductApplicationNoteDto'
+        replacementProducts:
+          title: ChangeReplacementProductDto[]
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Products.ChangeReplacementProductDto'
+        images:
+          title: ChangeAttachedMediaFileDto[]
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Shared.ChangeAttachedMediaFileDto'
+        documents:
+          title: ChangeAttachedMediaFileDto[]
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Shared.ChangeAttachedMediaFileDto'
+        software:
+          title: ChangeProductSoftwareDto[]
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Products.ChangeProductSoftwareDto'
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Admin.Models.Products.ChangeReplacementProductDto:
+      title: ChangeReplacementProductDto
+      type: object
+      properties:
+        replacementProductId:
+          title: Guid
+          type: string
+          format: uuid
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Admin.Models.Shared.MoveDto:
+      title: MoveDto
+      type: object
+      properties:
+        delta:
+          title: Int32
+          type: integer
+          format: int32
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Admin.Models.Products.ChangeProductSpecificationDto:
+      title: ChangeProductSpecificationDto
+      type: object
+      properties:
+        specificationTypeId:
+          title: Guid
+          type: string
+          format: uuid
+        value:
+          title: String
+          type:
+          - string
+          - 'null'
+        minValue:
+          title: String
+          type:
+          - string
+          - 'null'
+        maxValue:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Admin.Models.Products.ChangeProductNoteDto:
+      title: ChangeProductNoteDto
+      type: object
+      properties:
+        id:
+          title: Nullable`1
+          type:
+          - string
+          - 'null'
+          format: uuid
+        text:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+  securitySchemes:
+    oauth2:
+      type: apiKey
+      description: 'Standard Authorization header using the Bearer scheme. Example: "Bearer {token}"'
+      name: Authorization
+      in: header

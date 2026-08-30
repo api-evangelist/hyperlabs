@@ -1,0 +1,52 @@
+openapi: 3.2.0
+info:
+  title: Hyperlabs.Web Software API
+  version: '1.0'
+servers:
+- url: /api
+tags:
+- name: Software
+paths:
+  /v1/software:
+    get:
+      tags:
+      - Software
+      responses:
+        '200':
+          description: OK
+  /v1/software/{id}:
+    get:
+      tags:
+      - Software
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          title: Guid
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+  /v1/software/{name}:
+    get:
+      tags:
+      - Software
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          title: String
+          type: string
+      responses:
+        '200':
+          description: OK
+components:
+  securitySchemes:
+    oauth2:
+      type: apiKey
+      description: 'Standard Authorization header using the Bearer scheme. Example: "Bearer {token}"'
+      name: Authorization
+      in: header
