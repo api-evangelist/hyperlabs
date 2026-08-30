@@ -3,7 +3,7 @@ provider: HYPERLABS
 generated_by: planning/capability-mapping/scripts/classify_capabilities.py
 model: claude-opus-5
 frame:
-- Software & Technology
+- Electrical Components & Equipment
 min_confidence: 0.7
 capability_model:
   source: https://github.com/vincentmakes/turbo-ea-capabilities
@@ -11,63 +11,45 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 6
+edge_count: 4
 edges:
-- tag: Users
-  spec_file: hyperlabs-users-api-openapi.yml
+- tag: Account
+  spec_file: hyperlabs-account-api-openapi.yml
   capability_id: BC-620.20
   capability_id_l1: BC-620
   capability_name: Identity & Access Management
-  confidence: 0.78
-  evidence: POST /v1/admin/users/{id}/enable, POST /v1/admin/users/{id}/disable, POST /v1/admin/users/{id}/invite;
-    CreateUserDto
-  reason: 'Administrative account lifecycle for application users — create, invite, enable, disable, delete
-    — which is identity and access administration (joiners-movers-leavers). Not HR employee records: the
-    objects are application user accounts under /admin/users.'
-- tag: ContactMessages
-  spec_file: hyperlabs-contactmessages-api-openapi.yml
-  capability_id: BC-430.10
-  capability_id_l1: BC-430
-  capability_name: Customer Inquiry Management
-  confidence: 0.75
-  evidence: POST /v1/contact-messages, CreateContactMessageDto, ContactMessageTypeCode
-  reason: Single public endpoint that captures an inbound customer contact message of a given type — inbound
-    inquiry capture and routing.
-- tag: AdminWebsiteBanner
-  spec_file: hyperlabs-adminwebsitebanner-api-openapi.yml
-  capability_id: BC-400.60
-  capability_id_l1: BC-400
-  capability_name: Digital Marketing Management
-  confidence: 0.7
-  evidence: GET/POST /v1/admin/website/banner, schema ChangeWebsiteBannerDto
-  reason: Manages the site-wide banner of the corporate website — web content administration, which is
-    digital marketing (web) rather than any product or technical capability.
-- tag: CustomerProfile
-  spec_file: hyperlabs-customerprofile-api-openapi.yml
-  capability_id: BC-420.10
-  capability_id_l1: BC-420
-  capability_name: Customer Data Management
-  confidence: 0.7
-  evidence: GET /v1/profile, PUT /v1/profile, Customer.Models.Customers.ChangeProfileDto
-  reason: Read and update of the authenticated customer's own profile record — maintenance of customer
-    master data. Narrow surface, so not higher.
+  confidence: 0.8
+  evidence: POST /v1/account/login, POST /v1/account/register, POST /v1/account/reset-password, CustomerGoogleLoginDto
+  reason: 'Customer authentication: login, registration confirmation, password reset, Google/Microsoft
+    federated sign-in. This is identity and access management plumbing, not customer data mastering.'
+- tag: AdminAccount
+  spec_file: hyperlabs-adminaccount-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.8
+  evidence: POST /v1/admin/account/login, POST /v1/admin/account/validate-invite, POST /v1/admin/account/confirm-invite
+  reason: Admin login, password reset and invite validation — administrative identity and access management.
 - tag: Products
   spec_file: hyperlabs-products-api-openapi.yml
-  capability_id: BC-820
-  capability_id_l1: BC-820
-  capability_name: Product Lifecycle Management
-  confidence: 0.7
-  evidence: GET /v1/products/discontinued, ChangeReplacementProductDto, ChangeProductSpecificationDto,
-    ProductionStatusCode
-  reason: Full product catalogue administration spanning specifications, production status, discontinuation
-    and replacement products — product lifecycle breadth. Spans several L2s (specification, variant, end-of-life),
-    so only the L1 is asserted.
-- tag: RequestQuotes
-  spec_file: hyperlabs-requestquotes-api-openapi.yml
-  capability_id: BC-410.40
-  capability_id_l1: BC-410
-  capability_name: Quote & Configuration Management
-  confidence: 0.7
-  evidence: POST /v1/request-quote, CreateRequestQuoteDto
-  reason: Public endpoint that submits a request for quote against the product catalogue — the quoting
-    entry point of the lead-to-order motion. Single operation with no description, so not higher.
+  capability_id: BC-1940
+  capability_id_l1: BC-1940
+  capability_name: Electrical Product Catalogue Management
+  confidence: 0.8
+  evidence: GET /v1/products/discontinued; schemas ChangeReplacementProductDto, ProductionStatusCode,
+    PublishingStatusCode, ChangeProductSpecificationDto, ChangeProductApplicationNoteDto
+  reason: 'Operations maintain the saleable catalogue of this electrical-component maker: product records,
+    SKU resolution, filterable attributes/specifications, publishing and production status, discontinued
+    items and replacement mapping, plus attached datasheets/application notes. That is electrical product
+    catalogue management; the spread across master records, specifications, documentation and phase-out
+    keeps me at the L1 rather than one L2.'
+- tag: AdminDatasheets
+  spec_file: hyperlabs-admindatasheets-api-openapi.yml
+  capability_id: BC-1940.60
+  capability_id_l1: BC-1940
+  capability_name: Product Documentation & Datasheet Management
+  confidence: 0.72
+  evidence: GET /v1/admin/datasheets, Hyperlabs.Domain.Datasheets.Models.DatasheetsQuerySortParameter,
+    Hyperlabs.Domain.Products.Models.PublishingStatusCode
+  reason: Read-only admin listing of product datasheets with publishing status — product documentation/datasheet
+    management for an electrical components manufacturer. Only read operations, so somewhat thin.
