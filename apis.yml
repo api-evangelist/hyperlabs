@@ -35,14 +35,14 @@ created: '2026-08-01'
 modified: '2026-08-01'
 tags:
 - signal-integrity
-- test-and-measurement
-- electronic-components
-- instrumentation
+- Test and Measurement
+- Electronic Components
+- Instrumentation
 - time-domain-reflectometry
 - high-speed-digital
-- datacom
-- hardware
-- grpc
+- Datacom
+- Hardware
+- gRPC
 - Manufacturing
 tags_raw:
 - signal-integrity
@@ -74,11 +74,11 @@ apis:
     at the instrument's IP address on TCP 50052. Recorded honestly rather than substituted with a placeholder
     host.
   tags:
-  - grpc
-  - instrumentation
+  - gRPC
+  - Instrumentation
   - time-domain-reflectometry
-  - streaming
-  - test-and-measurement
+  - Streaming
+  - Test and Measurement
   tags_raw:
   - grpc
   - instrumentation
