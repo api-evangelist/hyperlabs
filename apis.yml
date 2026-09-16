@@ -1,17 +1,16 @@
 aid: hyperlabs
 name: HYPERLABS
-description: >-
-  HYPERLABS, Inc. designs and manufactures signal-integrity products for high-speed digital and datacom
-  test in the United States. Two product classes: ultra-broadband Components (amplifiers, baluns, DC
-  blocks, bias tees, pick-off tees, power dividers, attenuators, terminations, inverters) built for 112
-  and 224 Gbps PAM-4 applications, and Instruments — USB-powered and USB-controlled TDRs, Signal Path
-  Analyzers, controlled-impedance analyzers and impulse generators with 1-20 channels and rise times as
-  fast as 35 ps. Founded in 1992, with engineering and manufacturing in Louisville, Colorado and
-  Beaverton, Oregon. HYPERLABS publishes two machine-readable contracts: an OpenAPI 3.0.1 definition
-  (175 operations, served with Swagger UI) for the hyperlabs.com product-catalog and customer web
-  backend, and an MIT-licensed proto3 gRPC service definition, radium.v1.Radium, for programmatic
-  control and waveform streaming from the TDR11100 Time Domain Reflectometer. Instrument automation is
-  also offered as first-party Windows DLL packages (ZTDR and XTDR) with C++ sample source and manuals.
+description: 'HYPERLABS, Inc. designs and manufactures signal-integrity products for high-speed digital
+  and datacom test in the United States. Two product classes: ultra-broadband Components (amplifiers,
+  baluns, DC blocks, bias tees, pick-off tees, power dividers, attenuators, terminations, inverters) built
+  for 112 and 224 Gbps PAM-4 applications, and Instruments — USB-powered and USB-controlled TDRs, Signal
+  Path Analyzers, controlled-impedance analyzers and impulse generators with 1-20 channels and rise times
+  as fast as 35 ps. Founded in 1992, with engineering and manufacturing in Louisville, Colorado and Beaverton,
+  Oregon. HYPERLABS publishes two machine-readable contracts: an OpenAPI 3.0.1 definition (175 operations,
+  served with Swagger UI) for the hyperlabs.com product-catalog and customer web backend, and an MIT-licensed
+  proto3 gRPC service definition, radium.v1.Radium, for programmatic control and waveform streaming from
+  the TDR11100 Time Domain Reflectometer. Instrument automation is also offered as first-party Windows
+  DLL packages (ZTDR and XTDR) with C++ sample source and manuals.'
 deliveryModel:
   model: open-core
   license: MIT
@@ -45,7 +44,7 @@ x-type: company
 x-source: harvest:secondary-market
 specificationVersion: '0.23'
 created: '2026-08-01'
-modified: '2026-08-01'
+modified: '2026-09-16'
 tags:
 - signal-integrity
 - Test and Measurement
@@ -70,8 +69,7 @@ tags_raw:
 - manufacturing
 apis:
 - name: HYPERLABS Radium gRPC API (TDR11100)
-  description: >-
-    Public gRPC control and acquisition interface for the HYPERLABS TDR11100 Time Domain Reflectometer.
+  description: Public gRPC control and acquisition interface for the HYPERLABS TDR11100 Time Domain Reflectometer.
     The proto3 service radium.v1.Radium exposes 22 unary RPCs covering readiness and board state, reset,
     LED control, board temperature, TDR enable/preset configuration, acquisition-filter configuration,
     license management, and T0 / calibration-region offsets, plus 3 server-streaming RPCs that emit an
@@ -82,8 +80,7 @@ apis:
   humanURL: https://github.com/HYPERLABS/TDR11100
   x-transport: grpc
   x-endpoint: '{instrument-ip}:50052'
-  x-note: >-
-    No public baseURL — the Radium service runs on the customer's own TDR11100 hardware and is reached
+  x-note: No public baseURL — the Radium service runs on the customer's own TDR11100 hardware and is reached
     at the instrument's IP address on TCP 50052. Recorded honestly rather than substituted with a placeholder
     host.
   tags:
@@ -271,8 +268,7 @@ apis:
     url: data-model/hyperlabs-data-model.yml
 - aid: hyperlabs:hyperlabs-adminwebsitefeaturedproducts-api
   name: HYPERLABS Admin Website Featured Products API
-  description: >-
-    The AdminWebsiteFeaturedProducts API from HYPERLABS — 3 operation(s) for adminwebsitefeaturedproducts.
+  description: The AdminWebsiteFeaturedProducts API from HYPERLABS — 3 operation(s) for adminwebsitefeaturedproducts.
   humanURL: https://www.hyperlabs.com/api/swagger/index.html
   baseURL: https://www.hyperlabs.com/api
   tags:
@@ -292,8 +288,7 @@ apis:
     url: data-model/hyperlabs-data-model.yml
 - aid: hyperlabs:hyperlabs-adminwebsiterepresentatives-api
   name: HYPERLABS Admin Website Representatives API
-  description: >-
-    The AdminWebsiteRepresentatives API from HYPERLABS — 3 operation(s) for adminwebsiterepresentatives.
+  description: The AdminWebsiteRepresentatives API from HYPERLABS — 3 operation(s) for adminwebsiterepresentatives.
   humanURL: https://www.hyperlabs.com/api/swagger/index.html
   baseURL: https://www.hyperlabs.com/api
   tags:
@@ -313,8 +308,7 @@ apis:
     url: data-model/hyperlabs-data-model.yml
 - aid: hyperlabs:hyperlabs-adminwebsitesalesandwarranty-api
   name: HYPERLABS Admin Website Sales And Warranty API
-  description: >-
-    The AdminWebsiteSalesAndWarranty API from HYPERLABS — 1 operation(s) for adminwebsitesalesandwarranty.
+  description: The AdminWebsiteSalesAndWarranty API from HYPERLABS — 1 operation(s) for adminwebsitesalesandwarranty.
   humanURL: https://www.hyperlabs.com/api/swagger/index.html
   baseURL: https://www.hyperlabs.com/api
   tags:
@@ -354,8 +348,7 @@ apis:
     url: data-model/hyperlabs-data-model.yml
 - aid: hyperlabs:hyperlabs-adminwebsitetimelineitems-api
   name: HYPERLABS Admin Website Timeline Items API
-  description: >-
-    The AdminWebsiteTimelineItems API from HYPERLABS — 2 operation(s) for adminwebsitetimelineitems.
+  description: The AdminWebsiteTimelineItems API from HYPERLABS — 2 operation(s) for adminwebsitetimelineitems.
   humanURL: https://www.hyperlabs.com/api/swagger/index.html
   baseURL: https://www.hyperlabs.com/api
   tags:
@@ -847,8 +840,7 @@ apis:
     url: data-model/hyperlabs-data-model.yml
 - aid: hyperlabs:hyperlabs-websitefeaturedproducts-api
   name: HYPERLABS Website Featured Products API
-  description: >-
-    The WebsiteFeaturedProducts API from HYPERLABS — 1 operation(s) for websitefeaturedproducts.
+  description: The WebsiteFeaturedProducts API from HYPERLABS — 1 operation(s) for websitefeaturedproducts.
   humanURL: https://www.hyperlabs.com/api/swagger/index.html
   baseURL: https://www.hyperlabs.com/api
   tags:
@@ -868,8 +860,7 @@ apis:
     url: data-model/hyperlabs-data-model.yml
 - aid: hyperlabs:hyperlabs-websiterepresentatives-api
   name: HYPERLABS Website Representatives API
-  description: >-
-    The WebsiteRepresentatives API from HYPERLABS — 2 operation(s) for websiterepresentatives.
+  description: The WebsiteRepresentatives API from HYPERLABS — 2 operation(s) for websiterepresentatives.
   humanURL: https://www.hyperlabs.com/api/swagger/index.html
   baseURL: https://www.hyperlabs.com/api
   tags:
@@ -889,8 +880,7 @@ apis:
     url: data-model/hyperlabs-data-model.yml
 - aid: hyperlabs:hyperlabs-websitesalesandwarranty-api
   name: HYPERLABS Website Sales And Warranty API
-  description: >-
-    The WebsiteSalesAndWarranty API from HYPERLABS — 1 operation(s) for websitesalesandwarranty.
+  description: The WebsiteSalesAndWarranty API from HYPERLABS — 1 operation(s) for websitesalesandwarranty.
   humanURL: https://www.hyperlabs.com/api/swagger/index.html
   baseURL: https://www.hyperlabs.com/api
   tags:
@@ -994,7 +984,10 @@ common:
   name: HYPERLABS Business Capability Map
 - type: X-MCPServerCandidate
   url: mcp/hyperlabs-mcp.yml
-  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type surfaces with a server that does not exist.'
+  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate
+    — a tool list derived from the published API contracts, not an existing server. The scorer already
+    read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type
+    surfaces with a server that does not exist.'
 - type: IssueTracker
   url: https://github.com/HYPERLABS/TDR11100/issues
 - type: License
@@ -1049,7 +1042,7 @@ common:
 - type: Protobuf
   url: grpc/hyperlabs-radium.proto
 - type: OpenAPI
-  url: openapi/hyperlabs-web-openapi-original.json
+  url: openapi/_original/hyperlabs-web-openapi-original.json
 - type: Overlay
   url: overlays/hyperlabs-web-overlay.yaml
 - type: AsyncAPI
