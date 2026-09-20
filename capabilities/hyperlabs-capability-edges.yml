@@ -11,7 +11,7 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 4
+edge_count: 9
 edges:
 - tag: Account
   spec_file: hyperlabs-account-api-openapi.yml
@@ -44,6 +44,28 @@ edges:
     items and replacement mapping, plus attached datasheets/application notes. That is electrical product
     catalogue management; the spread across master records, specifications, documentation and phase-out
     keeps me at the L1 rather than one L2.'
+- tag: Users
+  spec_file: hyperlabs-users-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.78
+  evidence: POST /v1/admin/users/{id}/enable, POST /v1/admin/users/{id}/disable, POST /v1/admin/users/{id}/invite;
+    CreateUserDto
+  reason: 'Administrative account lifecycle for application users — create, invite, enable, disable, delete
+    — which is identity and access administration (joiners-movers-leavers). Not HR employee records: the
+    objects are application user accounts under /admin/users.'
+  recovered_from: sweep-20260829T005356Z-edges.json
+- tag: ContactMessages
+  spec_file: hyperlabs-contactmessages-api-openapi.yml
+  capability_id: BC-430.10
+  capability_id_l1: BC-430
+  capability_name: Customer Inquiry Management
+  confidence: 0.75
+  evidence: POST /v1/contact-messages, CreateContactMessageDto, ContactMessageTypeCode
+  reason: Single public endpoint that captures an inbound customer contact message of a given type — inbound
+    inquiry capture and routing.
+  recovered_from: sweep-20260829T005356Z-edges.json
 - tag: AdminDatasheets
   spec_file: hyperlabs-admindatasheets-api-openapi.yml
   capability_id: BC-1940.60
@@ -54,3 +76,34 @@ edges:
     Hyperlabs.Domain.Products.Models.PublishingStatusCode
   reason: Read-only admin listing of product datasheets with publishing status — product documentation/datasheet
     management for an electrical components manufacturer. Only read operations, so somewhat thin.
+- tag: AdminWebsiteBanner
+  spec_file: hyperlabs-adminwebsitebanner-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.7
+  evidence: GET/POST /v1/admin/website/banner, schema ChangeWebsiteBannerDto
+  reason: Manages the site-wide banner of the corporate website — web content administration, which is
+    digital marketing (web) rather than any product or technical capability.
+  recovered_from: sweep-20260829T005356Z-edges.json
+- tag: CustomerProfile
+  spec_file: hyperlabs-customer-profile-api-openapi.yml
+  capability_id: BC-420.10
+  capability_id_l1: BC-420
+  capability_name: Customer Data Management
+  confidence: 0.7
+  evidence: GET /v1/profile, PUT /v1/profile, Customer.Models.Customers.ChangeProfileDto
+  reason: Read and update of the authenticated customer's own profile record — maintenance of customer
+    master data. Narrow surface, so not higher.
+  recovered_from: sweep-20260829T005356Z-edges.json
+  reanchored_from: hyperlabs-customerprofile-api-openapi.yml
+- tag: RequestQuotes
+  spec_file: hyperlabs-requestquotes-api-openapi.yml
+  capability_id: BC-410.40
+  capability_id_l1: BC-410
+  capability_name: Quote & Configuration Management
+  confidence: 0.7
+  evidence: POST /v1/request-quote, CreateRequestQuoteDto
+  reason: Public endpoint that submits a request for quote against the product catalogue — the quoting
+    entry point of the lead-to-order motion. Single operation with no description, so not higher.
+  recovered_from: sweep-20260829T005356Z-edges.json
