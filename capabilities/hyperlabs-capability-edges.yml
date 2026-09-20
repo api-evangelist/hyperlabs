@@ -23,7 +23,8 @@ edges:
   reason: 'Customer authentication: login, registration confirmation, password reset, Google/Microsoft
     federated sign-in. This is identity and access management plumbing, not customer data mastering.'
 - tag: AdminAccount
-  spec_file: hyperlabs-adminaccount-api-openapi.yml
+  spec_file: hyperlabs-admin-account-api-openapi.yml
+  reanchored_from: hyperlabs-adminaccount-api-openapi.yml
   capability_id: BC-620.20
   capability_id_l1: BC-620
   capability_name: Identity & Access Management
