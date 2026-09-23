@@ -20,6 +20,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Get admin website featured products
+      x-summary-source: derived
+      operationId: getV1AdminWebsiteFeaturedProducts
+      x-operation-id-source: derived
     post:
       tags:
       - AdminWebsiteFeaturedProducts
@@ -43,6 +47,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Create admin website featured products
+      x-summary-source: derived
+      operationId: postV1AdminWebsiteFeaturedProducts
+      x-operation-id-source: derived
   /v1/admin/website/featured-products/{id}:
     put:
       tags:
@@ -75,6 +83,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Replace admin website featured products by id
+      x-summary-source: derived
+      operationId: putV1AdminWebsiteFeaturedProductsById
+      x-operation-id-source: derived
   /v1/admin/website/featured-products/{id}/move:
     post:
       tags:
@@ -107,19 +119,20 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Create admin website featured products by id move
+      x-summary-source: derived
+      operationId: postV1AdminWebsiteFeaturedProductsByIdMove
+      x-operation-id-source: derived
 components:
   schemas:
-    Hyperlabs.Domain.Products.Models.ProductAttributeTypeCode:
-      title: ProductAttributeTypeCode
-      enum:
-      - 1
-      - 2
-      type: integer
-      format: int32
-    Hyperlabs.Web.Areas.Admin.Models.Website.ChangeWebsiteFeaturedProductDto:
-      title: ChangeWebsiteFeaturedProductDto
+    Hyperlabs.Web.Areas.Admin.Models.Website.CreateWebsiteFeaturedProductDto:
+      title: CreateWebsiteFeaturedProductDto
       type: object
       properties:
+        productId:
+          title: Guid
+          type: string
+          format: uuid
         productAttributeTypeCode:
           $ref: '#/components/schemas/Hyperlabs.Domain.Products.Models.ProductAttributeTypeCode'
       additionalProperties: false
@@ -132,14 +145,17 @@ components:
           type: integer
           format: int32
       additionalProperties: false
-    Hyperlabs.Web.Areas.Admin.Models.Website.CreateWebsiteFeaturedProductDto:
-      title: CreateWebsiteFeaturedProductDto
+    Hyperlabs.Domain.Products.Models.ProductAttributeTypeCode:
+      title: ProductAttributeTypeCode
+      enum:
+      - 1
+      - 2
+      type: integer
+      format: int32
+    Hyperlabs.Web.Areas.Admin.Models.Website.ChangeWebsiteFeaturedProductDto:
+      title: ChangeWebsiteFeaturedProductDto
       type: object
       properties:
-        productId:
-          title: Guid
-          type: string
-          format: uuid
         productAttributeTypeCode:
           $ref: '#/components/schemas/Hyperlabs.Domain.Products.Models.ProductAttributeTypeCode'
       additionalProperties: false

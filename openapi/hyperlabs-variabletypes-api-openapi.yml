@@ -20,6 +20,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Get admin variable types
+      x-summary-source: derived
+      operationId: getV1AdminVariableTypes
+      x-operation-id-source: derived
     post:
       tags:
       - VariableTypes
@@ -43,6 +47,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Create admin variable types
+      x-summary-source: derived
+      operationId: postV1AdminVariableTypes
+      x-operation-id-source: derived
   /v1/admin/variable-types/{id}:
     put:
       tags:
@@ -75,6 +83,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Replace admin variable types by id
+      x-summary-source: derived
+      operationId: putV1AdminVariableTypesById
+      x-operation-id-source: derived
     delete:
       tags:
       - VariableTypes
@@ -95,8 +107,28 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Delete admin variable types by id
+      x-summary-source: derived
+      operationId: deleteV1AdminVariableTypesById
+      x-operation-id-source: derived
 components:
   schemas:
+    Hyperlabs.Web.Areas.Admin.Models.VariableTypes.VariableTypeValueDto:
+      title: VariableTypeValueDto
+      type: object
+      properties:
+        id:
+          title: Nullable`1
+          type:
+          - string
+          - 'null'
+          format: uuid
+        value:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
     Hyperlabs.Web.Areas.Admin.Models.VariableTypes.ChangeVariableTypeDto:
       title: ChangeVariableTypeDto
       type: object
@@ -113,22 +145,6 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.VariableTypes.VariableTypeValueDto'
-      additionalProperties: false
-    Hyperlabs.Web.Areas.Admin.Models.VariableTypes.VariableTypeValueDto:
-      title: VariableTypeValueDto
-      type: object
-      properties:
-        id:
-          title: Nullable`1
-          type:
-          - string
-          - 'null'
-          format: uuid
-        value:
-          title: String
-          type:
-          - string
-          - 'null'
       additionalProperties: false
   securitySchemes:
     oauth2:

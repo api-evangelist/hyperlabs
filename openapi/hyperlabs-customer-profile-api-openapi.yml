@@ -5,12 +5,12 @@ info:
 servers:
 - url: /api
 tags:
-- name: CustomerProfile
+- name: Customer Profile
 paths:
   /v1/profile:
     get:
       tags:
-      - CustomerProfile
+      - Customer Profile
       responses:
         '200':
           description: OK
@@ -40,9 +40,13 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Get profile
+      x-summary-source: derived
+      operationId: getV1Profile
+      x-operation-id-source: derived
     put:
       tags:
-      - CustomerProfile
+      - Customer Profile
       requestBody:
         content:
           application/json:
@@ -73,6 +77,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Replace profile
+      x-summary-source: derived
+      operationId: putV1Profile
+      x-operation-id-source: derived
 components:
   schemas:
     Microsoft.AspNetCore.Mvc.ProblemDetails:

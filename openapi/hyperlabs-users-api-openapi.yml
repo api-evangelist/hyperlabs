@@ -56,6 +56,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Get admin users
+      x-summary-source: derived
+      operationId: getV1AdminUsers
+      x-operation-id-source: derived
     post:
       tags:
       - Users
@@ -79,6 +83,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Create admin users
+      x-summary-source: derived
+      operationId: postV1AdminUsers
+      x-operation-id-source: derived
   /v1/admin/users/{id}:
     get:
       tags:
@@ -100,6 +108,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Get admin users by id
+      x-summary-source: derived
+      operationId: getV1AdminUsersById
+      x-operation-id-source: derived
     put:
       tags:
       - Users
@@ -131,6 +143,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Replace admin users by id
+      x-summary-source: derived
+      operationId: putV1AdminUsersById
+      x-operation-id-source: derived
     delete:
       tags:
       - Users
@@ -151,6 +167,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Delete admin users by id
+      x-summary-source: derived
+      operationId: deleteV1AdminUsersById
+      x-operation-id-source: derived
   /v1/admin/users/{id}/enable:
     post:
       tags:
@@ -172,6 +192,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Create admin users by id enable
+      x-summary-source: derived
+      operationId: postV1AdminUsersByIdEnable
+      x-operation-id-source: derived
   /v1/admin/users/{id}/disable:
     post:
       tags:
@@ -193,6 +217,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Create admin users by id disable
+      x-summary-source: derived
+      operationId: postV1AdminUsersByIdDisable
+      x-operation-id-source: derived
   /v1/admin/users/{id}/invite:
     post:
       tags:
@@ -214,10 +242,43 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Create admin users by id invite
+      x-summary-source: derived
+      operationId: postV1AdminUsersByIdInvite
+      x-operation-id-source: derived
 components:
   schemas:
     Hyperlabs.Web.Areas.Admin.Models.Users.ChangeUserDto:
       title: ChangeUserDto
+      type: object
+      properties:
+        roleId:
+          title: Guid
+          type: string
+          format: uuid
+        userName:
+          title: String
+          type:
+          - string
+          - 'null'
+        firstName:
+          title: String
+          type:
+          - string
+          - 'null'
+        lastName:
+          title: String
+          type:
+          - string
+          - 'null'
+        title:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Admin.Models.Users.CreateUserDto:
+      title: CreateUserDto
       type: object
       properties:
         roleId:
@@ -252,35 +313,6 @@ components:
       - 2
       type: integer
       format: int32
-    Hyperlabs.Web.Areas.Admin.Models.Users.CreateUserDto:
-      title: CreateUserDto
-      type: object
-      properties:
-        roleId:
-          title: Guid
-          type: string
-          format: uuid
-        userName:
-          title: String
-          type:
-          - string
-          - 'null'
-        firstName:
-          title: String
-          type:
-          - string
-          - 'null'
-        lastName:
-          title: String
-          type:
-          - string
-          - 'null'
-        title:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
   securitySchemes:
     oauth2:
       type: apiKey

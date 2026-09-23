@@ -14,6 +14,10 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Get website featured products
+      x-summary-source: derived
+      operationId: getV1WebsiteFeaturedProducts
+      x-operation-id-source: derived
 components:
   securitySchemes:
     oauth2:

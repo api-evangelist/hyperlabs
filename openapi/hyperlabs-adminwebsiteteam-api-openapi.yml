@@ -20,6 +20,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Get admin website team members
+      x-summary-source: derived
+      operationId: getV1AdminWebsiteTeamMembers
+      x-operation-id-source: derived
     post:
       tags:
       - AdminWebsiteTeam
@@ -43,6 +47,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Create admin website team members
+      x-summary-source: derived
+      operationId: postV1AdminWebsiteTeamMembers
+      x-operation-id-source: derived
   /v1/admin/website/team-members/{id}:
     get:
       tags:
@@ -64,6 +72,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Get admin website team members by id
+      x-summary-source: derived
+      operationId: getV1AdminWebsiteTeamMembersById
+      x-operation-id-source: derived
     put:
       tags:
       - AdminWebsiteTeam
@@ -95,6 +107,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Replace admin website team members by id
+      x-summary-source: derived
+      operationId: putV1AdminWebsiteTeamMembersById
+      x-operation-id-source: derived
     delete:
       tags:
       - AdminWebsiteTeam
@@ -115,6 +131,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Delete admin website team members by id
+      x-summary-source: derived
+      operationId: deleteV1AdminWebsiteTeamMembersById
+      x-operation-id-source: derived
   /v1/admin/website/team-members/{id}/move:
     post:
       tags:
@@ -147,6 +167,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Create admin website team members by id move
+      x-summary-source: derived
+      operationId: postV1AdminWebsiteTeamMembersByIdMove
+      x-operation-id-source: derived
 components:
   schemas:
     Hyperlabs.Web.Areas.Admin.Models.Website.ChangeWebsiteTeamMemberDto:

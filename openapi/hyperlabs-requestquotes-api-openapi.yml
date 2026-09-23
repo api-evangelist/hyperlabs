@@ -25,6 +25,10 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Create request quote
+      x-summary-source: derived
+      operationId: postV1RequestQuote
+      x-operation-id-source: derived
 components:
   schemas:
     Hyperlabs.Web.Areas.Customer.Models.RequestQuotes.CreateRequestQuoteDto:

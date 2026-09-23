@@ -20,6 +20,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Get admin website faqs
+      x-summary-source: derived
+      operationId: getV1AdminWebsiteFaqs
+      x-operation-id-source: derived
     post:
       tags:
       - AdminWebsiteFaq
@@ -43,6 +47,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Create admin website faqs
+      x-summary-source: derived
+      operationId: postV1AdminWebsiteFaqs
+      x-operation-id-source: derived
   /v1/admin/website/faqs/{id}:
     get:
       tags:
@@ -64,6 +72,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Get admin website faqs by id
+      x-summary-source: derived
+      operationId: getV1AdminWebsiteFaqsById
+      x-operation-id-source: derived
     put:
       tags:
       - AdminWebsiteFaq
@@ -95,6 +107,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Replace admin website faqs by id
+      x-summary-source: derived
+      operationId: putV1AdminWebsiteFaqsById
+      x-operation-id-source: derived
     delete:
       tags:
       - AdminWebsiteFaq
@@ -115,6 +131,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Delete admin website faqs by id
+      x-summary-source: derived
+      operationId: deleteV1AdminWebsiteFaqsById
+      x-operation-id-source: derived
   /v1/admin/website/faqs/{id}/move:
     post:
       tags:
@@ -147,6 +167,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Create admin website faqs by id move
+      x-summary-source: derived
+      operationId: postV1AdminWebsiteFaqsByIdMove
+      x-operation-id-source: derived
 components:
   schemas:
     Hyperlabs.Web.Areas.Admin.Models.Shared.MoveDto:

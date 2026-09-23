@@ -5,12 +5,12 @@ info:
 servers:
 - url: /api
 tags:
-- name: MediaFiles
+- name: Media Files
 paths:
   /v1/media-files/{fileName}:
     get:
       tags:
-      - MediaFiles
+      - Media Files
       parameters:
       - name: fileName
         in: path
@@ -21,10 +21,14 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Get media files by file name
+      x-summary-source: derived
+      operationId: getV1MediaFilesByFileName
+      x-operation-id-source: derived
   /v1/admin/media-files:
     get:
       tags:
-      - MediaFiles
+      - Media Files
       parameters:
       - name: CategoryIds
         in: query
@@ -89,9 +93,13 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Get admin media files
+      x-summary-source: derived
+      operationId: getV1AdminMediaFiles
+      x-operation-id-source: derived
     post:
       tags:
-      - MediaFiles
+      - Media Files
       requestBody:
         content:
           application/json:
@@ -112,10 +120,14 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Create admin media files
+      x-summary-source: derived
+      operationId: postV1AdminMediaFiles
+      x-operation-id-source: derived
   /v1/admin/media-files/{id}:
     get:
       tags:
-      - MediaFiles
+      - Media Files
       parameters:
       - name: id
         in: path
@@ -133,9 +145,13 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Get admin media files by id
+      x-summary-source: derived
+      operationId: getV1AdminMediaFilesById
+      x-operation-id-source: derived
     put:
       tags:
-      - MediaFiles
+      - Media Files
       parameters:
       - name: id
         in: path
@@ -164,9 +180,13 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Replace admin media files by id
+      x-summary-source: derived
+      operationId: putV1AdminMediaFilesById
+      x-operation-id-source: derived
     delete:
       tags:
-      - MediaFiles
+      - Media Files
       parameters:
       - name: id
         in: path
@@ -184,10 +204,14 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Delete admin media files by id
+      x-summary-source: derived
+      operationId: deleteV1AdminMediaFilesById
+      x-operation-id-source: derived
   /v1/admin/media-files/{id}/content:
     post:
       tags:
-      - MediaFiles
+      - Media Files
       parameters:
       - name: id
         in: path
@@ -216,10 +240,14 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Create admin media files by id content
+      x-summary-source: derived
+      operationId: postV1AdminMediaFilesByIdContent
+      x-operation-id-source: derived
   /v1/admin/media-files/{id}/upload:
     post:
       tags:
-      - MediaFiles
+      - Media Files
       parameters:
       - name: id
         in: path
@@ -250,10 +278,14 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Create admin media files by id upload
+      x-summary-source: derived
+      operationId: postV1AdminMediaFilesByIdUpload
+      x-operation-id-source: derived
   /v1/admin/media-files/{id}/upload/chunk:
     post:
       tags:
-      - MediaFiles
+      - Media Files
       parameters:
       - name: id
         in: path
@@ -295,10 +327,14 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Create admin media files by id upload chunk
+      x-summary-source: derived
+      operationId: postV1AdminMediaFilesByIdUploadChunk
+      x-operation-id-source: derived
   /v1/admin/media-files/{id}/upload/complete:
     post:
       tags:
-      - MediaFiles
+      - Media Files
       parameters:
       - name: id
         in: path
@@ -327,8 +363,41 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Create admin media files by id upload complete
+      x-summary-source: derived
+      operationId: postV1AdminMediaFilesByIdUploadComplete
+      x-operation-id-source: derived
 components:
   schemas:
+    Hyperlabs.Domain.MediaFiles.Models.MediaFilesQuerySortParameter:
+      title: MediaFilesQuerySortParameter
+      enum:
+      - 1
+      type: integer
+      format: int32
+    Hyperlabs.Web.Areas.Admin.Models.MediaFiles.ChangeMediaFileDto:
+      title: ChangeMediaFileDto
+      type: object
+      properties:
+        name:
+          title: String
+          type:
+          - string
+          - 'null'
+        description:
+          title: String
+          type:
+          - string
+          - 'null'
+        fileType:
+          $ref: '#/components/schemas/Hyperlabs.Domain.MediaFiles.Models.FileTypeCode'
+        categoryId:
+          title: Nullable`1
+          type:
+          - string
+          - 'null'
+          format: uuid
+      additionalProperties: false
     Hyperlabs.Domain.MediaFiles.Models.FileTypeCode:
       title: FileTypeCode
       enum:
@@ -339,6 +408,25 @@ components:
       - 5
       type: integer
       format: int32
+    Hyperlabs.Web.Areas.Admin.Models.MediaFiles.CompleteChunkedUploadDto:
+      title: CompleteChunkedUploadDto
+      type: object
+      properties:
+        fileName:
+          title: String
+          type:
+          - string
+          - 'null'
+        contentType:
+          title: String
+          type:
+          - string
+          - 'null'
+        totalChunks:
+          title: Int32
+          type: integer
+          format: int32
+      additionalProperties: false
     Hyperlabs.Web.Areas.Admin.Models.MediaFiles.CreateMediaFileDto:
       title: CreateMediaFileDto
       type: object
@@ -379,54 +467,6 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    Hyperlabs.Web.Areas.Admin.Models.MediaFiles.ChangeMediaFileDto:
-      title: ChangeMediaFileDto
-      type: object
-      properties:
-        name:
-          title: String
-          type:
-          - string
-          - 'null'
-        description:
-          title: String
-          type:
-          - string
-          - 'null'
-        fileType:
-          $ref: '#/components/schemas/Hyperlabs.Domain.MediaFiles.Models.FileTypeCode'
-        categoryId:
-          title: Nullable`1
-          type:
-          - string
-          - 'null'
-          format: uuid
-      additionalProperties: false
-    Hyperlabs.Web.Areas.Admin.Models.MediaFiles.CompleteChunkedUploadDto:
-      title: CompleteChunkedUploadDto
-      type: object
-      properties:
-        fileName:
-          title: String
-          type:
-          - string
-          - 'null'
-        contentType:
-          title: String
-          type:
-          - string
-          - 'null'
-        totalChunks:
-          title: Int32
-          type: integer
-          format: int32
-      additionalProperties: false
-    Hyperlabs.Domain.MediaFiles.Models.MediaFilesQuerySortParameter:
-      title: MediaFilesQuerySortParameter
-      enum:
-      - 1
-      type: integer
-      format: int32
   securitySchemes:
     oauth2:
       type: apiKey

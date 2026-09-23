@@ -25,6 +25,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Get admin website representatives
+      x-summary-source: derived
+      operationId: getV1AdminWebsiteRepresentatives
+      x-operation-id-source: derived
     post:
       tags:
       - AdminWebsiteRepresentatives
@@ -48,6 +52,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Create admin website representatives
+      x-summary-source: derived
+      operationId: postV1AdminWebsiteRepresentatives
+      x-operation-id-source: derived
   /v1/admin/website/representatives/{id}:
     get:
       tags:
@@ -69,6 +77,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Get admin website representatives by id
+      x-summary-source: derived
+      operationId: getV1AdminWebsiteRepresentativesById
+      x-operation-id-source: derived
     put:
       tags:
       - AdminWebsiteRepresentatives
@@ -100,6 +112,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Replace admin website representatives by id
+      x-summary-source: derived
+      operationId: putV1AdminWebsiteRepresentativesById
+      x-operation-id-source: derived
     delete:
       tags:
       - AdminWebsiteRepresentatives
@@ -120,6 +136,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Delete admin website representatives by id
+      x-summary-source: derived
+      operationId: deleteV1AdminWebsiteRepresentativesById
+      x-operation-id-source: derived
   /v1/admin/website/representatives/{id}/move:
     post:
       tags:
@@ -152,8 +172,19 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Create admin website representatives by id move
+      x-summary-source: derived
+      operationId: postV1AdminWebsiteRepresentativesByIdMove
+      x-operation-id-source: derived
 components:
   schemas:
+    Hyperlabs.Domain.Website.Representatives.Models.WebsiteRepresentativeTypeCode:
+      title: WebsiteRepresentativeTypeCode
+      enum:
+      - 1
+      - 2
+      type: integer
+      format: int32
     Hyperlabs.Web.Areas.Admin.Models.Website.ChangeWebsiteRepresentativeDto:
       title: ChangeWebsiteRepresentativeDto
       type: object
@@ -223,13 +254,6 @@ components:
           type: integer
           format: int32
       additionalProperties: false
-    Hyperlabs.Domain.Website.Representatives.Models.WebsiteRepresentativeTypeCode:
-      title: WebsiteRepresentativeTypeCode
-      enum:
-      - 1
-      - 2
-      type: integer
-      format: int32
     Hyperlabs.Web.Areas.Admin.Models.Website.CreateWebsiteRepresentativeDto:
       title: CreateWebsiteRepresentativeDto
       type: object

@@ -5,12 +5,12 @@ info:
 servers:
 - url: /api
 tags:
-- name: AdminAccount
+- name: Admin Account
 paths:
   /v1/admin/account/login:
     post:
       tags:
-      - AdminAccount
+      - Admin Account
       requestBody:
         content:
           application/json:
@@ -35,10 +35,14 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/Hyperlabs.Web.Models.Accounts.LoginResultDto'
+      summary: Create admin account login
+      x-summary-source: derived
+      operationId: postV1AdminAccountLogin
+      x-operation-id-source: derived
   /v1/admin/account/forgot-password:
     post:
       tags:
-      - AdminAccount
+      - Admin Account
       requestBody:
         content:
           application/json:
@@ -53,10 +57,14 @@ paths:
       responses:
         '204':
           description: No Content
+      summary: Create admin account forgot password
+      x-summary-source: derived
+      operationId: postV1AdminAccountForgotPassword
+      x-operation-id-source: derived
   /v1/admin/account/reset-password:
     post:
       tags:
-      - AdminAccount
+      - Admin Account
       requestBody:
         content:
           application/json:
@@ -71,10 +79,14 @@ paths:
       responses:
         '204':
           description: No Content
+      summary: Create admin account reset password
+      x-summary-source: derived
+      operationId: postV1AdminAccountResetPassword
+      x-operation-id-source: derived
   /v1/admin/account/validate-invite:
     post:
       tags:
-      - AdminAccount
+      - Admin Account
       requestBody:
         content:
           application/json:
@@ -89,10 +101,14 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Create admin account validate invite
+      x-summary-source: derived
+      operationId: postV1AdminAccountValidateInvite
+      x-operation-id-source: derived
   /v1/admin/account/confirm-invite:
     post:
       tags:
-      - AdminAccount
+      - Admin Account
       requestBody:
         content:
           application/json:
@@ -107,23 +123,12 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Create admin account confirm invite
+      x-summary-source: derived
+      operationId: postV1AdminAccountConfirmInvite
+      x-operation-id-source: derived
 components:
   schemas:
-    Hyperlabs.Web.Models.Accounts.ValidateInviteDto:
-      title: ValidateInviteDto
-      type: object
-      properties:
-        userName:
-          title: String
-          type:
-          - string
-          - 'null'
-        token:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
     Hyperlabs.Web.Models.Accounts.ResetPasswordDto:
       title: ResetPasswordDto
       type: object
@@ -139,21 +144,6 @@ components:
           - string
           - 'null'
         token:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    Hyperlabs.Web.Models.Accounts.LoginResultDto:
-      title: LoginResultDto
-      type: object
-      properties:
-        tokenType:
-          title: String
-          type:
-          - string
-          - 'null'
-        accessToken:
           title: String
           type:
           - string
@@ -179,6 +169,21 @@ components:
           - string
           - 'null'
       additionalProperties: false
+    Hyperlabs.Web.Models.Accounts.LoginResultDto:
+      title: LoginResultDto
+      type: object
+      properties:
+        tokenType:
+          title: String
+          type:
+          - string
+          - 'null'
+        accessToken:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
     Hyperlabs.Web.Models.Accounts.LoginDto:
       title: LoginDto
       type: object
@@ -189,6 +194,21 @@ components:
           - string
           - 'null'
         password:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Hyperlabs.Web.Models.Accounts.ValidateInviteDto:
+      title: ValidateInviteDto
+      type: object
+      properties:
+        userName:
+          title: String
+          type:
+          - string
+          - 'null'
+        token:
           title: String
           type:
           - string

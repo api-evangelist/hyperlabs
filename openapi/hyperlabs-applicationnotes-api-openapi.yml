@@ -14,6 +14,10 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Get application notes
+      x-summary-source: derived
+      operationId: getV1ApplicationNotes
+      x-operation-id-source: derived
   /v1/application-notes/{id}:
     get:
       tags:
@@ -29,6 +33,10 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Get application notes by id
+      x-summary-source: derived
+      operationId: getV1ApplicationNotesById
+      x-operation-id-source: derived
   /v1/application-notes/{name}:
     get:
       tags:
@@ -43,6 +51,10 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Get application notes by name
+      x-summary-source: derived
+      operationId: getV1ApplicationNotesByName
+      x-operation-id-source: derived
   /v1/admin/application-notes:
     get:
       tags:
@@ -56,6 +68,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Get admin application notes
+      x-summary-source: derived
+      operationId: getV1AdminApplicationNotes
+      x-operation-id-source: derived
     post:
       tags:
       - ApplicationNotes
@@ -79,6 +95,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Create admin application notes
+      x-summary-source: derived
+      operationId: postV1AdminApplicationNotes
+      x-operation-id-source: derived
   /v1/admin/application-notes/{id}:
     put:
       tags:
@@ -111,6 +131,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Replace admin application notes by id
+      x-summary-source: derived
+      operationId: putV1AdminApplicationNotesById
+      x-operation-id-source: derived
     delete:
       tags:
       - ApplicationNotes
@@ -131,6 +155,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Delete admin application notes by id
+      x-summary-source: derived
+      operationId: deleteV1AdminApplicationNotesById
+      x-operation-id-source: derived
   /v1/admin/application-notes/{id}/move:
     post:
       tags:
@@ -163,6 +191,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Create admin application notes by id move
+      x-summary-source: derived
+      operationId: postV1AdminApplicationNotesByIdMove
+      x-operation-id-source: derived
 components:
   schemas:
     Hyperlabs.Web.Areas.Admin.Models.ApplicationNotes.ChangeApplicationNoteDto:
@@ -220,15 +252,14 @@ components:
           items:
             $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Shared.ChangeLinkedProductDto'
       additionalProperties: false
-    Hyperlabs.Web.Areas.Admin.Models.Shared.MoveDto:
-      title: MoveDto
-      type: object
-      properties:
-        delta:
-          title: Int32
-          type: integer
-          format: int32
-      additionalProperties: false
+    Hyperlabs.Domain.Products.Models.PublishingStatusCode:
+      title: PublishingStatusCode
+      enum:
+      - 1
+      - 2
+      - 3
+      type: integer
+      format: int32
     Hyperlabs.Web.Areas.Admin.Models.Shared.ChangeLinkedProductDto:
       title: ChangeLinkedProductDto
       type: object
@@ -238,14 +269,15 @@ components:
           type: string
           format: uuid
       additionalProperties: false
-    Hyperlabs.Domain.Products.Models.PublishingStatusCode:
-      title: PublishingStatusCode
-      enum:
-      - 1
-      - 2
-      - 3
-      type: integer
-      format: int32
+    Hyperlabs.Web.Areas.Admin.Models.Shared.MoveDto:
+      title: MoveDto
+      type: object
+      properties:
+        delta:
+          title: Int32
+          type: integer
+          format: int32
+      additionalProperties: false
   securitySchemes:
     oauth2:
       type: apiKey

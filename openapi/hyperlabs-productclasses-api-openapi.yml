@@ -14,6 +14,10 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Get product classes
+      x-summary-source: derived
+      operationId: getV1ProductClasses
+      x-operation-id-source: derived
   /v1/product-classes/{id}:
     get:
       tags:
@@ -29,6 +33,10 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Get product classes by id
+      x-summary-source: derived
+      operationId: getV1ProductClassesById
+      x-operation-id-source: derived
   /v1/admin/product-classes:
     get:
       tags:
@@ -42,6 +50,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Get admin product classes
+      x-summary-source: derived
+      operationId: getV1AdminProductClasses
+      x-operation-id-source: derived
     post:
       tags:
       - ProductClasses
@@ -65,6 +77,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Create admin product classes
+      x-summary-source: derived
+      operationId: postV1AdminProductClasses
+      x-operation-id-source: derived
   /v1/admin/product-classes/{id}:
     put:
       tags:
@@ -97,6 +113,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Replace admin product classes by id
+      x-summary-source: derived
+      operationId: putV1AdminProductClassesById
+      x-operation-id-source: derived
     delete:
       tags:
       - ProductClasses
@@ -117,6 +137,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Delete admin product classes by id
+      x-summary-source: derived
+      operationId: deleteV1AdminProductClassesById
+      x-operation-id-source: derived
   /v1/admin/product-classes/{id}/move:
     post:
       tags:
@@ -149,17 +173,20 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Create admin product classes by id move
+      x-summary-source: derived
+      operationId: postV1AdminProductClassesByIdMove
+      x-operation-id-source: derived
 components:
   schemas:
-    Hyperlabs.Web.Areas.Admin.Models.Shared.MoveDto:
-      title: MoveDto
-      type: object
-      properties:
-        delta:
-          title: Int32
-          type: integer
-          format: int32
-      additionalProperties: false
+    Hyperlabs.Domain.Products.Models.PublishingStatusCode:
+      title: PublishingStatusCode
+      enum:
+      - 1
+      - 2
+      - 3
+      type: integer
+      format: int32
     Hyperlabs.Web.Areas.Admin.Models.ProductClasses.ChangeProductClassDto:
       title: ChangeProductClassDto
       type: object
@@ -187,14 +214,15 @@ components:
         publishingStatusCode:
           $ref: '#/components/schemas/Hyperlabs.Domain.Products.Models.PublishingStatusCode'
       additionalProperties: false
-    Hyperlabs.Domain.Products.Models.PublishingStatusCode:
-      title: PublishingStatusCode
-      enum:
-      - 1
-      - 2
-      - 3
-      type: integer
-      format: int32
+    Hyperlabs.Web.Areas.Admin.Models.Shared.MoveDto:
+      title: MoveDto
+      type: object
+      properties:
+        delta:
+          title: Int32
+          type: integer
+          format: int32
+      additionalProperties: false
   securitySchemes:
     oauth2:
       type: apiKey

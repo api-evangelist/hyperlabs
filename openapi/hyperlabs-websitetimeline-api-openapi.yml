@@ -14,6 +14,10 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Get website timeline
+      x-summary-source: derived
+      operationId: getV1WebsiteTimeline
+      x-operation-id-source: derived
 components:
   securitySchemes:
     oauth2:

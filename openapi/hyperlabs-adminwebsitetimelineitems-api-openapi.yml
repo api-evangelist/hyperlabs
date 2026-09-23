@@ -20,6 +20,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Get admin website timeline
+      x-summary-source: derived
+      operationId: getV1AdminWebsiteTimeline
+      x-operation-id-source: derived
     post:
       tags:
       - AdminWebsiteTimelineItems
@@ -43,6 +47,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Create admin website timeline
+      x-summary-source: derived
+      operationId: postV1AdminWebsiteTimeline
+      x-operation-id-source: derived
   /v1/admin/website/timeline/{id}:
     get:
       tags:
@@ -64,6 +72,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Get admin website timeline by id
+      x-summary-source: derived
+      operationId: getV1AdminWebsiteTimelineById
+      x-operation-id-source: derived
     put:
       tags:
       - AdminWebsiteTimelineItems
@@ -95,6 +107,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Replace admin website timeline by id
+      x-summary-source: derived
+      operationId: putV1AdminWebsiteTimelineById
+      x-operation-id-source: derived
     delete:
       tags:
       - AdminWebsiteTimelineItems
@@ -115,6 +131,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Delete admin website timeline by id
+      x-summary-source: derived
+      operationId: deleteV1AdminWebsiteTimelineById
+      x-operation-id-source: derived
 components:
   schemas:
     Hyperlabs.Web.Areas.Admin.Models.Website.ChangeWebsiteTimelineItemDto:

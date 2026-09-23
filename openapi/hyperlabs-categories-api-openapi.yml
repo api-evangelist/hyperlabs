@@ -35,6 +35,10 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Get categories
+      x-summary-source: derived
+      operationId: getV1Categories
+      x-operation-id-source: derived
   /v1/categories/{id}:
     get:
       tags:
@@ -50,6 +54,10 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Get categories by id
+      x-summary-source: derived
+      operationId: getV1CategoriesById
+      x-operation-id-source: derived
   /v1/admin/categories:
     get:
       tags:
@@ -63,6 +71,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Get admin categories
+      x-summary-source: derived
+      operationId: getV1AdminCategories
+      x-operation-id-source: derived
     post:
       tags:
       - Categories
@@ -86,6 +98,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Create admin categories
+      x-summary-source: derived
+      operationId: postV1AdminCategories
+      x-operation-id-source: derived
   /v1/admin/categories/{id}:
     get:
       tags:
@@ -107,6 +123,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Get admin categories by id
+      x-summary-source: derived
+      operationId: getV1AdminCategoriesById
+      x-operation-id-source: derived
     put:
       tags:
       - Categories
@@ -138,6 +158,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Replace admin categories by id
+      x-summary-source: derived
+      operationId: putV1AdminCategoriesById
+      x-operation-id-source: derived
     delete:
       tags:
       - Categories
@@ -158,6 +182,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Delete admin categories by id
+      x-summary-source: derived
+      operationId: deleteV1AdminCategoriesById
+      x-operation-id-source: derived
   /v1/admin/categories/{id}/move:
     post:
       tags:
@@ -190,16 +218,27 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Create admin categories by id move
+      x-summary-source: derived
+      operationId: postV1AdminCategoriesByIdMove
+      x-operation-id-source: derived
 components:
   schemas:
-    Hyperlabs.Web.Areas.Admin.Models.Categories.ChangeCategorySpecificationTypeDto:
-      title: ChangeCategorySpecificationTypeDto
+    Hyperlabs.Web.Areas.Admin.Models.Categories.ChangeCategoryVariableTypeDto:
+      title: ChangeCategoryVariableTypeDto
       type: object
       properties:
-        specificationTypeId:
+        variableTypeId:
           title: Guid
           type: string
           format: uuid
+        values:
+          title: ChangeCategoryVariableTypeValueDto[]
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Categories.ChangeCategoryVariableTypeValueDto'
       additionalProperties: false
     Hyperlabs.Web.Areas.Admin.Models.Categories.ChangeCategoryDto:
       title: ChangeCategoryDto
@@ -270,22 +309,23 @@ components:
             type: string
             format: uuid
       additionalProperties: false
-    Hyperlabs.Domain.Products.Models.PublishingStatusCode:
-      title: PublishingStatusCode
-      enum:
-      - 1
-      - 2
-      - 3
-      type: integer
-      format: int32
-    Hyperlabs.Web.Areas.Admin.Models.Categories.ChangeCategoryTagTypeDto:
-      title: ChangeCategoryTagTypeDto
+    Hyperlabs.Web.Areas.Admin.Models.Categories.ChangeCategoryVariableTypeValueDto:
+      title: ChangeCategoryVariableTypeValueDto
       type: object
       properties:
-        tagTypeId:
+        valueId:
           title: Guid
           type: string
           format: uuid
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Admin.Models.Shared.MoveDto:
+      title: MoveDto
+      type: object
+      properties:
+        delta:
+          title: Int32
+          type: integer
+          format: int32
       additionalProperties: false
     Hyperlabs.Web.Areas.Admin.Models.Shared.ChangeAttachedMediaFileDto:
       title: ChangeAttachedMediaFileDto
@@ -300,39 +340,31 @@ components:
           type: integer
           format: int32
       additionalProperties: false
-    Hyperlabs.Web.Areas.Admin.Models.Shared.MoveDto:
-      title: MoveDto
+    Hyperlabs.Web.Areas.Admin.Models.Categories.ChangeCategoryTagTypeDto:
+      title: ChangeCategoryTagTypeDto
       type: object
       properties:
-        delta:
-          title: Int32
-          type: integer
-          format: int32
-      additionalProperties: false
-    Hyperlabs.Web.Areas.Admin.Models.Categories.ChangeCategoryVariableTypeValueDto:
-      title: ChangeCategoryVariableTypeValueDto
-      type: object
-      properties:
-        valueId:
+        tagTypeId:
           title: Guid
           type: string
           format: uuid
       additionalProperties: false
-    Hyperlabs.Web.Areas.Admin.Models.Categories.ChangeCategoryVariableTypeDto:
-      title: ChangeCategoryVariableTypeDto
+    Hyperlabs.Domain.Products.Models.PublishingStatusCode:
+      title: PublishingStatusCode
+      enum:
+      - 1
+      - 2
+      - 3
+      type: integer
+      format: int32
+    Hyperlabs.Web.Areas.Admin.Models.Categories.ChangeCategorySpecificationTypeDto:
+      title: ChangeCategorySpecificationTypeDto
       type: object
       properties:
-        variableTypeId:
+        specificationTypeId:
           title: Guid
           type: string
           format: uuid
-        values:
-          title: ChangeCategoryVariableTypeValueDto[]
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Categories.ChangeCategoryVariableTypeValueDto'
       additionalProperties: false
   securitySchemes:
     oauth2:

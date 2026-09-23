@@ -14,6 +14,10 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Get software
+      x-summary-source: derived
+      operationId: getV1Software
+      x-operation-id-source: derived
   /v1/software/{id}:
     get:
       tags:
@@ -29,6 +33,10 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Get software by id
+      x-summary-source: derived
+      operationId: getV1SoftwareById
+      x-operation-id-source: derived
   /v1/software/{name}:
     get:
       tags:
@@ -43,6 +51,10 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Get software by name
+      x-summary-source: derived
+      operationId: getV1SoftwareByName
+      x-operation-id-source: derived
 components:
   securitySchemes:
     oauth2:

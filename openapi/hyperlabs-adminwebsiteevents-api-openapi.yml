@@ -20,6 +20,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Get admin website events
+      x-summary-source: derived
+      operationId: getV1AdminWebsiteEvents
+      x-operation-id-source: derived
     post:
       tags:
       - AdminWebsiteEvents
@@ -43,6 +47,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Create admin website events
+      x-summary-source: derived
+      operationId: postV1AdminWebsiteEvents
+      x-operation-id-source: derived
   /v1/admin/website/events/{id}:
     get:
       tags:
@@ -64,6 +72,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Get admin website events by id
+      x-summary-source: derived
+      operationId: getV1AdminWebsiteEventsById
+      x-operation-id-source: derived
     put:
       tags:
       - AdminWebsiteEvents
@@ -95,6 +107,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Replace admin website events by id
+      x-summary-source: derived
+      operationId: putV1AdminWebsiteEventsById
+      x-operation-id-source: derived
     delete:
       tags:
       - AdminWebsiteEvents
@@ -115,6 +131,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Delete admin website events by id
+      x-summary-source: derived
+      operationId: deleteV1AdminWebsiteEventsById
+      x-operation-id-source: derived
 components:
   schemas:
     Hyperlabs.Web.Areas.Admin.Models.Website.ChangeWebsiteEventDto:

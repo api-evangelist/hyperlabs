@@ -14,6 +14,10 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Get website sales and warranty
+      x-summary-source: derived
+      operationId: getV1WebsiteSalesAndWarranty
+      x-operation-id-source: derived
 components:
   securitySchemes:
     oauth2:

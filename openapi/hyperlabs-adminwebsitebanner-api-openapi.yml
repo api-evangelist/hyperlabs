@@ -20,6 +20,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Get admin website banner
+      x-summary-source: derived
+      operationId: getV1AdminWebsiteBanner
+      x-operation-id-source: derived
     post:
       tags:
       - AdminWebsiteBanner
@@ -43,6 +47,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Create admin website banner
+      x-summary-source: derived
+      operationId: postV1AdminWebsiteBanner
+      x-operation-id-source: derived
 components:
   schemas:
     Hyperlabs.Web.Areas.Admin.Models.Website.ChangeWebsiteBannerDto:

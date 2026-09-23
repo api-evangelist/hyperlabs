@@ -20,6 +20,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Get admin website sales and warranty
+      x-summary-source: derived
+      operationId: getV1AdminWebsiteSalesAndWarranty
+      x-operation-id-source: derived
     post:
       tags:
       - AdminWebsiteSalesAndWarranty
@@ -43,21 +47,12 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Create admin website sales and warranty
+      x-summary-source: derived
+      operationId: postV1AdminWebsiteSalesAndWarranty
+      x-operation-id-source: derived
 components:
   schemas:
-    Hyperlabs.Web.Areas.Admin.Models.Shared.ChangeAttachedMediaFileDto:
-      title: ChangeAttachedMediaFileDto
-      type: object
-      properties:
-        mediaFileId:
-          title: Guid
-          type: string
-          format: uuid
-        order:
-          title: Int32
-          type: integer
-          format: int32
-      additionalProperties: false
     Hyperlabs.Web.Areas.Admin.Models.Website.ChangeWebsiteSalesAndWarrantyDto:
       title: ChangeWebsiteSalesAndWarrantyDto
       type: object
@@ -78,6 +73,19 @@ components:
           - 'null'
         document:
           $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Shared.ChangeAttachedMediaFileDto'
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Admin.Models.Shared.ChangeAttachedMediaFileDto:
+      title: ChangeAttachedMediaFileDto
+      type: object
+      properties:
+        mediaFileId:
+          title: Guid
+          type: string
+          format: uuid
+        order:
+          title: Int32
+          type: integer
+          format: int32
       additionalProperties: false
   securitySchemes:
     oauth2:

@@ -33,6 +33,10 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Website.WebsiteRepresentativeDto'
+      summary: Get website representatives us
+      x-summary-source: derived
+      operationId: getV1WebsiteRepresentativesUs
+      x-operation-id-source: derived
   /v1/website/representatives/international:
     get:
       tags:
@@ -59,6 +63,10 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Website.WebsiteRepresentativeDto'
+      summary: Get website representatives international
+      x-summary-source: derived
+      operationId: getV1WebsiteRepresentativesInternational
+      x-operation-id-source: derived
 components:
   schemas:
     Hyperlabs.Web.Areas.Customer.Models.Website.WebsiteRepresentativeDto:

@@ -5,12 +5,12 @@ info:
 servers:
 - url: /api
 tags:
-- name: ProductUnits
+- name: Product Units
 paths:
   /v1/admin/products/{productId}/units:
     get:
       tags:
-      - ProductUnits
+      - Product Units
       parameters:
       - name: productId
         in: path
@@ -28,9 +28,13 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Get admin products by product id units
+      x-summary-source: derived
+      operationId: getV1AdminProductsByProductIdUnits
+      x-operation-id-source: derived
     post:
       tags:
-      - ProductUnits
+      - Product Units
       parameters:
       - name: productId
         in: path
@@ -59,10 +63,14 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Create admin products by product id units
+      x-summary-source: derived
+      operationId: postV1AdminProductsByProductIdUnits
+      x-operation-id-source: derived
   /v1/admin/units/{id}:
     put:
       tags:
-      - ProductUnits
+      - Product Units
       parameters:
       - name: id
         in: path
@@ -91,9 +99,13 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Replace admin units by id
+      x-summary-source: derived
+      operationId: putV1AdminUnitsById
+      x-operation-id-source: derived
     delete:
       tags:
-      - ProductUnits
+      - Product Units
       parameters:
       - name: id
         in: path
@@ -111,10 +123,14 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Delete admin units by id
+      x-summary-source: derived
+      operationId: deleteV1AdminUnitsById
+      x-operation-id-source: derived
   /v1/admin/products/{productId}/units/generate:
     post:
       tags:
-      - ProductUnits
+      - Product Units
       parameters:
       - name: productId
         in: path
@@ -132,21 +148,12 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Create admin products by product id units generate
+      x-summary-source: derived
+      operationId: postV1AdminProductsByProductIdUnitsGenerate
+      x-operation-id-source: derived
 components:
   schemas:
-    Hyperlabs.Web.Areas.Admin.Models.ProductUnits.ChangeProductUnitVariableDto:
-      title: ChangeProductUnitVariableDto
-      type: object
-      properties:
-        variableId:
-          title: Guid
-          type: string
-          format: uuid
-        valueId:
-          title: Guid
-          type: string
-          format: uuid
-      additionalProperties: false
     Hyperlabs.Web.Areas.Admin.Models.ProductUnits.ChangeProductUnitDto:
       title: ChangeProductUnitDto
       type: object
@@ -163,6 +170,19 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.ProductUnits.ChangeProductUnitVariableDto'
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Admin.Models.ProductUnits.ChangeProductUnitVariableDto:
+      title: ChangeProductUnitVariableDto
+      type: object
+      properties:
+        variableId:
+          title: Guid
+          type: string
+          format: uuid
+        valueId:
+          title: Guid
+          type: string
+          format: uuid
       additionalProperties: false
   securitySchemes:
     oauth2:

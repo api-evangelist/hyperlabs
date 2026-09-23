@@ -35,6 +35,10 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Account.CustomerLoginResultDto'
+      summary: Create account login
+      x-summary-source: derived
+      operationId: postV1AccountLogin
+      x-operation-id-source: derived
   /v1/account/register:
     post:
       tags:
@@ -53,6 +57,10 @@ paths:
       responses:
         '204':
           description: No Content
+      summary: Create account register
+      x-summary-source: derived
+      operationId: postV1AccountRegister
+      x-operation-id-source: derived
   /v1/account/confirm-registration:
     post:
       tags:
@@ -81,6 +89,10 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Account.CustomerLoginResultDto'
+      summary: Create account confirm registration
+      x-summary-source: derived
+      operationId: postV1AccountConfirmRegistration
+      x-operation-id-source: derived
   /v1/account/forgot-password:
     post:
       tags:
@@ -99,6 +111,10 @@ paths:
       responses:
         '204':
           description: No Content
+      summary: Create account forgot password
+      x-summary-source: derived
+      operationId: postV1AccountForgotPassword
+      x-operation-id-source: derived
   /v1/account/reset-password:
     post:
       tags:
@@ -117,6 +133,10 @@ paths:
       responses:
         '204':
           description: No Content
+      summary: Create account reset password
+      x-summary-source: derived
+      operationId: postV1AccountResetPassword
+      x-operation-id-source: derived
   /v1/account/google/params:
     get:
       tags:
@@ -134,6 +154,10 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Account.CustomerGoogleParamsDto'
+      summary: Get account google params
+      x-summary-source: derived
+      operationId: getV1AccountGoogleParams
+      x-operation-id-source: derived
   /v1/account/google/login:
     post:
       tags:
@@ -174,6 +198,10 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails'
+      summary: Create account google login
+      x-summary-source: derived
+      operationId: postV1AccountGoogleLogin
+      x-operation-id-source: derived
   /v1/account/microsoft/params:
     get:
       tags:
@@ -191,6 +219,10 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Account.CustomerMicrosoftParamsDto'
+      summary: Get account microsoft params
+      x-summary-source: derived
+      operationId: getV1AccountMicrosoftParams
+      x-operation-id-source: derived
   /v1/account/microsoft/login:
     post:
       tags:
@@ -231,6 +263,10 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails'
+      summary: Create account microsoft login
+      x-summary-source: derived
+      operationId: postV1AccountMicrosoftLogin
+      x-operation-id-source: derived
   /v1/account/change-password:
     post:
       tags:
@@ -255,25 +291,29 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Create account change password
+      x-summary-source: derived
+      operationId: postV1AccountChangePassword
+      x-operation-id-source: derived
 components:
   schemas:
-    Hyperlabs.Web.Areas.Customer.Models.Account.CustomerLoginResultDto:
-      title: CustomerLoginResultDto
+    Hyperlabs.Web.Models.Accounts.ChangePasswordDto:
+      title: ChangePasswordDto
       type: object
       properties:
-        tokenType:
+        oldPassword:
           title: String
           type:
           - string
           - 'null'
-        accessToken:
+        newPassword:
           title: String
           type:
           - string
           - 'null'
       additionalProperties: false
-    Hyperlabs.Web.Areas.Customer.Models.Account.ConfirmCustomerRegistrationDto:
-      title: ConfirmCustomerRegistrationDto
+    Hyperlabs.Web.Areas.Customer.Models.Account.CustomerLoginDto:
+      title: CustomerLoginDto
       type: object
       properties:
         userName:
@@ -281,7 +321,7 @@ components:
           type:
           - string
           - 'null'
-        token:
+        password:
           title: String
           type:
           - string
@@ -312,16 +352,6 @@ components:
           - string
           - 'null'
         redirectUrl:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    Hyperlabs.Web.Areas.Customer.Models.Account.CustomerForgotPasswordDto:
-      title: CustomerForgotPasswordDto
-      type: object
-      properties:
-        userName:
           title: String
           type:
           - string
@@ -404,16 +434,46 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    Hyperlabs.Web.Models.Accounts.ChangePasswordDto:
-      title: ChangePasswordDto
+    Hyperlabs.Web.Areas.Customer.Models.Account.CustomerForgotPasswordDto:
+      title: CustomerForgotPasswordDto
       type: object
       properties:
-        oldPassword:
+        userName:
           title: String
           type:
           - string
           - 'null'
-        newPassword:
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Customer.Models.Account.CustomerGoogleLoginDto:
+      title: CustomerGoogleLoginDto
+      type: object
+      properties:
+        code:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Customer.Models.Account.ConfirmCustomerRegistrationDto:
+      title: ConfirmCustomerRegistrationDto
+      type: object
+      properties:
+        userName:
+          title: String
+          type:
+          - string
+          - 'null'
+        token:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Customer.Models.Account.CustomerMicrosoftLoginDto:
+      title: CustomerMicrosoftLoginDto
+      type: object
+      properties:
+        code:
           title: String
           type:
           - string
@@ -449,36 +509,16 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    Hyperlabs.Web.Areas.Customer.Models.Account.CustomerLoginDto:
-      title: CustomerLoginDto
+    Hyperlabs.Web.Areas.Customer.Models.Account.CustomerLoginResultDto:
+      title: CustomerLoginResultDto
       type: object
       properties:
-        userName:
+        tokenType:
           title: String
           type:
           - string
           - 'null'
-        password:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    Hyperlabs.Web.Areas.Customer.Models.Account.CustomerMicrosoftLoginDto:
-      title: CustomerMicrosoftLoginDto
-      type: object
-      properties:
-        code:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    Hyperlabs.Web.Areas.Customer.Models.Account.CustomerGoogleLoginDto:
-      title: CustomerGoogleLoginDto
-      type: object
-      properties:
-        code:
+        accessToken:
           title: String
           type:
           - string

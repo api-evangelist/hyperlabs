@@ -20,6 +20,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Get customer wishlist
+      x-summary-source: derived
+      operationId: getV1CustomerWishlist
+      x-operation-id-source: derived
   /v1/customer/wishlist/item:
     post:
       tags:
@@ -44,6 +48,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Create customer wishlist item
+      x-summary-source: derived
+      operationId: postV1CustomerWishlistItem
+      x-operation-id-source: derived
   /v1/customer/wishlist/item/{id}:
     delete:
       tags:
@@ -65,6 +73,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Delete customer wishlist item by id
+      x-summary-source: derived
+      operationId: deleteV1CustomerWishlistItemById
+      x-operation-id-source: derived
     put:
       tags:
       - CustomerWishlists
@@ -96,6 +108,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Replace customer wishlist item by id
+      x-summary-source: derived
+      operationId: putV1CustomerWishlistItemById
+      x-operation-id-source: derived
   /v1/customer/wishlist/quote:
     post:
       tags:
@@ -120,6 +136,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Create customer wishlist quote
+      x-summary-source: derived
+      operationId: postV1CustomerWishlistQuote
+      x-operation-id-source: derived
   /v1/customer/wishlist/share:
     post:
       tags:
@@ -144,6 +164,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Create customer wishlist share
+      x-summary-source: derived
+      operationId: postV1CustomerWishlistShare
+      x-operation-id-source: derived
 components:
   schemas:
     Hyperlabs.Web.Areas.Customer.Models.Wishlists.CustomerShareWishlistDto:
@@ -166,20 +190,10 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    Hyperlabs.Web.Areas.Customer.Models.Wishlists.AddWishlistItemDto:
-      title: AddWishlistItemDto
+    Hyperlabs.Web.Areas.Customer.Models.Wishlists.ChangeWishlistItemAmountDto:
+      title: ChangeWishlistItemAmountDto
       type: object
       properties:
-        productId:
-          title: Guid
-          type: string
-          format: uuid
-        productUnitId:
-          title: Nullable`1
-          type:
-          - string
-          - 'null'
-          format: uuid
         amount:
           title: Int32
           type: integer
@@ -195,10 +209,20 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    Hyperlabs.Web.Areas.Customer.Models.Wishlists.ChangeWishlistItemAmountDto:
-      title: ChangeWishlistItemAmountDto
+    Hyperlabs.Web.Areas.Customer.Models.Wishlists.AddWishlistItemDto:
+      title: AddWishlistItemDto
       type: object
       properties:
+        productId:
+          title: Guid
+          type: string
+          format: uuid
+        productUnitId:
+          title: Nullable`1
+          type:
+          - string
+          - 'null'
+          format: uuid
         amount:
           title: Int32
           type: integer

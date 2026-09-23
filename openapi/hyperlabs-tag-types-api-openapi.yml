@@ -5,12 +5,12 @@ info:
 servers:
 - url: /api
 tags:
-- name: TagTypes
+- name: Tag Types
 paths:
   /v1/tags:
     get:
       tags:
-      - TagTypes
+      - Tag Types
       parameters:
       - name: TagTypeIds
         in: query
@@ -24,10 +24,14 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Get tags
+      x-summary-source: derived
+      operationId: getV1Tags
+      x-operation-id-source: derived
   /v1/tags/{id}:
     get:
       tags:
-      - TagTypes
+      - Tag Types
       parameters:
       - name: id
         in: path
@@ -39,10 +43,14 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Get tags by id
+      x-summary-source: derived
+      operationId: getV1TagsById
+      x-operation-id-source: derived
   /v1/admin/tag-types:
     get:
       tags:
-      - TagTypes
+      - Tag Types
       responses:
         '200':
           description: OK
@@ -52,9 +60,13 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Get admin tag types
+      x-summary-source: derived
+      operationId: getV1AdminTagTypes
+      x-operation-id-source: derived
     post:
       tags:
-      - TagTypes
+      - Tag Types
       requestBody:
         content:
           application/json:
@@ -75,10 +87,14 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Create admin tag types
+      x-summary-source: derived
+      operationId: postV1AdminTagTypes
+      x-operation-id-source: derived
   /v1/admin/tag-types/{id}:
     put:
       tags:
-      - TagTypes
+      - Tag Types
       parameters:
       - name: id
         in: path
@@ -107,9 +123,13 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Replace admin tag types by id
+      x-summary-source: derived
+      operationId: putV1AdminTagTypesById
+      x-operation-id-source: derived
     delete:
       tags:
-      - TagTypes
+      - Tag Types
       parameters:
       - name: id
         in: path
@@ -127,10 +147,14 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Delete admin tag types by id
+      x-summary-source: derived
+      operationId: deleteV1AdminTagTypesById
+      x-operation-id-source: derived
   /v1/admin/tag-types/{id}/move:
     post:
       tags:
-      - TagTypes
+      - Tag Types
       parameters:
       - name: id
         in: path
@@ -159,6 +183,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Create admin tag types by id move
+      x-summary-source: derived
+      operationId: postV1AdminTagTypesByIdMove
+      x-operation-id-source: derived
 components:
   schemas:
     Hyperlabs.Web.Areas.Admin.Models.TagTypes.ChangeTagTypeDto:
@@ -188,6 +216,14 @@ components:
         publishingStatusCode:
           $ref: '#/components/schemas/Hyperlabs.Domain.Products.Models.PublishingStatusCode'
       additionalProperties: false
+    Hyperlabs.Domain.Products.Models.PublishingStatusCode:
+      title: PublishingStatusCode
+      enum:
+      - 1
+      - 2
+      - 3
+      type: integer
+      format: int32
     Hyperlabs.Web.Areas.Admin.Models.Shared.MoveDto:
       title: MoveDto
       type: object
@@ -197,14 +233,6 @@ components:
           type: integer
           format: int32
       additionalProperties: false
-    Hyperlabs.Domain.Products.Models.PublishingStatusCode:
-      title: PublishingStatusCode
-      enum:
-      - 1
-      - 2
-      - 3
-      type: integer
-      format: int32
   securitySchemes:
     oauth2:
       type: apiKey

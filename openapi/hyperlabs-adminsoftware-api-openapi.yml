@@ -20,6 +20,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Get admin software
+      x-summary-source: derived
+      operationId: getV1AdminSoftware
+      x-operation-id-source: derived
     post:
       tags:
       - AdminSoftware
@@ -43,6 +47,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Create admin software
+      x-summary-source: derived
+      operationId: postV1AdminSoftware
+      x-operation-id-source: derived
   /v1/admin/software/{id}:
     get:
       tags:
@@ -64,6 +72,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Get admin software by id
+      x-summary-source: derived
+      operationId: getV1AdminSoftwareById
+      x-operation-id-source: derived
     put:
       tags:
       - AdminSoftware
@@ -95,6 +107,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Replace admin software by id
+      x-summary-source: derived
+      operationId: putV1AdminSoftwareById
+      x-operation-id-source: derived
     delete:
       tags:
       - AdminSoftware
@@ -115,6 +131,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Delete admin software by id
+      x-summary-source: derived
+      operationId: deleteV1AdminSoftwareById
+      x-operation-id-source: derived
   /v1/admin/software/{id}/move:
     post:
       tags:
@@ -147,8 +167,21 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Create admin software by id move
+      x-summary-source: derived
+      operationId: postV1AdminSoftwareByIdMove
+      x-operation-id-source: derived
 components:
   schemas:
+    Hyperlabs.Web.Areas.Admin.Models.Shared.ChangeLinkedProductDto:
+      title: ChangeLinkedProductDto
+      type: object
+      properties:
+        productId:
+          title: Guid
+          type: string
+          format: uuid
+      additionalProperties: false
     Hyperlabs.Web.Areas.Admin.Models.Software.ChangeSoftwareNoteDto:
       title: ChangeSoftwareNoteDto
       type: object
@@ -164,27 +197,6 @@ components:
           type:
           - string
           - 'null'
-      additionalProperties: false
-    Hyperlabs.Domain.Products.Models.PublishingStatusCode:
-      title: PublishingStatusCode
-      enum:
-      - 1
-      - 2
-      - 3
-      type: integer
-      format: int32
-    Hyperlabs.Web.Areas.Admin.Models.Shared.ChangeAttachedMediaFileDto:
-      title: ChangeAttachedMediaFileDto
-      type: object
-      properties:
-        mediaFileId:
-          title: Guid
-          type: string
-          format: uuid
-        order:
-          title: Int32
-          type: integer
-          format: int32
       additionalProperties: false
     Hyperlabs.Web.Areas.Admin.Models.Software.ChangeSoftwareDto:
       title: ChangeSoftwareDto
@@ -257,14 +269,26 @@ components:
           type: integer
           format: int32
       additionalProperties: false
-    Hyperlabs.Web.Areas.Admin.Models.Shared.ChangeLinkedProductDto:
-      title: ChangeLinkedProductDto
+    Hyperlabs.Domain.Products.Models.PublishingStatusCode:
+      title: PublishingStatusCode
+      enum:
+      - 1
+      - 2
+      - 3
+      type: integer
+      format: int32
+    Hyperlabs.Web.Areas.Admin.Models.Shared.ChangeAttachedMediaFileDto:
+      title: ChangeAttachedMediaFileDto
       type: object
       properties:
-        productId:
+        mediaFileId:
           title: Guid
           type: string
           format: uuid
+        order:
+          title: Int32
+          type: integer
+          format: int32
       additionalProperties: false
   securitySchemes:
     oauth2:

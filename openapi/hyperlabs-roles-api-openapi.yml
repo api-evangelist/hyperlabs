@@ -20,6 +20,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Get admin roles
+      x-summary-source: derived
+      operationId: getV1AdminRoles
+      x-operation-id-source: derived
 components:
   securitySchemes:
     oauth2:

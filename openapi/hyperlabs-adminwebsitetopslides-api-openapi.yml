@@ -20,6 +20,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Get admin website top slides
+      x-summary-source: derived
+      operationId: getV1AdminWebsiteTopSlides
+      x-operation-id-source: derived
     post:
       tags:
       - AdminWebsiteTopSlides
@@ -43,6 +47,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Create admin website top slides
+      x-summary-source: derived
+      operationId: postV1AdminWebsiteTopSlides
+      x-operation-id-source: derived
   /v1/admin/website/top-slides/{id}:
     get:
       tags:
@@ -64,6 +72,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Get admin website top slides by id
+      x-summary-source: derived
+      operationId: getV1AdminWebsiteTopSlidesById
+      x-operation-id-source: derived
     put:
       tags:
       - AdminWebsiteTopSlides
@@ -95,6 +107,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Replace admin website top slides by id
+      x-summary-source: derived
+      operationId: putV1AdminWebsiteTopSlidesById
+      x-operation-id-source: derived
     delete:
       tags:
       - AdminWebsiteTopSlides
@@ -115,6 +131,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Delete admin website top slides by id
+      x-summary-source: derived
+      operationId: deleteV1AdminWebsiteTopSlidesById
+      x-operation-id-source: derived
   /v1/admin/website/top-slides/{id}/move:
     post:
       tags:
@@ -147,6 +167,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Create admin website top slides by id move
+      x-summary-source: derived
+      operationId: postV1AdminWebsiteTopSlidesByIdMove
+      x-operation-id-source: derived
 components:
   schemas:
     Hyperlabs.Web.Areas.Admin.Models.Website.ChangeWebsiteTopSlideDto:

@@ -54,6 +54,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Get admin datasheets
+      x-summary-source: derived
+      operationId: getV1AdminDatasheets
+      x-operation-id-source: derived
   /v1/admin/datasheets/{id}:
     get:
       tags:
@@ -75,6 +79,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Get admin datasheets by id
+      x-summary-source: derived
+      operationId: getV1AdminDatasheetsById
+      x-operation-id-source: derived
 components:
   schemas:
     Hyperlabs.Domain.Datasheets.Models.DatasheetsQuerySortParameter:

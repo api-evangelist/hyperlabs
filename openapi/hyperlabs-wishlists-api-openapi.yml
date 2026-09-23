@@ -25,6 +25,10 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Create wishlist quote
+      x-summary-source: derived
+      operationId: postV1WishlistQuote
+      x-operation-id-source: derived
   /v1/wishlist/share:
     post:
       tags:
@@ -43,6 +47,10 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Create wishlist share
+      x-summary-source: derived
+      operationId: postV1WishlistShare
+      x-operation-id-source: derived
 components:
   schemas:
     Hyperlabs.Web.Areas.Customer.Models.Wishlists.WishlistProfileDto:
@@ -95,6 +103,25 @@ components:
           - string
           - 'null'
       additionalProperties: false
+    Hyperlabs.Web.Areas.Customer.Models.Shared.ProductLineDto:
+      title: ProductLineDto
+      type: object
+      properties:
+        productId:
+          title: Guid
+          type: string
+          format: uuid
+        productUnitId:
+          title: Nullable`1
+          type:
+          - string
+          - 'null'
+          format: uuid
+        amount:
+          title: Int32
+          type: integer
+          format: int32
+      additionalProperties: false
     Hyperlabs.Web.Areas.Customer.Models.Wishlists.ShareWishlistDto:
       title: ShareWishlistDto
       type: object
@@ -126,25 +153,6 @@ components:
           type:
           - string
           - 'null'
-      additionalProperties: false
-    Hyperlabs.Web.Areas.Customer.Models.Shared.ProductLineDto:
-      title: ProductLineDto
-      type: object
-      properties:
-        productId:
-          title: Guid
-          type: string
-          format: uuid
-        productUnitId:
-          title: Nullable`1
-          type:
-          - string
-          - 'null'
-          format: uuid
-        amount:
-          title: Int32
-          type: integer
-          format: int32
       additionalProperties: false
     Hyperlabs.Web.Areas.Customer.Models.Wishlists.SendWishlistQuoteDto:
       title: SendWishlistQuoteDto

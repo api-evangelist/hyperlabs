@@ -20,6 +20,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Get admin specification types
+      x-summary-source: derived
+      operationId: getV1AdminSpecificationTypes
+      x-operation-id-source: derived
     post:
       tags:
       - SpecificationTypes
@@ -43,6 +47,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Create admin specification types
+      x-summary-source: derived
+      operationId: postV1AdminSpecificationTypes
+      x-operation-id-source: derived
   /v1/admin/specification-types/{id}:
     put:
       tags:
@@ -75,6 +83,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Replace admin specification types by id
+      x-summary-source: derived
+      operationId: putV1AdminSpecificationTypesById
+      x-operation-id-source: derived
     delete:
       tags:
       - SpecificationTypes
@@ -95,6 +107,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Delete admin specification types by id
+      x-summary-source: derived
+      operationId: deleteV1AdminSpecificationTypesById
+      x-operation-id-source: derived
   /v1/admin/specification-types/{id}/move:
     post:
       tags:
@@ -127,24 +143,12 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Create admin specification types by id move
+      x-summary-source: derived
+      operationId: postV1AdminSpecificationTypesByIdMove
+      x-operation-id-source: derived
 components:
   schemas:
-    Hyperlabs.Web.Areas.Admin.Models.Shared.MoveDto:
-      title: MoveDto
-      type: object
-      properties:
-        delta:
-          title: Int32
-          type: integer
-          format: int32
-      additionalProperties: false
-    Hyperlabs.Domain.SpecificationTypes.Models.SpecificationPurposeCode:
-      title: SpecificationPurposeCode
-      enum:
-      - 1
-      - 2
-      type: integer
-      format: int32
     Hyperlabs.Domain.SpecificationTypes.Models.SpecificationValueTypeCode:
       title: SpecificationValueTypeCode
       enum:
@@ -182,6 +186,22 @@ components:
           title: Boolean
           type: boolean
       additionalProperties: false
+    Hyperlabs.Web.Areas.Admin.Models.Shared.MoveDto:
+      title: MoveDto
+      type: object
+      properties:
+        delta:
+          title: Int32
+          type: integer
+          format: int32
+      additionalProperties: false
+    Hyperlabs.Domain.SpecificationTypes.Models.SpecificationPurposeCode:
+      title: SpecificationPurposeCode
+      enum:
+      - 1
+      - 2
+      type: integer
+      format: int32
   securitySchemes:
     oauth2:
       type: apiKey

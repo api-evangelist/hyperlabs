@@ -66,6 +66,10 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Get products
+      x-summary-source: derived
+      operationId: getV1Products
+      x-operation-id-source: derived
   /v1/products/discontinued:
     get:
       tags:
@@ -73,6 +77,10 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Get products discontinued
+      x-summary-source: derived
+      operationId: getV1ProductsDiscontinued
+      x-operation-id-source: derived
   /v1/products/ztdr:
     get:
       tags:
@@ -80,6 +88,10 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Get products ztdr
+      x-summary-source: derived
+      operationId: getV1ProductsZtdr
+      x-operation-id-source: derived
   /v1/products/xtdr:
     get:
       tags:
@@ -87,6 +99,10 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Get products xtdr
+      x-summary-source: derived
+      operationId: getV1ProductsXtdr
+      x-operation-id-source: derived
   /v1/products/zcoupon:
     get:
       tags:
@@ -94,6 +110,10 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Get products zcoupon
+      x-summary-source: derived
+      operationId: getV1ProductsZcoupon
+      x-operation-id-source: derived
   /v1/products/{id}:
     get:
       tags:
@@ -109,6 +129,10 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Get products by id
+      x-summary-source: derived
+      operationId: getV1ProductsById
+      x-operation-id-source: derived
   /v1/products/{topSku}:
     get:
       tags:
@@ -123,6 +147,10 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Get products by top sku
+      x-summary-source: derived
+      operationId: getV1ProductsByTopSku
+      x-operation-id-source: derived
   /v1/products/filter/parameters:
     get:
       tags:
@@ -137,6 +165,10 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Get products filter parameters
+      x-summary-source: derived
+      operationId: getV1ProductsFilterParameters
+      x-operation-id-source: derived
   /v1/products/filter:
     post:
       tags:
@@ -155,6 +187,10 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Create products filter
+      x-summary-source: derived
+      operationId: postV1ProductsFilter
+      x-operation-id-source: derived
   /v1/products/resolve:
     post:
       tags:
@@ -182,6 +218,10 @@ paths:
       responses:
         '200':
           description: OK
+      summary: Create products resolve
+      x-summary-source: derived
+      operationId: postV1ProductsResolve
+      x-operation-id-source: derived
   /v1/admin/products:
     get:
       tags:
@@ -240,6 +280,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Get admin products
+      x-summary-source: derived
+      operationId: getV1AdminProducts
+      x-operation-id-source: derived
     post:
       tags:
       - Products
@@ -263,6 +307,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Create admin products
+      x-summary-source: derived
+      operationId: postV1AdminProducts
+      x-operation-id-source: derived
   /v1/admin/products/catalog:
     get:
       tags:
@@ -276,6 +324,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Get admin products catalog
+      x-summary-source: derived
+      operationId: getV1AdminProductsCatalog
+      x-operation-id-source: derived
   /v1/admin/products/{id}:
     get:
       tags:
@@ -297,6 +349,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Get admin products by id
+      x-summary-source: derived
+      operationId: getV1AdminProductsById
+      x-operation-id-source: derived
     put:
       tags:
       - Products
@@ -328,6 +384,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Replace admin products by id
+      x-summary-source: derived
+      operationId: putV1AdminProductsById
+      x-operation-id-source: derived
     delete:
       tags:
       - Products
@@ -348,6 +408,10 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Delete admin products by id
+      x-summary-source: derived
+      operationId: deleteV1AdminProductsById
+      x-operation-id-source: derived
   /v1/admin/products/{id}/move:
     post:
       tags:
@@ -380,149 +444,12 @@ paths:
           description: Forbidden
       security:
       - oauth2: []
+      summary: Create admin products by id move
+      x-summary-source: derived
+      operationId: postV1AdminProductsByIdMove
+      x-operation-id-source: derived
 components:
   schemas:
-    Hyperlabs.Web.Areas.Admin.Models.Products.ChangeProductVariableDto:
-      title: ChangeProductVariableDto
-      type: object
-      properties:
-        variableTypeId:
-          title: Guid
-          type: string
-          format: uuid
-        values:
-          title: ChangeProductVariableValueDto[]
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Products.ChangeProductVariableValueDto'
-      additionalProperties: false
-    Hyperlabs.Domain.Products.Models.PublishingStatusCode:
-      title: PublishingStatusCode
-      enum:
-      - 1
-      - 2
-      - 3
-      type: integer
-      format: int32
-    Hyperlabs.Domain.Products.Models.ProductQuerySortParameter:
-      title: ProductQuerySortParameter
-      enum:
-      - 1
-      - 2
-      - 3
-      - 4
-      type: integer
-      format: int32
-    Hyperlabs.Web.Areas.Customer.Models.Products.FilterDto:
-      title: FilterDto
-      type: object
-      properties:
-        search:
-          title: String
-          type:
-          - string
-          - 'null'
-        productClassIds:
-          title: Guid[]
-          type:
-          - array
-          - 'null'
-          items:
-            title: Guid
-            type: string
-            format: uuid
-        categoryIds:
-          title: Guid[]
-          type:
-          - array
-          - 'null'
-          items:
-            title: Guid
-            type: string
-            format: uuid
-        parameters:
-          title: FilterSelectedParameterDto[]
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Products.FilterSelectedParameterDto'
-      additionalProperties: false
-    Hyperlabs.Domain.Products.Models.ProductAttributeTypeCode:
-      title: ProductAttributeTypeCode
-      enum:
-      - 1
-      - 2
-      type: integer
-      format: int32
-    Hyperlabs.Web.Areas.Customer.Models.Products.ResolveProductItemRequestDto:
-      title: ResolveProductItemRequestDto
-      type: object
-      properties:
-        productId:
-          title: Guid
-          type: string
-          format: uuid
-        productUnitId:
-          title: Nullable`1
-          type:
-          - string
-          - 'null'
-          format: uuid
-      additionalProperties: false
-    Hyperlabs.Web.Areas.Admin.Models.Products.ChangeProductVariableValueDto:
-      title: ChangeProductVariableValueDto
-      type: object
-      properties:
-        variableTypeValueId:
-          title: Guid
-          type: string
-          format: uuid
-      additionalProperties: false
-    Hyperlabs.Web.Areas.Admin.Models.Products.ChangeProductTagDto:
-      title: ChangeProductTagDto
-      type: object
-      properties:
-        tagTypeId:
-          title: Guid
-          type: string
-          format: uuid
-      additionalProperties: false
-    Hyperlabs.Web.Areas.Admin.Models.Shared.ChangeAttachedMediaFileDto:
-      title: ChangeAttachedMediaFileDto
-      type: object
-      properties:
-        mediaFileId:
-          title: Guid
-          type: string
-          format: uuid
-        order:
-          title: Int32
-          type: integer
-          format: int32
-      additionalProperties: false
-    Hyperlabs.Web.Areas.Customer.Models.Products.FilterSelectedParameterDto:
-      title: FilterSelectedParameterDto
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/Hyperlabs.Domain.Products.Models.FilterParameterCode'
-        id:
-          title: String
-          type:
-          - string
-          - 'null'
-        valueIds:
-          title: String[]
-          type:
-          - array
-          - 'null'
-          items:
-            title: String
-            type: string
-      additionalProperties: false
     Hyperlabs.Domain.Products.Models.ProductionStatusCode:
       title: ProductionStatusCode
       enum:
@@ -530,36 +457,30 @@ components:
       - 2
       type: integer
       format: int32
-    Hyperlabs.Web.Areas.Admin.Models.Products.ChangeProductSoftwareDto:
-      title: ChangeProductSoftwareDto
+    Hyperlabs.Web.Areas.Admin.Models.Products.ChangeProductSpecificationDto:
+      title: ChangeProductSpecificationDto
       type: object
       properties:
-        softwareId:
+        specificationTypeId:
           title: Guid
           type: string
           format: uuid
+        value:
+          title: String
+          type:
+          - string
+          - 'null'
+        minValue:
+          title: String
+          type:
+          - string
+          - 'null'
+        maxValue:
+          title: String
+          type:
+          - string
+          - 'null'
       additionalProperties: false
-    Hyperlabs.Web.Areas.Admin.Models.Products.ChangeProductApplicationNoteDto:
-      title: ChangeProductApplicationNoteDto
-      type: object
-      properties:
-        applicationNoteId:
-          title: Guid
-          type: string
-          format: uuid
-      additionalProperties: false
-    Hyperlabs.Domain.Products.Models.FilterParameterCode:
-      title: FilterParameterCode
-      enum:
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      - 7
-      type: integer
-      format: int32
     ChangeProductDto:
       title: ChangeProductDto
       type: object
@@ -676,6 +597,71 @@ components:
           items:
             $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Products.ChangeProductSoftwareDto'
       additionalProperties: false
+    Hyperlabs.Web.Areas.Admin.Models.Products.ChangeProductVariableValueDto:
+      title: ChangeProductVariableValueDto
+      type: object
+      properties:
+        variableTypeValueId:
+          title: Guid
+          type: string
+          format: uuid
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Customer.Models.Products.FilterDto:
+      title: FilterDto
+      type: object
+      properties:
+        search:
+          title: String
+          type:
+          - string
+          - 'null'
+        productClassIds:
+          title: Guid[]
+          type:
+          - array
+          - 'null'
+          items:
+            title: Guid
+            type: string
+            format: uuid
+        categoryIds:
+          title: Guid[]
+          type:
+          - array
+          - 'null'
+          items:
+            title: Guid
+            type: string
+            format: uuid
+        parameters:
+          title: FilterSelectedParameterDto[]
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Products.FilterSelectedParameterDto'
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Admin.Models.Products.ChangeProductApplicationNoteDto:
+      title: ChangeProductApplicationNoteDto
+      type: object
+      properties:
+        applicationNoteId:
+          title: Guid
+          type: string
+          format: uuid
+      additionalProperties: false
+    Hyperlabs.Domain.Products.Models.FilterParameterCode:
+      title: FilterParameterCode
+      enum:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      type: integer
+      format: int32
     Hyperlabs.Web.Areas.Admin.Models.Products.ChangeReplacementProductDto:
       title: ChangeReplacementProductDto
       type: object
@@ -685,6 +671,112 @@ components:
           type: string
           format: uuid
       additionalProperties: false
+    Hyperlabs.Web.Areas.Admin.Models.Products.ChangeProductVariableDto:
+      title: ChangeProductVariableDto
+      type: object
+      properties:
+        variableTypeId:
+          title: Guid
+          type: string
+          format: uuid
+        values:
+          title: ChangeProductVariableValueDto[]
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Products.ChangeProductVariableValueDto'
+      additionalProperties: false
+    Hyperlabs.Domain.Products.Models.PublishingStatusCode:
+      title: PublishingStatusCode
+      enum:
+      - 1
+      - 2
+      - 3
+      type: integer
+      format: int32
+    Hyperlabs.Domain.Products.Models.ProductAttributeTypeCode:
+      title: ProductAttributeTypeCode
+      enum:
+      - 1
+      - 2
+      type: integer
+      format: int32
+    Hyperlabs.Web.Areas.Admin.Models.Shared.ChangeAttachedMediaFileDto:
+      title: ChangeAttachedMediaFileDto
+      type: object
+      properties:
+        mediaFileId:
+          title: Guid
+          type: string
+          format: uuid
+        order:
+          title: Int32
+          type: integer
+          format: int32
+      additionalProperties: false
+    Hyperlabs.Domain.Products.Models.ProductQuerySortParameter:
+      title: ProductQuerySortParameter
+      enum:
+      - 1
+      - 2
+      - 3
+      - 4
+      type: integer
+      format: int32
+    Hyperlabs.Web.Areas.Customer.Models.Products.ResolveProductItemRequestDto:
+      title: ResolveProductItemRequestDto
+      type: object
+      properties:
+        productId:
+          title: Guid
+          type: string
+          format: uuid
+        productUnitId:
+          title: Nullable`1
+          type:
+          - string
+          - 'null'
+          format: uuid
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Admin.Models.Products.ChangeProductSoftwareDto:
+      title: ChangeProductSoftwareDto
+      type: object
+      properties:
+        softwareId:
+          title: Guid
+          type: string
+          format: uuid
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Admin.Models.Products.ChangeProductTagDto:
+      title: ChangeProductTagDto
+      type: object
+      properties:
+        tagTypeId:
+          title: Guid
+          type: string
+          format: uuid
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Customer.Models.Products.FilterSelectedParameterDto:
+      title: FilterSelectedParameterDto
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/Hyperlabs.Domain.Products.Models.FilterParameterCode'
+        id:
+          title: String
+          type:
+          - string
+          - 'null'
+        valueIds:
+          title: String[]
+          type:
+          - array
+          - 'null'
+          items:
+            title: String
+            type: string
+      additionalProperties: false
     Hyperlabs.Web.Areas.Admin.Models.Shared.MoveDto:
       title: MoveDto
       type: object
@@ -693,30 +785,6 @@ components:
           title: Int32
           type: integer
           format: int32
-      additionalProperties: false
-    Hyperlabs.Web.Areas.Admin.Models.Products.ChangeProductSpecificationDto:
-      title: ChangeProductSpecificationDto
-      type: object
-      properties:
-        specificationTypeId:
-          title: Guid
-          type: string
-          format: uuid
-        value:
-          title: String
-          type:
-          - string
-          - 'null'
-        minValue:
-          title: String
-          type:
-          - string
-          - 'null'
-        maxValue:
-          title: String
-          type:
-          - string
-          - 'null'
       additionalProperties: false
     Hyperlabs.Web.Areas.Admin.Models.Products.ChangeProductNoteDto:
       title: ChangeProductNoteDto
