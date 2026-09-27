@@ -297,6 +297,21 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    Hyperlabs.Web.Areas.Customer.Models.Account.ConfirmCustomerRegistrationDto:
+      title: ConfirmCustomerRegistrationDto
+      type: object
+      properties:
+        userName:
+          title: String
+          type:
+          - string
+          - 'null'
+        token:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
     Hyperlabs.Web.Models.Accounts.ChangePasswordDto:
       title: ChangePasswordDto
       type: object
@@ -307,6 +322,78 @@ components:
           - string
           - 'null'
         newPassword:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Microsoft.AspNetCore.Mvc.ProblemDetails:
+      title: ProblemDetails
+      type: object
+      properties:
+        type:
+          title: String
+          type:
+          - string
+          - 'null'
+        title:
+          title: String
+          type:
+          - string
+          - 'null'
+        status:
+          title: Nullable`1
+          type:
+          - integer
+          - 'null'
+          format: int32
+        detail:
+          title: String
+          type:
+          - string
+          - 'null'
+        instance:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties:
+        title: Object
+    Hyperlabs.Web.Areas.Customer.Models.Account.CustomerMicrosoftLoginDto:
+      title: CustomerMicrosoftLoginDto
+      type: object
+      properties:
+        code:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Customer.Models.Account.CustomerMicrosoftParamsDto:
+      title: CustomerMicrosoftParamsDto
+      type: object
+      properties:
+        authorizationUrl:
+          title: String
+          type:
+          - string
+          - 'null'
+        clientId:
+          title: String
+          type:
+          - string
+          - 'null'
+        responseType:
+          title: String
+          type:
+          - string
+          - 'null'
+        scope:
+          title: String
+          type:
+          - string
+          - 'null'
+        redirectUrl:
           title: String
           type:
           - string
@@ -327,8 +414,33 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    Hyperlabs.Web.Areas.Customer.Models.Account.CustomerMicrosoftParamsDto:
-      title: CustomerMicrosoftParamsDto
+    Hyperlabs.Web.Areas.Customer.Models.Account.CustomerGoogleLoginDto:
+      title: CustomerGoogleLoginDto
+      type: object
+      properties:
+        code:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Customer.Models.Account.CustomerLoginResultDto:
+      title: CustomerLoginResultDto
+      type: object
+      properties:
+        tokenType:
+          title: String
+          type:
+          - string
+          - 'null'
+        accessToken:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Customer.Models.Account.CustomerGoogleParamsDto:
+      title: CustomerGoogleParamsDto
       type: object
       properties:
         authorizationUrl:
@@ -377,38 +489,6 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    Microsoft.AspNetCore.Mvc.ProblemDetails:
-      title: ProblemDetails
-      type: object
-      properties:
-        type:
-          title: String
-          type:
-          - string
-          - 'null'
-        title:
-          title: String
-          type:
-          - string
-          - 'null'
-        status:
-          title: Nullable`1
-          type:
-          - integer
-          - 'null'
-          format: int32
-        detail:
-          title: String
-          type:
-          - string
-          - 'null'
-        instance:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties:
-        title: Object
     Hyperlabs.Web.Areas.Customer.Models.Account.RegisterCustomerDto:
       title: RegisterCustomerDto
       type: object
@@ -439,86 +519,6 @@ components:
       type: object
       properties:
         userName:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    Hyperlabs.Web.Areas.Customer.Models.Account.CustomerGoogleLoginDto:
-      title: CustomerGoogleLoginDto
-      type: object
-      properties:
-        code:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    Hyperlabs.Web.Areas.Customer.Models.Account.ConfirmCustomerRegistrationDto:
-      title: ConfirmCustomerRegistrationDto
-      type: object
-      properties:
-        userName:
-          title: String
-          type:
-          - string
-          - 'null'
-        token:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    Hyperlabs.Web.Areas.Customer.Models.Account.CustomerMicrosoftLoginDto:
-      title: CustomerMicrosoftLoginDto
-      type: object
-      properties:
-        code:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    Hyperlabs.Web.Areas.Customer.Models.Account.CustomerGoogleParamsDto:
-      title: CustomerGoogleParamsDto
-      type: object
-      properties:
-        authorizationUrl:
-          title: String
-          type:
-          - string
-          - 'null'
-        clientId:
-          title: String
-          type:
-          - string
-          - 'null'
-        responseType:
-          title: String
-          type:
-          - string
-          - 'null'
-        scope:
-          title: String
-          type:
-          - string
-          - 'null'
-        redirectUrl:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    Hyperlabs.Web.Areas.Customer.Models.Account.CustomerLoginResultDto:
-      title: CustomerLoginResultDto
-      type: object
-      properties:
-        tokenType:
-          title: String
-          type:
-          - string
-          - 'null'
-        accessToken:
           title: String
           type:
           - string

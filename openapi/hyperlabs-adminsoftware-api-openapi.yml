@@ -182,21 +182,18 @@ components:
           type: string
           format: uuid
       additionalProperties: false
-    Hyperlabs.Web.Areas.Admin.Models.Software.ChangeSoftwareNoteDto:
-      title: ChangeSoftwareNoteDto
+    Hyperlabs.Web.Areas.Admin.Models.Shared.ChangeAttachedMediaFileDto:
+      title: ChangeAttachedMediaFileDto
       type: object
       properties:
-        id:
-          title: Nullable`1
-          type:
-          - string
-          - 'null'
+        mediaFileId:
+          title: Guid
+          type: string
           format: uuid
-        text:
-          title: String
-          type:
-          - string
-          - 'null'
+        order:
+          title: Int32
+          type: integer
+          format: int32
       additionalProperties: false
     Hyperlabs.Web.Areas.Admin.Models.Software.ChangeSoftwareDto:
       title: ChangeSoftwareDto
@@ -269,6 +266,22 @@ components:
           type: integer
           format: int32
       additionalProperties: false
+    Hyperlabs.Web.Areas.Admin.Models.Software.ChangeSoftwareNoteDto:
+      title: ChangeSoftwareNoteDto
+      type: object
+      properties:
+        id:
+          title: Nullable`1
+          type:
+          - string
+          - 'null'
+          format: uuid
+        text:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
     Hyperlabs.Domain.Products.Models.PublishingStatusCode:
       title: PublishingStatusCode
       enum:
@@ -277,19 +290,6 @@ components:
       - 3
       type: integer
       format: int32
-    Hyperlabs.Web.Areas.Admin.Models.Shared.ChangeAttachedMediaFileDto:
-      title: ChangeAttachedMediaFileDto
-      type: object
-      properties:
-        mediaFileId:
-          title: Guid
-          type: string
-          format: uuid
-        order:
-          title: Int32
-          type: integer
-          format: int32
-      additionalProperties: false
   securitySchemes:
     oauth2:
       type: apiKey

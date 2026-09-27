@@ -31,19 +31,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Hyperlabs.Domain.ContactMessages.Models.ContactMessageTypeCode:
-      title: ContactMessageTypeCode
-      enum:
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      - 7
-      - 8
-      type: integer
-      format: int32
     Hyperlabs.Web.Areas.Customer.Models.ContactMessages.CreateContactMessageDto:
       title: CreateContactMessageDto
       type: object
@@ -86,6 +73,19 @@ components:
           - string
           - 'null'
       additionalProperties: false
+    Hyperlabs.Domain.ContactMessages.Models.ContactMessageTypeCode:
+      title: ContactMessageTypeCode
+      enum:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      type: integer
+      format: int32
   securitySchemes:
     oauth2:
       type: apiKey

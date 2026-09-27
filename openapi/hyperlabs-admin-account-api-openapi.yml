@@ -129,56 +129,11 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Hyperlabs.Web.Models.Accounts.ResetPasswordDto:
-      title: ResetPasswordDto
+    Hyperlabs.Web.Models.Accounts.ForgotPasswordDto:
+      title: ForgotPasswordDto
       type: object
       properties:
         userName:
-          title: String
-          type:
-          - string
-          - 'null'
-        newPassword:
-          title: String
-          type:
-          - string
-          - 'null'
-        token:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    Hyperlabs.Web.Models.Accounts.ConfirmInviteDto:
-      title: ConfirmInviteDto
-      type: object
-      properties:
-        userName:
-          title: String
-          type:
-          - string
-          - 'null'
-        token:
-          title: String
-          type:
-          - string
-          - 'null'
-        password:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    Hyperlabs.Web.Models.Accounts.LoginResultDto:
-      title: LoginResultDto
-      type: object
-      properties:
-        tokenType:
-          title: String
-          type:
-          - string
-          - 'null'
-        accessToken:
           title: String
           type:
           - string
@@ -214,11 +169,56 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    Hyperlabs.Web.Models.Accounts.ForgotPasswordDto:
-      title: ForgotPasswordDto
+    Hyperlabs.Web.Models.Accounts.LoginResultDto:
+      title: LoginResultDto
+      type: object
+      properties:
+        tokenType:
+          title: String
+          type:
+          - string
+          - 'null'
+        accessToken:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Hyperlabs.Web.Models.Accounts.ConfirmInviteDto:
+      title: ConfirmInviteDto
       type: object
       properties:
         userName:
+          title: String
+          type:
+          - string
+          - 'null'
+        token:
+          title: String
+          type:
+          - string
+          - 'null'
+        password:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Hyperlabs.Web.Models.Accounts.ResetPasswordDto:
+      title: ResetPasswordDto
+      type: object
+      properties:
+        userName:
+          title: String
+          type:
+          - string
+          - 'null'
+        newPassword:
+          title: String
+          type:
+          - string
+          - 'null'
+        token:
           title: String
           type:
           - string

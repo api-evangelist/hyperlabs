@@ -248,35 +248,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Hyperlabs.Web.Areas.Admin.Models.Users.ChangeUserDto:
-      title: ChangeUserDto
-      type: object
-      properties:
-        roleId:
-          title: Guid
-          type: string
-          format: uuid
-        userName:
-          title: String
-          type:
-          - string
-          - 'null'
-        firstName:
-          title: String
-          type:
-          - string
-          - 'null'
-        lastName:
-          title: String
-          type:
-          - string
-          - 'null'
-        title:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
     Hyperlabs.Web.Areas.Admin.Models.Users.CreateUserDto:
       title: CreateUserDto
       type: object
@@ -313,6 +284,35 @@ components:
       - 2
       type: integer
       format: int32
+    Hyperlabs.Web.Areas.Admin.Models.Users.ChangeUserDto:
+      title: ChangeUserDto
+      type: object
+      properties:
+        roleId:
+          title: Guid
+          type: string
+          format: uuid
+        userName:
+          title: String
+          type:
+          - string
+          - 'null'
+        firstName:
+          title: String
+          type:
+          - string
+          - 'null'
+        lastName:
+          title: String
+          type:
+          - string
+          - 'null'
+        title:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
   securitySchemes:
     oauth2:
       type: apiKey

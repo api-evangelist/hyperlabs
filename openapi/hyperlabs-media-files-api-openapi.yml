@@ -369,10 +369,33 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Hyperlabs.Domain.MediaFiles.Models.MediaFilesQuerySortParameter:
-      title: MediaFilesQuerySortParameter
+    Hyperlabs.Web.Areas.Admin.Models.MediaFiles.CompleteChunkedUploadDto:
+      title: CompleteChunkedUploadDto
+      type: object
+      properties:
+        fileName:
+          title: String
+          type:
+          - string
+          - 'null'
+        contentType:
+          title: String
+          type:
+          - string
+          - 'null'
+        totalChunks:
+          title: Int32
+          type: integer
+          format: int32
+      additionalProperties: false
+    Hyperlabs.Domain.MediaFiles.Models.FileTypeCode:
+      title: FileTypeCode
       enum:
       - 1
+      - 2
+      - 3
+      - 4
+      - 5
       type: integer
       format: int32
     Hyperlabs.Web.Areas.Admin.Models.MediaFiles.ChangeMediaFileDto:
@@ -398,35 +421,27 @@ components:
           - 'null'
           format: uuid
       additionalProperties: false
-    Hyperlabs.Domain.MediaFiles.Models.FileTypeCode:
-      title: FileTypeCode
-      enum:
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      type: integer
-      format: int32
-    Hyperlabs.Web.Areas.Admin.Models.MediaFiles.CompleteChunkedUploadDto:
-      title: CompleteChunkedUploadDto
+    Hyperlabs.Web.Areas.Admin.Models.MediaFiles.ContentDto:
+      title: ContentDto
       type: object
       properties:
+        fileUrl:
+          title: String
+          type:
+          - string
+          - 'null'
         fileName:
           title: String
           type:
           - string
           - 'null'
-        contentType:
-          title: String
-          type:
-          - string
-          - 'null'
-        totalChunks:
-          title: Int32
-          type: integer
-          format: int32
       additionalProperties: false
+    Hyperlabs.Domain.MediaFiles.Models.MediaFilesQuerySortParameter:
+      title: MediaFilesQuerySortParameter
+      enum:
+      - 1
+      type: integer
+      format: int32
     Hyperlabs.Web.Areas.Admin.Models.MediaFiles.CreateMediaFileDto:
       title: CreateMediaFileDto
       type: object
@@ -451,21 +466,6 @@ components:
           format: uuid
         content:
           $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.MediaFiles.ContentDto'
-      additionalProperties: false
-    Hyperlabs.Web.Areas.Admin.Models.MediaFiles.ContentDto:
-      title: ContentDto
-      type: object
-      properties:
-        fileUrl:
-          title: String
-          type:
-          - string
-          - 'null'
-        fileName:
-          title: String
-          type:
-          - string
-          - 'null'
       additionalProperties: false
   securitySchemes:
     oauth2:

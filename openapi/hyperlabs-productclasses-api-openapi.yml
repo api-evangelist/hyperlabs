@@ -179,14 +179,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Hyperlabs.Domain.Products.Models.PublishingStatusCode:
-      title: PublishingStatusCode
-      enum:
-      - 1
-      - 2
-      - 3
-      type: integer
-      format: int32
     Hyperlabs.Web.Areas.Admin.Models.ProductClasses.ChangeProductClassDto:
       title: ChangeProductClassDto
       type: object
@@ -214,6 +206,14 @@ components:
         publishingStatusCode:
           $ref: '#/components/schemas/Hyperlabs.Domain.Products.Models.PublishingStatusCode'
       additionalProperties: false
+    Hyperlabs.Domain.Products.Models.PublishingStatusCode:
+      title: PublishingStatusCode
+      enum:
+      - 1
+      - 2
+      - 3
+      type: integer
+      format: int32
     Hyperlabs.Web.Areas.Admin.Models.Shared.MoveDto:
       title: MoveDto
       type: object

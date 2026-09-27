@@ -173,15 +173,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Hyperlabs.Web.Areas.Admin.Models.Shared.MoveDto:
-      title: MoveDto
-      type: object
-      properties:
-        delta:
-          title: Int32
-          type: integer
-          format: int32
-      additionalProperties: false
     Hyperlabs.Web.Areas.Admin.Models.Website.ChangeWebsiteFaqDto:
       title: ChangeWebsiteFaqDto
       type: object
@@ -196,6 +187,15 @@ components:
           type:
           - string
           - 'null'
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Admin.Models.Shared.MoveDto:
+      title: MoveDto
+      type: object
+      properties:
+        delta:
+          title: Int32
+          type: integer
+          format: int32
       additionalProperties: false
   securitySchemes:
     oauth2:

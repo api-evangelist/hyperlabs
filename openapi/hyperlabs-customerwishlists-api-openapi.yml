@@ -170,6 +170,25 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    Hyperlabs.Web.Areas.Customer.Models.Wishlists.AddWishlistItemDto:
+      title: AddWishlistItemDto
+      type: object
+      properties:
+        productId:
+          title: Guid
+          type: string
+          format: uuid
+        productUnitId:
+          title: Nullable`1
+          type:
+          - string
+          - 'null'
+          format: uuid
+        amount:
+          title: Int32
+          type: integer
+          format: int32
+      additionalProperties: false
     Hyperlabs.Web.Areas.Customer.Models.Wishlists.CustomerShareWishlistDto:
       title: CustomerShareWishlistDto
       type: object
@@ -208,25 +227,6 @@ components:
           type:
           - string
           - 'null'
-      additionalProperties: false
-    Hyperlabs.Web.Areas.Customer.Models.Wishlists.AddWishlistItemDto:
-      title: AddWishlistItemDto
-      type: object
-      properties:
-        productId:
-          title: Guid
-          type: string
-          format: uuid
-        productUnitId:
-          title: Nullable`1
-          type:
-          - string
-          - 'null'
-          format: uuid
-        amount:
-          title: Int32
-          type: integer
-          format: int32
       additionalProperties: false
   securitySchemes:
     oauth2:

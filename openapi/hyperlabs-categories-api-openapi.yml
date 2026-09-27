@@ -224,21 +224,27 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Hyperlabs.Web.Areas.Admin.Models.Categories.ChangeCategoryVariableTypeDto:
-      title: ChangeCategoryVariableTypeDto
+    Hyperlabs.Web.Areas.Admin.Models.Shared.ChangeAttachedMediaFileDto:
+      title: ChangeAttachedMediaFileDto
       type: object
       properties:
-        variableTypeId:
+        mediaFileId:
           title: Guid
           type: string
           format: uuid
-        values:
-          title: ChangeCategoryVariableTypeValueDto[]
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Categories.ChangeCategoryVariableTypeValueDto'
+        order:
+          title: Int32
+          type: integer
+          format: int32
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Admin.Models.Categories.ChangeCategoryVariableTypeValueDto:
+      title: ChangeCategoryVariableTypeValueDto
+      type: object
+      properties:
+        valueId:
+          title: Guid
+          type: string
+          format: uuid
       additionalProperties: false
     Hyperlabs.Web.Areas.Admin.Models.Categories.ChangeCategoryDto:
       title: ChangeCategoryDto
@@ -309,11 +315,20 @@ components:
             type: string
             format: uuid
       additionalProperties: false
-    Hyperlabs.Web.Areas.Admin.Models.Categories.ChangeCategoryVariableTypeValueDto:
-      title: ChangeCategoryVariableTypeValueDto
+    Hyperlabs.Web.Areas.Admin.Models.Categories.ChangeCategorySpecificationTypeDto:
+      title: ChangeCategorySpecificationTypeDto
       type: object
       properties:
-        valueId:
+        specificationTypeId:
+          title: Guid
+          type: string
+          format: uuid
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Admin.Models.Categories.ChangeCategoryTagTypeDto:
+      title: ChangeCategoryTagTypeDto
+      type: object
+      properties:
+        tagTypeId:
           title: Guid
           type: string
           format: uuid
@@ -327,27 +342,21 @@ components:
           type: integer
           format: int32
       additionalProperties: false
-    Hyperlabs.Web.Areas.Admin.Models.Shared.ChangeAttachedMediaFileDto:
-      title: ChangeAttachedMediaFileDto
+    Hyperlabs.Web.Areas.Admin.Models.Categories.ChangeCategoryVariableTypeDto:
+      title: ChangeCategoryVariableTypeDto
       type: object
       properties:
-        mediaFileId:
+        variableTypeId:
           title: Guid
           type: string
           format: uuid
-        order:
-          title: Int32
-          type: integer
-          format: int32
-      additionalProperties: false
-    Hyperlabs.Web.Areas.Admin.Models.Categories.ChangeCategoryTagTypeDto:
-      title: ChangeCategoryTagTypeDto
-      type: object
-      properties:
-        tagTypeId:
-          title: Guid
-          type: string
-          format: uuid
+        values:
+          title: ChangeCategoryVariableTypeValueDto[]
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Categories.ChangeCategoryVariableTypeValueDto'
       additionalProperties: false
     Hyperlabs.Domain.Products.Models.PublishingStatusCode:
       title: PublishingStatusCode
@@ -357,15 +366,6 @@ components:
       - 3
       type: integer
       format: int32
-    Hyperlabs.Web.Areas.Admin.Models.Categories.ChangeCategorySpecificationTypeDto:
-      title: ChangeCategorySpecificationTypeDto
-      type: object
-      properties:
-        specificationTypeId:
-          title: Guid
-          type: string
-          format: uuid
-      additionalProperties: false
   securitySchemes:
     oauth2:
       type: apiKey

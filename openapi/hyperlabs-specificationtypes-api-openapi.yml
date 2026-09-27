@@ -149,13 +149,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Hyperlabs.Domain.SpecificationTypes.Models.SpecificationValueTypeCode:
-      title: SpecificationValueTypeCode
-      enum:
-      - 1
-      - 2
-      type: integer
-      format: int32
     Hyperlabs.Web.Areas.Admin.Models.SpecificationTypes.ChangeSpecificationTypeDto:
       title: ChangeSpecificationTypeDto
       type: object
@@ -186,6 +179,20 @@ components:
           title: Boolean
           type: boolean
       additionalProperties: false
+    Hyperlabs.Domain.SpecificationTypes.Models.SpecificationValueTypeCode:
+      title: SpecificationValueTypeCode
+      enum:
+      - 1
+      - 2
+      type: integer
+      format: int32
+    Hyperlabs.Domain.SpecificationTypes.Models.SpecificationPurposeCode:
+      title: SpecificationPurposeCode
+      enum:
+      - 1
+      - 2
+      type: integer
+      format: int32
     Hyperlabs.Web.Areas.Admin.Models.Shared.MoveDto:
       title: MoveDto
       type: object
@@ -195,13 +202,6 @@ components:
           type: integer
           format: int32
       additionalProperties: false
-    Hyperlabs.Domain.SpecificationTypes.Models.SpecificationPurposeCode:
-      title: SpecificationPurposeCode
-      enum:
-      - 1
-      - 2
-      type: integer
-      format: int32
   securitySchemes:
     oauth2:
       type: apiKey
