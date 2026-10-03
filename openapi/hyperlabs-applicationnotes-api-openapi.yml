@@ -197,32 +197,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Hyperlabs.Web.Areas.Admin.Models.Shared.ChangeLinkedProductDto:
-      title: ChangeLinkedProductDto
-      type: object
-      properties:
-        productId:
-          title: Guid
-          type: string
-          format: uuid
-      additionalProperties: false
-    Hyperlabs.Web.Areas.Admin.Models.Shared.MoveDto:
-      title: MoveDto
-      type: object
-      properties:
-        delta:
-          title: Int32
-          type: integer
-          format: int32
-      additionalProperties: false
-    Hyperlabs.Domain.Products.Models.PublishingStatusCode:
-      title: PublishingStatusCode
-      enum:
-      - 1
-      - 2
-      - 3
-      type: integer
-      format: int32
     Hyperlabs.Web.Areas.Admin.Models.ApplicationNotes.ChangeApplicationNoteDto:
       title: ChangeApplicationNoteDto
       type: object
@@ -277,6 +251,32 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.Shared.ChangeLinkedProductDto'
+      additionalProperties: false
+    Hyperlabs.Domain.Products.Models.PublishingStatusCode:
+      title: PublishingStatusCode
+      enum:
+      - 1
+      - 2
+      - 3
+      type: integer
+      format: int32
+    Hyperlabs.Web.Areas.Admin.Models.Shared.ChangeLinkedProductDto:
+      title: ChangeLinkedProductDto
+      type: object
+      properties:
+        productId:
+          title: Guid
+          type: string
+          format: uuid
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Admin.Models.Shared.MoveDto:
+      title: MoveDto
+      type: object
+      properties:
+        delta:
+          title: Int32
+          type: integer
+          format: int32
       additionalProperties: false
   securitySchemes:
     oauth2:

@@ -129,16 +129,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Hyperlabs.Web.Models.Accounts.ForgotPasswordDto:
-      title: ForgotPasswordDto
-      type: object
-      properties:
-        userName:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
     Hyperlabs.Web.Models.Accounts.LoginDto:
       title: LoginDto
       type: object
@@ -169,6 +159,26 @@ components:
           - string
           - 'null'
       additionalProperties: false
+    Hyperlabs.Web.Models.Accounts.ResetPasswordDto:
+      title: ResetPasswordDto
+      type: object
+      properties:
+        userName:
+          title: String
+          type:
+          - string
+          - 'null'
+        newPassword:
+          title: String
+          type:
+          - string
+          - 'null'
+        token:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
     Hyperlabs.Web.Models.Accounts.LoginResultDto:
       title: LoginResultDto
       type: object
@@ -179,6 +189,16 @@ components:
           - string
           - 'null'
         accessToken:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Hyperlabs.Web.Models.Accounts.ForgotPasswordDto:
+      title: ForgotPasswordDto
+      type: object
+      properties:
+        userName:
           title: String
           type:
           - string
@@ -199,26 +219,6 @@ components:
           - string
           - 'null'
         password:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    Hyperlabs.Web.Models.Accounts.ResetPasswordDto:
-      title: ResetPasswordDto
-      type: object
-      properties:
-        userName:
-          title: String
-          type:
-          - string
-          - 'null'
-        newPassword:
-          title: String
-          type:
-          - string
-          - 'null'
-        token:
           title: String
           type:
           - string

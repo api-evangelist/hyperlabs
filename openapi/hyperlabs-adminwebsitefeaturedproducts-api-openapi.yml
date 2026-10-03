@@ -125,13 +125,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Hyperlabs.Domain.Products.Models.ProductAttributeTypeCode:
-      title: ProductAttributeTypeCode
-      enum:
-      - 1
-      - 2
-      type: integer
-      format: int32
     Hyperlabs.Web.Areas.Admin.Models.Website.ChangeWebsiteFeaturedProductDto:
       title: ChangeWebsiteFeaturedProductDto
       type: object
@@ -150,6 +143,13 @@ components:
         productAttributeTypeCode:
           $ref: '#/components/schemas/Hyperlabs.Domain.Products.Models.ProductAttributeTypeCode'
       additionalProperties: false
+    Hyperlabs.Domain.Products.Models.ProductAttributeTypeCode:
+      title: ProductAttributeTypeCode
+      enum:
+      - 1
+      - 2
+      type: integer
+      format: int32
     Hyperlabs.Web.Areas.Admin.Models.Shared.MoveDto:
       title: MoveDto
       type: object

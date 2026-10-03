@@ -170,6 +170,15 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    Hyperlabs.Web.Areas.Customer.Models.Wishlists.ChangeWishlistItemAmountDto:
+      title: ChangeWishlistItemAmountDto
+      type: object
+      properties:
+        amount:
+          title: Int32
+          type: integer
+          format: int32
+      additionalProperties: false
     Hyperlabs.Web.Areas.Customer.Models.Wishlists.AddWishlistItemDto:
       title: AddWishlistItemDto
       type: object
@@ -208,15 +217,6 @@ components:
           type:
           - string
           - 'null'
-      additionalProperties: false
-    Hyperlabs.Web.Areas.Customer.Models.Wishlists.ChangeWishlistItemAmountDto:
-      title: ChangeWishlistItemAmountDto
-      type: object
-      properties:
-        amount:
-          title: Int32
-          type: integer
-          format: int32
       additionalProperties: false
     Hyperlabs.Web.Areas.Customer.Models.Wishlists.CustomerSendWishlistQuoteDto:
       title: CustomerSendWishlistQuoteDto

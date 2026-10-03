@@ -248,8 +248,8 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Hyperlabs.Web.Areas.Admin.Models.Users.CreateUserDto:
-      title: CreateUserDto
+    Hyperlabs.Web.Areas.Admin.Models.Users.ChangeUserDto:
+      title: ChangeUserDto
       type: object
       properties:
         roleId:
@@ -284,8 +284,8 @@ components:
       - 2
       type: integer
       format: int32
-    Hyperlabs.Web.Areas.Admin.Models.Users.ChangeUserDto:
-      title: ChangeUserDto
+    Hyperlabs.Web.Areas.Admin.Models.Users.CreateUserDto:
+      title: CreateUserDto
       type: object
       properties:
         roleId:

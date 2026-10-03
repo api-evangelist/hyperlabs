@@ -83,6 +83,38 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    Microsoft.AspNetCore.Mvc.ProblemDetails:
+      title: ProblemDetails
+      type: object
+      properties:
+        type:
+          title: String
+          type:
+          - string
+          - 'null'
+        title:
+          title: String
+          type:
+          - string
+          - 'null'
+        status:
+          title: Nullable`1
+          type:
+          - integer
+          - 'null'
+          format: int32
+        detail:
+          title: String
+          type:
+          - string
+          - 'null'
+        instance:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties:
+        title: Object
     Hyperlabs.Web.Areas.Customer.Models.Customers.ChangeProfileDto:
       title: ChangeProfileDto
       type: object
@@ -178,38 +210,6 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    Microsoft.AspNetCore.Mvc.ProblemDetails:
-      title: ProblemDetails
-      type: object
-      properties:
-        type:
-          title: String
-          type:
-          - string
-          - 'null'
-        title:
-          title: String
-          type:
-          - string
-          - 'null'
-        status:
-          title: Nullable`1
-          type:
-          - integer
-          - 'null'
-          format: int32
-        detail:
-          title: String
-          type:
-          - string
-          - 'null'
-        instance:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties:
-        title: Object
   securitySchemes:
     oauth2:
       type: apiKey

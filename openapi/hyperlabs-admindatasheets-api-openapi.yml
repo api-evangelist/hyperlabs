@@ -85,6 +85,14 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    Hyperlabs.Domain.Products.Models.PublishingStatusCode:
+      title: PublishingStatusCode
+      enum:
+      - 1
+      - 2
+      - 3
+      type: integer
+      format: int32
     Hyperlabs.Domain.Datasheets.Models.DatasheetsQuerySortParameter:
       title: DatasheetsQuerySortParameter
       enum:
@@ -93,14 +101,6 @@ components:
       - 3
       - 4
       - 5
-      type: integer
-      format: int32
-    Hyperlabs.Domain.Products.Models.PublishingStatusCode:
-      title: PublishingStatusCode
-      enum:
-      - 1
-      - 2
-      - 3
       type: integer
       format: int32
   securitySchemes:
