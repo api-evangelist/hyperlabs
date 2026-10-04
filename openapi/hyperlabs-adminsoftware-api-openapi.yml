@@ -181,15 +181,6 @@ components:
       - 3
       type: integer
       format: int32
-    Hyperlabs.Web.Areas.Admin.Models.Shared.ChangeLinkedProductDto:
-      title: ChangeLinkedProductDto
-      type: object
-      properties:
-        productId:
-          title: Guid
-          type: string
-          format: uuid
-      additionalProperties: false
     Hyperlabs.Web.Areas.Admin.Models.Software.ChangeSoftwareDto:
       title: ChangeSoftwareDto
       type: object
@@ -276,6 +267,15 @@ components:
           type:
           - string
           - 'null'
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Admin.Models.Shared.ChangeLinkedProductDto:
+      title: ChangeLinkedProductDto
+      type: object
+      properties:
+        productId:
+          title: Guid
+          type: string
+          format: uuid
       additionalProperties: false
     Hyperlabs.Web.Areas.Admin.Models.Shared.ChangeAttachedMediaFileDto:
       title: ChangeAttachedMediaFileDto

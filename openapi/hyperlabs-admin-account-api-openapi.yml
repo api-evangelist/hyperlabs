@@ -129,11 +129,16 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Hyperlabs.Web.Models.Accounts.LoginDto:
-      title: LoginDto
+    Hyperlabs.Web.Models.Accounts.ConfirmInviteDto:
+      title: ConfirmInviteDto
       type: object
       properties:
         userName:
+          title: String
+          type:
+          - string
+          - 'null'
+        token:
           title: String
           type:
           - string
@@ -144,8 +149,8 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    Hyperlabs.Web.Models.Accounts.ValidateInviteDto:
-      title: ValidateInviteDto
+    Hyperlabs.Web.Models.Accounts.LoginDto:
+      title: LoginDto
       type: object
       properties:
         userName:
@@ -153,27 +158,7 @@ components:
           type:
           - string
           - 'null'
-        token:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    Hyperlabs.Web.Models.Accounts.ResetPasswordDto:
-      title: ResetPasswordDto
-      type: object
-      properties:
-        userName:
-          title: String
-          type:
-          - string
-          - 'null'
-        newPassword:
-          title: String
-          type:
-          - string
-          - 'null'
-        token:
+        password:
           title: String
           type:
           - string
@@ -204,11 +189,16 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    Hyperlabs.Web.Models.Accounts.ConfirmInviteDto:
-      title: ConfirmInviteDto
+    Hyperlabs.Web.Models.Accounts.ResetPasswordDto:
+      title: ResetPasswordDto
       type: object
       properties:
         userName:
+          title: String
+          type:
+          - string
+          - 'null'
+        newPassword:
           title: String
           type:
           - string
@@ -218,7 +208,17 @@ components:
           type:
           - string
           - 'null'
-        password:
+      additionalProperties: false
+    Hyperlabs.Web.Models.Accounts.ValidateInviteDto:
+      title: ValidateInviteDto
+      type: object
+      properties:
+        userName:
+          title: String
+          type:
+          - string
+          - 'null'
+        token:
           title: String
           type:
           - string

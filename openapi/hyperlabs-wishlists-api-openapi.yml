@@ -53,6 +53,57 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    Hyperlabs.Web.Areas.Customer.Models.Shared.ProductLineDto:
+      title: ProductLineDto
+      type: object
+      properties:
+        productId:
+          title: Guid
+          type: string
+          format: uuid
+        productUnitId:
+          title: Nullable`1
+          type:
+          - string
+          - 'null'
+          format: uuid
+        amount:
+          title: Int32
+          type: integer
+          format: int32
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Customer.Models.Wishlists.ShareWishlistDto:
+      title: ShareWishlistDto
+      type: object
+      properties:
+        email:
+          title: String
+          type:
+          - string
+          - 'null'
+        name:
+          title: String
+          type:
+          - string
+          - 'null'
+        message:
+          title: String
+          type:
+          - string
+          - 'null'
+        items:
+          title: ProductLineDto[]
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Shared.ProductLineDto'
+        recaptchaToken:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
     Hyperlabs.Web.Areas.Customer.Models.Wishlists.WishlistProfileDto:
       title: WishlistProfileDto
       type: object
@@ -103,38 +154,6 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    Hyperlabs.Web.Areas.Customer.Models.Wishlists.ShareWishlistDto:
-      title: ShareWishlistDto
-      type: object
-      properties:
-        email:
-          title: String
-          type:
-          - string
-          - 'null'
-        name:
-          title: String
-          type:
-          - string
-          - 'null'
-        message:
-          title: String
-          type:
-          - string
-          - 'null'
-        items:
-          title: ProductLineDto[]
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Hyperlabs.Web.Areas.Customer.Models.Shared.ProductLineDto'
-        recaptchaToken:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
     Hyperlabs.Web.Areas.Customer.Models.Wishlists.SendWishlistQuoteDto:
       title: SendWishlistQuoteDto
       type: object
@@ -153,25 +172,6 @@ components:
           type:
           - string
           - 'null'
-      additionalProperties: false
-    Hyperlabs.Web.Areas.Customer.Models.Shared.ProductLineDto:
-      title: ProductLineDto
-      type: object
-      properties:
-        productId:
-          title: Guid
-          type: string
-          format: uuid
-        productUnitId:
-          title: Nullable`1
-          type:
-          - string
-          - 'null'
-          format: uuid
-        amount:
-          title: Int32
-          type: integer
-          format: int32
       additionalProperties: false
   securitySchemes:
     oauth2:

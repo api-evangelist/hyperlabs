@@ -297,6 +297,16 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    Hyperlabs.Web.Areas.Customer.Models.Account.CustomerMicrosoftLoginDto:
+      title: CustomerMicrosoftLoginDto
+      type: object
+      properties:
+        code:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
     Microsoft.AspNetCore.Mvc.ProblemDetails:
       title: ProblemDetails
       type: object
@@ -329,11 +339,41 @@ components:
           - 'null'
       additionalProperties:
         title: Object
-    Hyperlabs.Web.Areas.Customer.Models.Account.ConfirmCustomerRegistrationDto:
-      title: ConfirmCustomerRegistrationDto
+    Hyperlabs.Web.Areas.Customer.Models.Account.CustomerLoginResultDto:
+      title: CustomerLoginResultDto
+      type: object
+      properties:
+        tokenType:
+          title: String
+          type:
+          - string
+          - 'null'
+        accessToken:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Customer.Models.Account.CustomerForgotPasswordDto:
+      title: CustomerForgotPasswordDto
       type: object
       properties:
         userName:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Customer.Models.Account.CustomerResetPasswordDto:
+      title: CustomerResetPasswordDto
+      type: object
+      properties:
+        userName:
+          title: String
+          type:
+          - string
+          - 'null'
+        newPassword:
           title: String
           type:
           - string
@@ -374,46 +414,6 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    Hyperlabs.Web.Areas.Customer.Models.Account.CustomerResetPasswordDto:
-      title: CustomerResetPasswordDto
-      type: object
-      properties:
-        userName:
-          title: String
-          type:
-          - string
-          - 'null'
-        newPassword:
-          title: String
-          type:
-          - string
-          - 'null'
-        token:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    Hyperlabs.Web.Areas.Customer.Models.Account.CustomerMicrosoftLoginDto:
-      title: CustomerMicrosoftLoginDto
-      type: object
-      properties:
-        code:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    Hyperlabs.Web.Areas.Customer.Models.Account.CustomerForgotPasswordDto:
-      title: CustomerForgotPasswordDto
-      type: object
-      properties:
-        userName:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
     Hyperlabs.Web.Models.Accounts.ChangePasswordDto:
       title: ChangePasswordDto
       type: object
@@ -424,6 +424,41 @@ components:
           - string
           - 'null'
         newPassword:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Customer.Models.Account.RegisterCustomerDto:
+      title: RegisterCustomerDto
+      type: object
+      properties:
+        email:
+          title: String
+          type:
+          - string
+          - 'null'
+        password:
+          title: String
+          type:
+          - string
+          - 'null'
+        firstName:
+          title: String
+          type:
+          - string
+          - 'null'
+        lastName:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Customer.Models.Account.CustomerGoogleLoginDto:
+      title: CustomerGoogleLoginDto
+      type: object
+      properties:
+        code:
           title: String
           type:
           - string
@@ -459,16 +494,6 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    Hyperlabs.Web.Areas.Customer.Models.Account.CustomerGoogleLoginDto:
-      title: CustomerGoogleLoginDto
-      type: object
-      properties:
-        code:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
     Hyperlabs.Web.Areas.Customer.Models.Account.CustomerLoginDto:
       title: CustomerLoginDto
       type: object
@@ -484,41 +509,16 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    Hyperlabs.Web.Areas.Customer.Models.Account.CustomerLoginResultDto:
-      title: CustomerLoginResultDto
+    Hyperlabs.Web.Areas.Customer.Models.Account.ConfirmCustomerRegistrationDto:
+      title: ConfirmCustomerRegistrationDto
       type: object
       properties:
-        tokenType:
+        userName:
           title: String
           type:
           - string
           - 'null'
-        accessToken:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    Hyperlabs.Web.Areas.Customer.Models.Account.RegisterCustomerDto:
-      title: RegisterCustomerDto
-      type: object
-      properties:
-        email:
-          title: String
-          type:
-          - string
-          - 'null'
-        password:
-          title: String
-          type:
-          - string
-          - 'null'
-        firstName:
-          title: String
-          type:
-          - string
-          - 'null'
-        lastName:
+        token:
           title: String
           type:
           - string

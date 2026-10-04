@@ -156,6 +156,15 @@ components:
       - 2
       type: integer
       format: int32
+    Hyperlabs.Web.Areas.Admin.Models.Shared.MoveDto:
+      title: MoveDto
+      type: object
+      properties:
+        delta:
+          title: Int32
+          type: integer
+          format: int32
+      additionalProperties: false
     Hyperlabs.Domain.SpecificationTypes.Models.SpecificationPurposeCode:
       title: SpecificationPurposeCode
       enum:
@@ -192,15 +201,6 @@ components:
         isSingleValue:
           title: Boolean
           type: boolean
-      additionalProperties: false
-    Hyperlabs.Web.Areas.Admin.Models.Shared.MoveDto:
-      title: MoveDto
-      type: object
-      properties:
-        delta:
-          title: Int32
-          type: integer
-          format: int32
       additionalProperties: false
   securitySchemes:
     oauth2:

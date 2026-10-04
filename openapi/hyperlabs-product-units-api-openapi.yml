@@ -154,19 +154,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Hyperlabs.Web.Areas.Admin.Models.ProductUnits.ChangeProductUnitVariableDto:
-      title: ChangeProductUnitVariableDto
-      type: object
-      properties:
-        variableId:
-          title: Guid
-          type: string
-          format: uuid
-        valueId:
-          title: Guid
-          type: string
-          format: uuid
-      additionalProperties: false
     Hyperlabs.Web.Areas.Admin.Models.ProductUnits.ChangeProductUnitDto:
       title: ChangeProductUnitDto
       type: object
@@ -183,6 +170,19 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/Hyperlabs.Web.Areas.Admin.Models.ProductUnits.ChangeProductUnitVariableDto'
+      additionalProperties: false
+    Hyperlabs.Web.Areas.Admin.Models.ProductUnits.ChangeProductUnitVariableDto:
+      title: ChangeProductUnitVariableDto
+      type: object
+      properties:
+        variableId:
+          title: Guid
+          type: string
+          format: uuid
+        valueId:
+          title: Guid
+          type: string
+          format: uuid
       additionalProperties: false
   securitySchemes:
     oauth2:
